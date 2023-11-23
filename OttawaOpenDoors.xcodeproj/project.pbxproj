@@ -14,6 +14,16 @@
 		5771702E2B0EEEA000EA4D46 /* OttawaOpenDoorsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5771702D2B0EEEA000EA4D46 /* OttawaOpenDoorsTests.swift */; };
 		577170382B0EEEA000EA4D46 /* OttawaOpenDoorsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 577170372B0EEEA000EA4D46 /* OttawaOpenDoorsUITests.swift */; };
 		5771703A2B0EEEA000EA4D46 /* OttawaOpenDoorsUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 577170392B0EEEA000EA4D46 /* OttawaOpenDoorsUITestsLaunchTests.swift */; };
+		577170492B0EEF9900EA4D46 /* MainNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 577170482B0EEF9900EA4D46 /* MainNavigation.swift */; };
+		5771704B2B0EF57000EA4D46 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5771704A2B0EF57000EA4D46 /* MainView.swift */; };
+		5771704E2B0EF5DE00EA4D46 /* AppSettingsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5771704D2B0EF5DE00EA4D46 /* AppSettingsModel.swift */; };
+		577170502B0EF60400EA4D46 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5771704F2B0EF60400EA4D46 /* Constants.swift */; };
+		577170522B0EF66900EA4D46 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 577170512B0EF66900EA4D46 /* Localizable.xcstrings */; };
+		577170552B0EF9B700EA4D46 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 577170542B0EF9B700EA4D46 /* MapView.swift */; };
+		577170572B0EFBF400EA4D46 /* TopNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 577170562B0EFBF400EA4D46 /* TopNavigation.swift */; };
+		5771705A2B0EFCFF00EA4D46 /* SavedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 577170592B0EFCFF00EA4D46 /* SavedView.swift */; };
+		5771705D2B0EFD8C00EA4D46 /* MoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5771705C2B0EFD8C00EA4D46 /* MoreView.swift */; };
+		5771705F2B0F115400EA4D46 /* LanguageSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5771705E2B0F115400EA4D46 /* LanguageSelectionView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +54,16 @@
 		577170332B0EEEA000EA4D46 /* OttawaOpenDoorsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OttawaOpenDoorsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		577170372B0EEEA000EA4D46 /* OttawaOpenDoorsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OttawaOpenDoorsUITests.swift; sourceTree = "<group>"; };
 		577170392B0EEEA000EA4D46 /* OttawaOpenDoorsUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OttawaOpenDoorsUITestsLaunchTests.swift; sourceTree = "<group>"; };
+		577170482B0EEF9900EA4D46 /* MainNavigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainNavigation.swift; sourceTree = "<group>"; };
+		5771704A2B0EF57000EA4D46 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
+		5771704D2B0EF5DE00EA4D46 /* AppSettingsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSettingsModel.swift; sourceTree = "<group>"; };
+		5771704F2B0EF60400EA4D46 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
+		577170512B0EF66900EA4D46 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
+		577170542B0EF9B700EA4D46 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
+		577170562B0EFBF400EA4D46 /* TopNavigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TopNavigation.swift; sourceTree = "<group>"; };
+		577170592B0EFCFF00EA4D46 /* SavedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedView.swift; sourceTree = "<group>"; };
+		5771705C2B0EFD8C00EA4D46 /* MoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreView.swift; sourceTree = "<group>"; };
+		5771705E2B0F115400EA4D46 /* LanguageSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageSelectionView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -94,6 +114,13 @@
 		5771701B2B0EEE9E00EA4D46 /* OttawaOpenDoors */ = {
 			isa = PBXGroup;
 			children = (
+				577170602B0F163500EA4D46 /* Views */,
+				5771705B2B0EFD7900EA4D46 /* MoreScreen */,
+				577170582B0EFCEE00EA4D46 /* SavedScreen */,
+				577170532B0EF9A700EA4D46 /* MapScreen */,
+				5771704C2B0EF58100EA4D46 /* Model */,
+				577170472B0EEF7100EA4D46 /* Navigation */,
+				577170462B0EEF5D00EA4D46 /* MainScreen */,
 				5771701C2B0EEE9E00EA4D46 /* OttawaOpenDoorsApp.swift */,
 				5771701E2B0EEE9E00EA4D46 /* ContentView.swift */,
 				577170202B0EEEA000EA4D46 /* Assets.xcassets */,
@@ -125,6 +152,65 @@
 				577170392B0EEEA000EA4D46 /* OttawaOpenDoorsUITestsLaunchTests.swift */,
 			);
 			path = OttawaOpenDoorsUITests;
+			sourceTree = "<group>";
+		};
+		577170462B0EEF5D00EA4D46 /* MainScreen */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = MainScreen;
+			sourceTree = "<group>";
+		};
+		577170472B0EEF7100EA4D46 /* Navigation */ = {
+			isa = PBXGroup;
+			children = (
+				577170482B0EEF9900EA4D46 /* MainNavigation.swift */,
+				577170562B0EFBF400EA4D46 /* TopNavigation.swift */,
+			);
+			path = Navigation;
+			sourceTree = "<group>";
+		};
+		5771704C2B0EF58100EA4D46 /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				5771704D2B0EF5DE00EA4D46 /* AppSettingsModel.swift */,
+				5771704F2B0EF60400EA4D46 /* Constants.swift */,
+				577170512B0EF66900EA4D46 /* Localizable.xcstrings */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		577170532B0EF9A700EA4D46 /* MapScreen */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = MapScreen;
+			sourceTree = "<group>";
+		};
+		577170582B0EFCEE00EA4D46 /* SavedScreen */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = SavedScreen;
+			sourceTree = "<group>";
+		};
+		5771705B2B0EFD7900EA4D46 /* MoreScreen */ = {
+			isa = PBXGroup;
+			children = (
+				5771705E2B0F115400EA4D46 /* LanguageSelectionView.swift */,
+			);
+			path = MoreScreen;
+			sourceTree = "<group>";
+		};
+		577170602B0F163500EA4D46 /* Views */ = {
+			isa = PBXGroup;
+			children = (
+				577170592B0EFCFF00EA4D46 /* SavedView.swift */,
+				577170542B0EF9B700EA4D46 /* MapView.swift */,
+				5771705C2B0EFD8C00EA4D46 /* MoreView.swift */,
+				5771704A2B0EF57000EA4D46 /* MainView.swift */,
+			);
+			path = Views;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -213,6 +299,7 @@
 			knownRegions = (
 				en,
 				Base,
+				"fr-CA",
 			);
 			mainGroup = 577170102B0EEE9E00EA4D46;
 			productRefGroup = 5771701A2B0EEE9E00EA4D46 /* Products */;
@@ -233,6 +320,7 @@
 			files = (
 				577170242B0EEEA000EA4D46 /* Preview Assets.xcassets in Resources */,
 				577170212B0EEEA000EA4D46 /* Assets.xcassets in Resources */,
+				577170522B0EF66900EA4D46 /* Localizable.xcstrings in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -257,8 +345,17 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				577170552B0EF9B700EA4D46 /* MapView.swift in Sources */,
+				577170572B0EFBF400EA4D46 /* TopNavigation.swift in Sources */,
 				5771701F2B0EEE9E00EA4D46 /* ContentView.swift in Sources */,
+				5771705F2B0F115400EA4D46 /* LanguageSelectionView.swift in Sources */,
+				5771704B2B0EF57000EA4D46 /* MainView.swift in Sources */,
 				5771701D2B0EEE9E00EA4D46 /* OttawaOpenDoorsApp.swift in Sources */,
+				5771705A2B0EFCFF00EA4D46 /* SavedView.swift in Sources */,
+				577170492B0EEF9900EA4D46 /* MainNavigation.swift in Sources */,
+				5771704E2B0EF5DE00EA4D46 /* AppSettingsModel.swift in Sources */,
+				577170502B0EF60400EA4D46 /* Constants.swift in Sources */,
+				5771705D2B0EFD8C00EA4D46 /* MoreView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
