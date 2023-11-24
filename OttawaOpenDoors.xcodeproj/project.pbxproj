@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		5769EA262B108B830038C2A3 /* Building.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5769EA252B108B830038C2A3 /* Building.swift */; };
+		5769EA292B108D710038C2A3 /* UtilityFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5769EA282B108D710038C2A3 /* UtilityFunctions.swift */; };
+		5769EA2C2B108FBA0038C2A3 /* AppModelFetch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5769EA2B2B108FBA0038C2A3 /* AppModelFetch.swift */; };
+		5769EA312B10910B0038C2A3 /* Config.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5769EA302B10910B0038C2A3 /* Config.swift */; };
+		5769EA332B1092690038C2A3 /* AppModelLocalStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5769EA322B1092690038C2A3 /* AppModelLocalStorage.swift */; };
+		5769EA352B1095D40038C2A3 /* ConfigModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5769EA342B1095D40038C2A3 /* ConfigModel.swift */; };
+		5769EA372B1096040038C2A3 /* PreferencesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5769EA362B1096040038C2A3 /* PreferencesModel.swift */; };
 		5771701D2B0EEE9E00EA4D46 /* OttawaOpenDoorsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5771701C2B0EEE9E00EA4D46 /* OttawaOpenDoorsApp.swift */; };
 		5771701F2B0EEE9E00EA4D46 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5771701E2B0EEE9E00EA4D46 /* ContentView.swift */; };
 		577170212B0EEEA000EA4D46 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 577170202B0EEEA000EA4D46 /* Assets.xcassets */; };
@@ -14,9 +21,7 @@
 		5771702E2B0EEEA000EA4D46 /* OttawaOpenDoorsTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5771702D2B0EEEA000EA4D46 /* OttawaOpenDoorsTests.swift */; };
 		577170382B0EEEA000EA4D46 /* OttawaOpenDoorsUITests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 577170372B0EEEA000EA4D46 /* OttawaOpenDoorsUITests.swift */; };
 		5771703A2B0EEEA000EA4D46 /* OttawaOpenDoorsUITestsLaunchTests.swift in Sources */ = {isa = PBXBuildFile; fileRef = 577170392B0EEEA000EA4D46 /* OttawaOpenDoorsUITestsLaunchTests.swift */; };
-		577170492B0EEF9900EA4D46 /* MainNavigation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 577170482B0EEF9900EA4D46 /* MainNavigation.swift */; };
 		5771704B2B0EF57000EA4D46 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5771704A2B0EF57000EA4D46 /* MainView.swift */; };
-		5771704E2B0EF5DE00EA4D46 /* AppSettingsModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5771704D2B0EF5DE00EA4D46 /* AppSettingsModel.swift */; };
 		577170502B0EF60400EA4D46 /* Constants.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5771704F2B0EF60400EA4D46 /* Constants.swift */; };
 		577170522B0EF66900EA4D46 /* Localizable.xcstrings in Resources */ = {isa = PBXBuildFile; fileRef = 577170512B0EF66900EA4D46 /* Localizable.xcstrings */; };
 		577170552B0EF9B700EA4D46 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 577170542B0EF9B700EA4D46 /* MapView.swift */; };
@@ -24,6 +29,8 @@
 		5771705A2B0EFCFF00EA4D46 /* SavedView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 577170592B0EFCFF00EA4D46 /* SavedView.swift */; };
 		5771705D2B0EFD8C00EA4D46 /* MoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5771705C2B0EFD8C00EA4D46 /* MoreView.swift */; };
 		5771705F2B0F115400EA4D46 /* LanguageSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5771705E2B0F115400EA4D46 /* LanguageSelectionView.swift */; };
+		577447CA2B0FBAC900AD29A5 /* Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = 577447C92B0FBAC900AD29A5 /* Style.swift */; };
+		577447D02B0FBFFB00AD29A5 /* AppModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 577447CF2B0FBFFB00AD29A5 /* AppModel.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -44,6 +51,13 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		5769EA252B108B830038C2A3 /* Building.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Building.swift; sourceTree = "<group>"; };
+		5769EA282B108D710038C2A3 /* UtilityFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtilityFunctions.swift; sourceTree = "<group>"; };
+		5769EA2B2B108FBA0038C2A3 /* AppModelFetch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppModelFetch.swift; sourceTree = "<group>"; };
+		5769EA302B10910B0038C2A3 /* Config.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Config.swift; sourceTree = "<group>"; };
+		5769EA322B1092690038C2A3 /* AppModelLocalStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppModelLocalStorage.swift; sourceTree = "<group>"; };
+		5769EA342B1095D40038C2A3 /* ConfigModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigModel.swift; sourceTree = "<group>"; };
+		5769EA362B1096040038C2A3 /* PreferencesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesModel.swift; sourceTree = "<group>"; };
 		577170192B0EEE9E00EA4D46 /* OttawaOpenDoors.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OttawaOpenDoors.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5771701C2B0EEE9E00EA4D46 /* OttawaOpenDoorsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OttawaOpenDoorsApp.swift; sourceTree = "<group>"; };
 		5771701E2B0EEE9E00EA4D46 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -54,9 +68,7 @@
 		577170332B0EEEA000EA4D46 /* OttawaOpenDoorsUITests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = OttawaOpenDoorsUITests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		577170372B0EEEA000EA4D46 /* OttawaOpenDoorsUITests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OttawaOpenDoorsUITests.swift; sourceTree = "<group>"; };
 		577170392B0EEEA000EA4D46 /* OttawaOpenDoorsUITestsLaunchTests.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OttawaOpenDoorsUITestsLaunchTests.swift; sourceTree = "<group>"; };
-		577170482B0EEF9900EA4D46 /* MainNavigation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainNavigation.swift; sourceTree = "<group>"; };
 		5771704A2B0EF57000EA4D46 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
-		5771704D2B0EF5DE00EA4D46 /* AppSettingsModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppSettingsModel.swift; sourceTree = "<group>"; };
 		5771704F2B0EF60400EA4D46 /* Constants.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Constants.swift; sourceTree = "<group>"; };
 		577170512B0EF66900EA4D46 /* Localizable.xcstrings */ = {isa = PBXFileReference; lastKnownFileType = text.json.xcstrings; path = Localizable.xcstrings; sourceTree = "<group>"; };
 		577170542B0EF9B700EA4D46 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
@@ -64,6 +76,8 @@
 		577170592B0EFCFF00EA4D46 /* SavedView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SavedView.swift; sourceTree = "<group>"; };
 		5771705C2B0EFD8C00EA4D46 /* MoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreView.swift; sourceTree = "<group>"; };
 		5771705E2B0F115400EA4D46 /* LanguageSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageSelectionView.swift; sourceTree = "<group>"; };
+		577447C92B0FBAC900AD29A5 /* Style.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Style.swift; sourceTree = "<group>"; };
+		577447CF2B0FBFFB00AD29A5 /* AppModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppModel.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -91,6 +105,33 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		5769EA272B108D5E0038C2A3 /* Utils */ = {
+			isa = PBXGroup;
+			children = (
+				5769EA282B108D710038C2A3 /* UtilityFunctions.swift */,
+			);
+			path = Utils;
+			sourceTree = "<group>";
+		};
+		5769EA2A2B108FA80038C2A3 /* Extensions */ = {
+			isa = PBXGroup;
+			children = (
+				5769EA2B2B108FBA0038C2A3 /* AppModelFetch.swift */,
+				5769EA322B1092690038C2A3 /* AppModelLocalStorage.swift */,
+			);
+			path = Extensions;
+			sourceTree = "<group>";
+		};
+		5769EA2E2B1090F60038C2A3 /* Config */ = {
+			isa = PBXGroup;
+			children = (
+				5769EA302B10910B0038C2A3 /* Config.swift */,
+				5769EA342B1095D40038C2A3 /* ConfigModel.swift */,
+				5769EA362B1096040038C2A3 /* PreferencesModel.swift */,
+			);
+			path = Config;
+			sourceTree = "<group>";
+		};
 		577170102B0EEE9E00EA4D46 = {
 			isa = PBXGroup;
 			children = (
@@ -114,10 +155,12 @@
 		5771701B2B0EEE9E00EA4D46 /* OttawaOpenDoors */ = {
 			isa = PBXGroup;
 			children = (
+				5769EA2E2B1090F60038C2A3 /* Config */,
+				5769EA272B108D5E0038C2A3 /* Utils */,
+				577447CC2B0FBE0600AD29A5 /* Observables */,
+				577447C82B0FBABD00AD29A5 /* Style */,
 				577170602B0F163500EA4D46 /* Views */,
 				5771705B2B0EFD7900EA4D46 /* MoreScreen */,
-				577170582B0EFCEE00EA4D46 /* SavedScreen */,
-				577170532B0EF9A700EA4D46 /* MapScreen */,
 				5771704C2B0EF58100EA4D46 /* Model */,
 				577170472B0EEF7100EA4D46 /* Navigation */,
 				577170462B0EEF5D00EA4D46 /* MainScreen */,
@@ -164,7 +207,6 @@
 		577170472B0EEF7100EA4D46 /* Navigation */ = {
 			isa = PBXGroup;
 			children = (
-				577170482B0EEF9900EA4D46 /* MainNavigation.swift */,
 				577170562B0EFBF400EA4D46 /* TopNavigation.swift */,
 			);
 			path = Navigation;
@@ -173,25 +215,13 @@
 		5771704C2B0EF58100EA4D46 /* Model */ = {
 			isa = PBXGroup;
 			children = (
-				5771704D2B0EF5DE00EA4D46 /* AppSettingsModel.swift */,
+				5769EA2A2B108FA80038C2A3 /* Extensions */,
 				5771704F2B0EF60400EA4D46 /* Constants.swift */,
 				577170512B0EF66900EA4D46 /* Localizable.xcstrings */,
+				577447CF2B0FBFFB00AD29A5 /* AppModel.swift */,
+				5769EA252B108B830038C2A3 /* Building.swift */,
 			);
 			path = Model;
-			sourceTree = "<group>";
-		};
-		577170532B0EF9A700EA4D46 /* MapScreen */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = MapScreen;
-			sourceTree = "<group>";
-		};
-		577170582B0EFCEE00EA4D46 /* SavedScreen */ = {
-			isa = PBXGroup;
-			children = (
-			);
-			path = SavedScreen;
 			sourceTree = "<group>";
 		};
 		5771705B2B0EFD7900EA4D46 /* MoreScreen */ = {
@@ -211,6 +241,21 @@
 				5771704A2B0EF57000EA4D46 /* MainView.swift */,
 			);
 			path = Views;
+			sourceTree = "<group>";
+		};
+		577447C82B0FBABD00AD29A5 /* Style */ = {
+			isa = PBXGroup;
+			children = (
+				577447C92B0FBAC900AD29A5 /* Style.swift */,
+			);
+			path = Style;
+			sourceTree = "<group>";
+		};
+		577447CC2B0FBE0600AD29A5 /* Observables */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Observables;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -345,17 +390,24 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				5769EA2C2B108FBA0038C2A3 /* AppModelFetch.swift in Sources */,
 				577170552B0EF9B700EA4D46 /* MapView.swift in Sources */,
+				5769EA312B10910B0038C2A3 /* Config.swift in Sources */,
 				577170572B0EFBF400EA4D46 /* TopNavigation.swift in Sources */,
+				5769EA372B1096040038C2A3 /* PreferencesModel.swift in Sources */,
 				5771701F2B0EEE9E00EA4D46 /* ContentView.swift in Sources */,
 				5771705F2B0F115400EA4D46 /* LanguageSelectionView.swift in Sources */,
 				5771704B2B0EF57000EA4D46 /* MainView.swift in Sources */,
+				5769EA332B1092690038C2A3 /* AppModelLocalStorage.swift in Sources */,
 				5771701D2B0EEE9E00EA4D46 /* OttawaOpenDoorsApp.swift in Sources */,
 				5771705A2B0EFCFF00EA4D46 /* SavedView.swift in Sources */,
-				577170492B0EEF9900EA4D46 /* MainNavigation.swift in Sources */,
-				5771704E2B0EF5DE00EA4D46 /* AppSettingsModel.swift in Sources */,
+				5769EA262B108B830038C2A3 /* Building.swift in Sources */,
+				577447D02B0FBFFB00AD29A5 /* AppModel.swift in Sources */,
+				577447CA2B0FBAC900AD29A5 /* Style.swift in Sources */,
+				5769EA292B108D710038C2A3 /* UtilityFunctions.swift in Sources */,
 				577170502B0EF60400EA4D46 /* Constants.swift in Sources */,
 				5771705D2B0EFD8C00EA4D46 /* MoreView.swift in Sources */,
+				5769EA352B1095D40038C2A3 /* ConfigModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -522,11 +574,13 @@
 				DEVELOPMENT_TEAM = 3NJJC3ZC7F;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -551,11 +605,13 @@
 				DEVELOPMENT_TEAM = 3NJJC3ZC7F;
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
+				INFOPLIST_KEY_LSApplicationCategoryType = "";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPad = "UIInterfaceOrientationPortrait UIInterfaceOrientationPortraitUpsideDown UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
 				INFOPLIST_KEY_UISupportedInterfaceOrientations_iPhone = "UIInterfaceOrientationPortrait UIInterfaceOrientationLandscapeLeft UIInterfaceOrientationLandscapeRight";
+				INFOPLIST_KEY_UIUserInterfaceStyle = Light;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",

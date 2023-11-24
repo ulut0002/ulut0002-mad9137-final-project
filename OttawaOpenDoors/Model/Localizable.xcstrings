@@ -4,22 +4,19 @@
     "" : {
 
     },
-    "Abnout the Event" : {
+    "About the Event" : {
 
     },
     "About the Team" : {
+
+    },
+    "Distance" : {
 
     },
     "English" : {
 
     },
     "French" : {
-
-    },
-    "Home" : {
-
-    },
-    "Item" : {
 
     },
     "Language" : {
@@ -118,9 +115,6 @@
           }
         }
       }
-    },
-    "Top Navigation" : {
-
     }
   },
   "version" : "1.0"

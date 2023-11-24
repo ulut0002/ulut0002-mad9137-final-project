@@ -8,11 +8,12 @@
 import SwiftUI
 
 struct SavedView: View {
+    var appModel: AppModel
     var body: some View {
         ZStack{
             Color.green
             VStack(){
-                TopNavigation()
+                TopNavigation(appModel: appModel)
                 Text("Saved View")
                 Spacer()
    
@@ -22,5 +23,5 @@ struct SavedView: View {
 }
 
 #Preview {
-    SavedView()
+    SavedView(appModel: AppModel())
 }

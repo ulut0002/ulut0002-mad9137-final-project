@@ -8,11 +8,13 @@
 import SwiftUI
 
 struct MapView: View {
+    var appModel:AppModel
+
     var body: some View {
         ZStack{
             Color.blue
             VStack(){
-                TopNavigation()
+                TopNavigation(appModel: appModel)
                 Text("Map View")
                 Spacer()
 
@@ -25,5 +27,5 @@ struct MapView: View {
 }
 
 #Preview {
-    MapView()
+    MapView(appModel: AppModel())
 }
