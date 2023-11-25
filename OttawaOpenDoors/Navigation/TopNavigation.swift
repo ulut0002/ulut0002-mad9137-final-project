@@ -15,6 +15,7 @@ enum TopNavigationMode {
 struct TopNavigation: View {
     @ObservedObject var appModel:AppModel
     
+    
     var body: some View {
         HStack(alignment: .center){
             HStack{
@@ -22,12 +23,9 @@ struct TopNavigation: View {
                 
                 Image("ic_logo_new").resizable().frame(width: 50, height: 50)
                 
-                withAnimation(.bouncy){
-                    HStack{
-                        Text(appModel.topBarTitle).foregroundStyle(.white)
-                    }
+                HStack{
+                    Text(appModel.topBarTitle).foregroundStyle(.white)
                 }
-                
                 
                 Spacer()
                 if (appModel.topBarShowTrailingComponents)
@@ -35,7 +33,7 @@ struct TopNavigation: View {
                     HStack{
                         Image(systemName: "magnifyingglass")
                             .font(.system(size: 24)).onTapGesture {
-                                
+//                                appModel.topbar
                             }
                         Image(systemName: "slider.vertical.3")
                             .font(.system(size: 24))
@@ -49,6 +47,6 @@ struct TopNavigation: View {
     }
 }
 
-//#Preview {
-//    TopNavigation(appModel: AppModel())
-//}
+#Preview {
+    TopNavigation(appModel: AppModel())
+}

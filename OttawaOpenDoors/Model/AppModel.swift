@@ -21,7 +21,7 @@ enum FETCH_STATUS {
 
 class AppModel: ObservableObject{
     
-    var masterBuildings: [Building] = []
+    @Published var masterBuildings: [Building] = []
     var masterFavoriteBuildings: [Building] = []
     
     @Published var fetchStatus:FETCH_STATUS = .idle

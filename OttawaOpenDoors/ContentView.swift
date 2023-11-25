@@ -34,6 +34,10 @@ struct ContentView: View {
                 Image(systemName: "ellipsis")
                 Text(LocalizedStringKey("Navigation_More"))
             }.tag(3)
+            ShareInfo().tabItem(){
+                Image(systemName: "square.and.arrow.up")
+                Text("Share")
+            }.tag(4)
         }.onChange(of: selection, {
             if (selection == 0){
                 print("selected: 0")

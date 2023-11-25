@@ -7,30 +7,23 @@
 
 import Foundation
 
-protocol Entity {
-    
-}
+
+
+
 
 struct Building: Codable, Identifiable, Equatable {
     var id: Int {
         return buildingId
     }
-    var name: String{
-        let englishName = nameEN ?? ""
-        let frenchName = nameFR ?? ""
-        return englishName + frenchName
-    }
     
     let buildingId: Int
-    let nameEN: String?
-    let nameFR: String?
+    let name: String?
     let isNew: Bool?
-    let addressEN: String?
-    let addressFR: String?
-    let descriptionEN: String?
-    let descriptionFR: String?
-    let websiteEN: String?
-    let categoryEN: String?
+    let address: String?
+    let description: String?
+    let website: String?
+    let categoryId: Int?
+    let category: String?
     let saturdayStart: String?
     let saturdayClose: String?
     let sundayStart: String?
@@ -45,20 +38,16 @@ struct Building: Codable, Identifiable, Equatable {
     let image: String?
     let isGuidedTour: Bool?
     let isOCTranspoNearby: Bool?
-    let imageDescriptionEN: String?
-    let imageDescriptionFR: String?
+    let imageDescription: String?
     let latitude: Double?
     let longitude: Double?
-    let websiteFR: String?
-    let categoryId: Int?
-    let categoryFR: String?
     let isOpenSaturday: Bool?
     let isOpenSunday: Bool?
 
     // Equatable conformance for comparison
     static func == (lhs: Building, rhs: Building) -> Bool {
-        return lhs.name.trimmingCharacters(in: .whitespacesAndNewlines).lowercased() ==
-        rhs.name.trimmingCharacters(in: .whitespacesAndNewlines).lowercased()
+        return lhs.name?.trimmingCharacters(in: .whitespacesAndNewlines).lowercased() ==
+        rhs.name?.trimmingCharacters(in: .whitespacesAndNewlines).lowercased()
     }
 }
 

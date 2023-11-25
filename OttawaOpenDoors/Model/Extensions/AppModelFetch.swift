@@ -9,46 +9,51 @@ import Foundation
 
 extension AppModel{
     // Asynchronous method to fetch country data from the specified URL
-    private func fetchData() async throws -> [Building] {
-        if let url = URL(string: CONFIGURATION.DATA_SOURCES[0]) {
-            var request = URLRequest(url: url)
-            request.httpMethod = "GET"
-            let (data, _) = try await URLSession.shared.data(for: request)
-
-            let decoder = JSONDecoder()
-            let result = try decoder.decode([Building].self, from: data)
-            return result
+    private func fetchData() async throws -> [BuildingList]?{
+        if let url =  Bundle.main.url(forResource: "buildings", withExtension: "json") {
+            do{
+                let data = try Data(contentsOf: url)
+             print("jere")
+                let response = try JSONDecoder().decode([BuildingList].self,
+                                                        from: data)
+                return response
+            }catch{
+                print("Error: \(error)")
+                return nil
+            }
+        }else{
+            print("failed ")
         }
-        return []
+        return nil
     }
     
     
     func retrieve(){
         // first load local data
 
-        let storageAllBuildings = readFromStorage(forKey: CONFIGURATION.STORAGE_KEY_ALL_BUILDINGS)
+
         let storageAllFavorites = readFromStorage(forKey: CONFIGURATION.STORAGE_KEY_SAVED_BUILDINGS)
-        
-//        masterBuildings = storageAllBuildings
-//        masterFavoriteBuildings = storageAllFavorites
-        
-        
-        
+
         // fetch data
         Task{
             do{
                 
-                // update current data first
                 
-            
-                let fetchedBuildingList = try await fetchData()
-                for building in fetchedBuildingList {
-                    // find it in masterbuilding lost
-                    masterBuildings.append(building)
-                    print(building.nameEN ?? "name")
+                let fetchedBuildingListArray = try await fetchData()
+           
+                if let fetchedBuildingList = fetchedBuildingListArray?[0].buildings{
+                    for building in fetchedBuildingList {
+
+                        masterBuildings.append(building)
+                    }
                 }
                 
-                buildings = masterBuildings
+                print(masterBuildings.count)
+//
+//                
+              
+                
+//                buildings = masterBuildings
              
             }catch{
                 print("Error: \(error.localizedDescription)")

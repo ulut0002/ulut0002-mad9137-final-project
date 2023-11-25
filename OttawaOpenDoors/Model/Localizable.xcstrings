@@ -4,10 +4,16 @@
     "" : {
 
     },
+    "a" : {
+
+    },
     "About the Event" : {
 
     },
     "About the Team" : {
+
+    },
+    "Assignment Due Dec 15" : {
 
     },
     "Distance" : {
@@ -19,7 +25,13 @@
     "French" : {
 
     },
+    "Label" : {
+
+    },
     "Language" : {
+
+    },
+    "MAD Website" : {
 
     },
     "Map View" : {
@@ -91,7 +103,13 @@
         }
       }
     },
+    "Ottawa Open Doors" : {
+
+    },
     "Saved View" : {
+
+    },
+    "Search" : {
 
     },
     "Settings_Language_English" : {
@@ -115,6 +133,12 @@
           }
         }
       }
+    },
+    "Share" : {
+
+    },
+    "This is a friendly reminder." : {
+
     }
   },
   "version" : "1.0"

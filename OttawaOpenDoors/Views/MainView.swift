@@ -18,6 +18,7 @@ struct MainView: View {
             
             
             Color.cyan
+            //            LinearGradient(gradient: Gradient(colors: [Color.backgroundStart, Color.backgroundEnd]), startPoint: .topTrailing, endPoint: .bottomLeading)
             
             VStack{
                 TopNavigation(appModel: appModel)
@@ -25,71 +26,52 @@ struct MainView: View {
                     
                 }
                 VStack{
+                    
+              
                     List{
                         LazyVStack{
-                            ForEach(Array(appModel.buildings.enumerated()), id:\.element.id){ index, country in
-                                ZStack{
-                                    //
-                                    Color.green
-                                    
-                                    VStack{
-                                        ZStack(alignment: .topLeading){
-                                            
-                                            Image("aids_ottawa")
-                                                .resizable()
-                                                .aspectRatio(contentMode: .fill)
-                                                .frame(width: .infinity, height: 150)
-                                                .clipped()
-                                            
-                                            HStack() {
-                                                Spacer()
-                                                HStack {
-                                                    Image(systemName: "heart")
-                                                        .foregroundColor(.white)
-                                                        .padding(8)
-                                                    
-                                                    Image(systemName: "square.and.arrow.up")
-                                                        .foregroundColor(.white)
-                                                        .padding(8)
-                                                }
-                                                .background(Color.black.opacity(0.6))
-                                                .cornerRadius(10)
-                                                .padding(10)
+                            
+                            ForEach(appModel.masterBuildings){ building in
+                                Text("AA")
+                                VStack{
+                                    ZStack(alignment: .topLeading){
+                                        
+                                        Image("aids_ottawa")
+                                            .resizable()
+                                            .aspectRatio(contentMode: .fill)
+                                            .frame(width: .infinity, height: 150)
+                                            .clipped()
+                                        
+                                        HStack() {
+                                            Spacer()
+                                            HStack {
+                                                Image(systemName: "heart")
+                                                    .foregroundColor(.white)
+                                                    .padding(8)
+                                                
+                                                Image(systemName: "square.and.arrow.up")
+                                                    .foregroundColor(.white)
+                                                    .padding(8)
                                             }
-                                            
-                                            
-                                        }
-                                        ZStack{
-                                            VStack{
-                                                HStack{
-                                                    Text(country.nameEN ?? "Name")
-                                                    Spacer()
-                                                }
-                                                HStack{
-                                                    Text(country.addressEN ?? "Address")
-                                                    Spacer()
-                                                    Text("Distance")
-                                                }
-                                            }
+                                            .background(Color.black.opacity(0.6))
+                                            .cornerRadius(10)
+                                            .padding(10)
                                         }
                                         
                                         
-                                    }.clipShape(RoundedRectangle(cornerSize:
-                                                                    CGSize(width: 10, height: 10)))
-                                    
-                                }.shadow(radius:2)
-                                
+                                    }
+                                }
                             }
-                        }
-                    }
-                    .listStyle(PlainListStyle())
-                    
-                    
-                    
-                    
+                            
+                            
+                            
+                        }.clipShape(RoundedRectangle(cornerSize:
+                                                        CGSize(width: 10, height: 10)))
+                        
+                    }.shadow(radius:2).listStyle(PlainListStyle())
                     
                 }
-                Spacer()
+
             }
             .frame(maxHeight: .infinity)
             
