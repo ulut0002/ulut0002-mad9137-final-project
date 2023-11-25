@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftUI
 
 enum TopNavigationBar {
     case visible
@@ -24,8 +25,10 @@ class AppModel: ObservableObject{
     @Published var masterBuildings: [Building] = []
     var masterFavoriteBuildings: [Building] = []
     
-    @Published var fetchStatus:FETCH_STATUS = .idle
     
+    
+    @Published var activeScreen:ACTIVE_SCREEN = .main
+    @Published var fetchStatus:FETCH_STATUS = .idle
     @Published var buildings: [Building] = []
     @Published var favoriteBuildings: [Building] = []
 
@@ -41,15 +44,56 @@ class AppModel: ObservableObject{
         return 0
     }
     
-   
     
+    // search bar variables
+    @Published var mainScreenStartAnimation = false
+    @Published var mainScreenShowSearchBar = false
+    @Published var mainScreenSearchBarText = ""
+    
+    
+    @Published var favScreenShowSearchBar = false
+    @Published var favScreenSearchBarText = ""
+    
+    
+    
+    func toggleSearchBar(){
+        
+
+        
+        
+        DispatchQueue.main.async {
+            withAnimation(.easeInOut(duration: 0.25)){
+                switch self.activeScreen {
+                case .main:
+                    self.mainScreenShowSearchBar.toggle()
+                    print("Switched \(self.mainScreenShowSearchBar)")
+                case .map:
+                    break;
+                case .saved:
+                    self.favScreenShowSearchBar.toggle()
+                case .more:
+                    break;
+                    
+                    
+                }
+            }completion: {
+                // show the actual bar
+                
+            }
+            
+        }
+    }
     
     func setTopBarTitle(newTitle: String){
-        topBarTitle = newTitle
+        DispatchQueue.main.async {
+            self.topBarTitle = newTitle
+        }
     }
     
     func setShowTrailingComponents(setShow: Bool){
-        topBarShowTrailingComponents = setShow
+        DispatchQueue.main.async {
+            self.topBarShowTrailingComponents = setShow
+        }
     }
     
     

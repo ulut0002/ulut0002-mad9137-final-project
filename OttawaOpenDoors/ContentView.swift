@@ -7,6 +7,14 @@
 
 import SwiftUI
 
+
+enum ACTIVE_SCREEN {
+    case main
+    case map
+    case saved
+    case more
+}
+
 struct ContentView: View {
     
     @ObservedObject var appModel = AppModel()
@@ -40,29 +48,29 @@ struct ContentView: View {
             }.tag(4)
         }.onChange(of: selection, {
             if (selection == 0){
-                print("selected: 0")
+//                print("selected: 0")
+                appModel.activeScreen = .main
                 appModel.setTopBarTitle(newTitle: "Buildings")
                 appModel.topBarShowTrailingComponents = true
             }else if (selection == 1){
+                appModel.activeScreen = .map
                 appModel.setTopBarTitle(newTitle: "Map")
                 appModel.topBarShowTrailingComponents = true
-                print("selected: 1")
 
             }else if (selection == 2){
+                appModel.activeScreen = .saved
                 appModel.setTopBarTitle(newTitle: "Saved")
                 appModel.topBarShowTrailingComponents = true
-                print("selected: 2")
 
                 
             }else if (selection == 3){
-                print("selected: 3")
-
+                appModel.activeScreen = .more
                 appModel.setTopBarTitle(newTitle: "More")
                 appModel.topBarShowTrailingComponents = false
             }
         }).onAppear(){
 //            appModel.topBarTitle = "Buildings"
-           
+            appModel.activeScreen = .main
             appModel.setTopBarTitle(newTitle: "Buildings")
             appModel.retrieve()
 

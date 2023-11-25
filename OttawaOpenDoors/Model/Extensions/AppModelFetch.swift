@@ -43,17 +43,12 @@ extension AppModel{
            
                 if let fetchedBuildingList = fetchedBuildingListArray?[0].buildings{
                     for building in fetchedBuildingList {
-
-                        masterBuildings.append(building)
+                        DispatchQueue.main.async {
+                            self.masterBuildings.append(building)
+                        }
                     }
                 }
-                
-                print(masterBuildings.count)
-//
-//                
-              
-                
-//                buildings = masterBuildings
+
              
             }catch{
                 print("Error: \(error.localizedDescription)")
