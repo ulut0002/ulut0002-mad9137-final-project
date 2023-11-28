@@ -12,6 +12,8 @@
 		5745E6AF2B11636E0037D799 /* buildings.json in Resources */ = {isa = PBXBuildFile; fileRef = 5745E6AA2B11377E0037D799 /* buildings.json */; };
 		5745E6B12B1165F00037D799 /* BuildingList.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5745E6B02B1165F00037D799 /* BuildingList.swift */; };
 		5745E6B42B118A6F0037D799 /* StringExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5745E6B32B118A6F0037D799 /* StringExtensions.swift */; };
+		57525BA72B168D10006ECD2D /* Models.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57525BA62B168D10006ECD2D /* Models.swift */; };
+		57525BA92B168D81006ECD2D /* Enums.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57525BA82B168D81006ECD2D /* Enums.swift */; };
 		5769EA262B108B830038C2A3 /* Building.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5769EA252B108B830038C2A3 /* Building.swift */; };
 		5769EA292B108D710038C2A3 /* UtilityFunctions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5769EA282B108D710038C2A3 /* UtilityFunctions.swift */; };
 		5769EA2C2B108FBA0038C2A3 /* AppModelFetch.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5769EA2B2B108FBA0038C2A3 /* AppModelFetch.swift */; };
@@ -60,6 +62,8 @@
 		5745E6AA2B11377E0037D799 /* buildings.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = buildings.json; sourceTree = "<group>"; };
 		5745E6B02B1165F00037D799 /* BuildingList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuildingList.swift; sourceTree = "<group>"; };
 		5745E6B32B118A6F0037D799 /* StringExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringExtensions.swift; sourceTree = "<group>"; };
+		57525BA62B168D10006ECD2D /* Models.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Models.swift; sourceTree = "<group>"; };
+		57525BA82B168D81006ECD2D /* Enums.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Enums.swift; sourceTree = "<group>"; };
 		5769EA252B108B830038C2A3 /* Building.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Building.swift; sourceTree = "<group>"; };
 		5769EA282B108D710038C2A3 /* UtilityFunctions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UtilityFunctions.swift; sourceTree = "<group>"; };
 		5769EA2B2B108FBA0038C2A3 /* AppModelFetch.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppModelFetch.swift; sourceTree = "<group>"; };
@@ -249,6 +253,8 @@
 				577447CF2B0FBFFB00AD29A5 /* AppModel.swift */,
 				5769EA252B108B830038C2A3 /* Building.swift */,
 				5745E6B02B1165F00037D799 /* BuildingList.swift */,
+				57525BA62B168D10006ECD2D /* Models.swift */,
+				57525BA82B168D81006ECD2D /* Enums.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -431,6 +437,7 @@
 				5771704B2B0EF57000EA4D46 /* MainView.swift in Sources */,
 				573416F62B111F1C008AE545 /* ShareInfo.swift in Sources */,
 				5769EA332B1092690038C2A3 /* AppModelLocalStorage.swift in Sources */,
+				57525BA72B168D10006ECD2D /* Models.swift in Sources */,
 				5771701D2B0EEE9E00EA4D46 /* OttawaOpenDoorsApp.swift in Sources */,
 				5771705A2B0EFCFF00EA4D46 /* SavedView.swift in Sources */,
 				5745E6B12B1165F00037D799 /* BuildingList.swift in Sources */,
@@ -441,6 +448,7 @@
 				5769EA292B108D710038C2A3 /* UtilityFunctions.swift in Sources */,
 				577170502B0EF60400EA4D46 /* Constants.swift in Sources */,
 				5771705D2B0EFD8C00EA4D46 /* MoreView.swift in Sources */,
+				57525BA92B168D81006ECD2D /* Enums.swift in Sources */,
 				5769EA352B1095D40038C2A3 /* ConfigModel.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;

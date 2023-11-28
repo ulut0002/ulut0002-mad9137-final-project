@@ -25,3 +25,9 @@ func parseDate(dateTxt: String) -> Date?{
     return nil
 }
 
+
+
+
+func findText(source: String, lookFor: String) -> Bool{
+    
+}
