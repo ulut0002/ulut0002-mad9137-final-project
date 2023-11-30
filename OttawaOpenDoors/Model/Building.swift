@@ -10,7 +10,7 @@ import Foundation
 
 
 
-
+// MARK: Building Struct
 struct Building: Codable, Identifiable, Equatable {
     var id: Int {
         return buildingId
@@ -44,6 +44,7 @@ struct Building: Codable, Identifiable, Equatable {
     let isOpenSaturday: Bool?
     let isOpenSunday: Bool?
     
+    
     // https://stackoverflow.com/questions/26707352/how-to-split-filename-from-file-extension-in-swift
     var imageResourceName: String {
         if let image:String = self.image {
@@ -60,4 +61,80 @@ struct Building: Codable, Identifiable, Equatable {
 }
 
 
-
+// MARK: Building Search / Filter functions
+extension Building {
+    
+    // used in sorting by name
+    var cleanSearchableName: String{
+        if let name = self.name {
+            return name.lowercased().trimmingCharacters(in: .whitespacesAndNewlines)
+        }
+        return ""
+    }
+    
+    func hasAnyFeature(features: [BuildingFeature]) -> Bool{
+        if (features.isEmpty){
+            return true
+        }
+        
+        for feature in features {
+            if (self.hasFeature(feature: feature)){
+                return true
+            }
+        }
+        
+        return false
+    }
+    
+    func hasFeature(feature: BuildingFeature) -> Bool{
+        switch feature {
+            case .accessible:
+                return Bool(self.isAccessible ?? false)
+            case .bikeParking:
+                return Bool(self.isBikeParking ?? false)
+            case .familyFriendly:
+                return Bool(self.isFamilyFriendly ?? false)
+            case .freeParking :
+                return Bool(self.isFreeParking ?? false)
+            case .guidedTour:
+                return Bool(self.isGuidedTour ?? false)
+            case .isNew:
+                return Bool (self.isNew ?? false)
+            case .oCTranspoNearby:
+                return Bool(self.isOCTranspoNearby ?? false)
+            case .openSaturday:
+                return Bool(self.isOpenSaturday ?? false)
+            case .openSunday:
+                return Bool(self.isOpenSunday ?? false)
+            case .paidParking:
+                return Bool(self.isPaidParking ?? false)
+            case .publicWashroom:
+                return Bool(self.isPublicWashrooms ?? false)
+            case .shuttleBus:
+                return Bool(self.isShuttle ?? false)
+            }
+    }
+    
+    func hasAnyCategory(categories: [Category]) -> Bool{
+        // If the user has not selected any category, include the building in the list
+        if (categories.isEmpty){
+            return true
+        }
+        
+        for category in categories {
+            if (self.categoryId  == category.id){
+                return true
+            }
+        }
+        
+        return false
+    }
+    
+    func hasKeyword(searchKeyword: String) -> Bool {
+        let cleanKeyword1 = searchKeyword.trimmingCharacters(in: .whitespacesAndNewlines)
+        if (cleanKeyword1.isEmpty){
+            return true
+        }
+        return searchText(source: self.name, lookFor: searchKeyword)
+    }
+}

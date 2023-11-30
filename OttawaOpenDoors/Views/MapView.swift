@@ -14,7 +14,6 @@ struct MapView: View {
         ZStack{
             Color.blue
             VStack(){
-                TopNavigation(appModel: appModel)
                 Text("Map View")
                 Spacer()
 

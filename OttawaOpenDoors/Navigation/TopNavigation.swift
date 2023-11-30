@@ -22,20 +22,20 @@ struct TopNavigation: View {
             HStack(alignment: .center){
                Image("ic_logo_new").resizable().frame(width: 50, height: 50)
                 
-                Text(appModel.topBarTitle).foregroundStyle(.white)
+//                Text(appModel.mainViewTopBar.title).foregroundStyle(.white)
                  Spacer()
                 
-                if (appModel.topBarShowTrailingComponents)
-                {
-                    HStack{
-                        Image(systemName: "magnifyingglass")
-                            .font(.system(size: 24)).onTapGesture {
-                                    appModel.toggleSearchBar()
-                            }
-                        Image(systemName: "slider.vertical.3")
-                            .font(.system(size: 24))
-                    }.foregroundColor(.white)
-                }
+//                if (appModel.mainViewTopBar.showTrailingComponents)
+//                {
+//                    HStack{
+//                        Image(systemName: "magnifyingglass")
+//                            .font(.system(size: 24)).onTapGesture {
+////                                    appModel.toggleSearchBar()
+//                            }
+//                        Image(systemName: "slider.vertical.3")
+//                            .font(.system(size: 24))
+//                    }.foregroundColor(.white)
+//                }
                 
                 
             }.padding(.horizontal, 16)

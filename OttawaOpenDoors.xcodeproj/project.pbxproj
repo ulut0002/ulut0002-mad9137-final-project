@@ -7,6 +7,9 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		57103B602B1865FE006F5BAD /* SearchField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57103B5F2B1865FE006F5BAD /* SearchField.swift */; };
+		572161062B17A1CE00087239 /* AvatarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 572161052B17A1CE00087239 /* AvatarView.swift */; };
+		572161082B17A41800087239 /* SearchFiltersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 572161072B17A41800087239 /* SearchFiltersView.swift */; };
 		573416F62B111F1C008AE545 /* ShareInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573416F52B111F1C008AE545 /* ShareInfo.swift */; };
 		5745E6AB2B11377E0037D799 /* buildings.json in Sources */ = {isa = PBXBuildFile; fileRef = 5745E6AA2B11377E0037D799 /* buildings.json */; };
 		5745E6AF2B11636E0037D799 /* buildings.json in Resources */ = {isa = PBXBuildFile; fileRef = 5745E6AA2B11377E0037D799 /* buildings.json */; };
@@ -37,7 +40,7 @@
 		5771705D2B0EFD8C00EA4D46 /* MoreView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5771705C2B0EFD8C00EA4D46 /* MoreView.swift */; };
 		5771705F2B0F115400EA4D46 /* LanguageSelectionView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5771705E2B0F115400EA4D46 /* LanguageSelectionView.swift */; };
 		577447CA2B0FBAC900AD29A5 /* Style.swift in Sources */ = {isa = PBXBuildFile; fileRef = 577447C92B0FBAC900AD29A5 /* Style.swift */; };
-		577447D02B0FBFFB00AD29A5 /* AppModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 577447CF2B0FBFFB00AD29A5 /* AppModel.swift */; };
+		5779CA972B16D0820014488A /* Sort.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5779CA962B16D0820014488A /* Sort.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXContainerItemProxy section */
@@ -58,6 +61,9 @@
 /* End PBXContainerItemProxy section */
 
 /* Begin PBXFileReference section */
+		57103B5F2B1865FE006F5BAD /* SearchField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchField.swift; sourceTree = "<group>"; };
+		572161052B17A1CE00087239 /* AvatarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarView.swift; sourceTree = "<group>"; };
+		572161072B17A41800087239 /* SearchFiltersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchFiltersView.swift; sourceTree = "<group>"; };
 		573416F52B111F1C008AE545 /* ShareInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareInfo.swift; sourceTree = "<group>"; };
 		5745E6AA2B11377E0037D799 /* buildings.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = buildings.json; sourceTree = "<group>"; };
 		5745E6B02B1165F00037D799 /* BuildingList.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuildingList.swift; sourceTree = "<group>"; };
@@ -90,7 +96,7 @@
 		5771705C2B0EFD8C00EA4D46 /* MoreView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MoreView.swift; sourceTree = "<group>"; };
 		5771705E2B0F115400EA4D46 /* LanguageSelectionView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LanguageSelectionView.swift; sourceTree = "<group>"; };
 		577447C92B0FBAC900AD29A5 /* Style.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Style.swift; sourceTree = "<group>"; };
-		577447CF2B0FBFFB00AD29A5 /* AppModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppModel.swift; sourceTree = "<group>"; };
+		5779CA962B16D0820014488A /* Sort.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Sort.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -118,6 +124,15 @@
 /* End PBXFrameworksBuildPhase section */
 
 /* Begin PBXGroup section */
+		572161042B17A1BE00087239 /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				572161052B17A1CE00087239 /* AvatarView.swift */,
+				57103B5F2B1865FE006F5BAD /* SearchField.swift */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
 		573416F42B111EF9008AE545 /* Share */ = {
 			isa = PBXGroup;
 			children = (
@@ -184,6 +199,7 @@
 		5771701B2B0EEE9E00EA4D46 /* OttawaOpenDoors */ = {
 			isa = PBXGroup;
 			children = (
+				572161042B17A1BE00087239 /* UI */,
 				5745E6B22B118A5F0037D799 /* Extensions */,
 				573416F42B111EF9008AE545 /* Share */,
 				5769EA2E2B1090F60038C2A3 /* Config */,
@@ -250,11 +266,11 @@
 				5769EA2A2B108FA80038C2A3 /* Extensions */,
 				5771704F2B0EF60400EA4D46 /* Constants.swift */,
 				577170512B0EF66900EA4D46 /* Localizable.xcstrings */,
-				577447CF2B0FBFFB00AD29A5 /* AppModel.swift */,
 				5769EA252B108B830038C2A3 /* Building.swift */,
 				5745E6B02B1165F00037D799 /* BuildingList.swift */,
 				57525BA62B168D10006ECD2D /* Models.swift */,
 				57525BA82B168D81006ECD2D /* Enums.swift */,
+				5779CA962B16D0820014488A /* Sort.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -274,6 +290,7 @@
 				577170542B0EF9B700EA4D46 /* MapView.swift */,
 				5771705C2B0EFD8C00EA4D46 /* MoreView.swift */,
 				5771704A2B0EF57000EA4D46 /* MainView.swift */,
+				572161072B17A41800087239 /* SearchFiltersView.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -429,10 +446,13 @@
 				5769EA2C2B108FBA0038C2A3 /* AppModelFetch.swift in Sources */,
 				577170552B0EF9B700EA4D46 /* MapView.swift in Sources */,
 				5769EA312B10910B0038C2A3 /* Config.swift in Sources */,
+				5779CA972B16D0820014488A /* Sort.swift in Sources */,
 				577170572B0EFBF400EA4D46 /* TopNavigation.swift in Sources */,
 				5769EA372B1096040038C2A3 /* PreferencesModel.swift in Sources */,
+				572161082B17A41800087239 /* SearchFiltersView.swift in Sources */,
 				5771701F2B0EEE9E00EA4D46 /* ContentView.swift in Sources */,
 				5745E6B42B118A6F0037D799 /* StringExtensions.swift in Sources */,
+				572161062B17A1CE00087239 /* AvatarView.swift in Sources */,
 				5771705F2B0F115400EA4D46 /* LanguageSelectionView.swift in Sources */,
 				5771704B2B0EF57000EA4D46 /* MainView.swift in Sources */,
 				573416F62B111F1C008AE545 /* ShareInfo.swift in Sources */,
@@ -441,8 +461,8 @@
 				5771701D2B0EEE9E00EA4D46 /* OttawaOpenDoorsApp.swift in Sources */,
 				5771705A2B0EFCFF00EA4D46 /* SavedView.swift in Sources */,
 				5745E6B12B1165F00037D799 /* BuildingList.swift in Sources */,
+				57103B602B1865FE006F5BAD /* SearchField.swift in Sources */,
 				5769EA262B108B830038C2A3 /* Building.swift in Sources */,
-				577447D02B0FBFFB00AD29A5 /* AppModel.swift in Sources */,
 				577447CA2B0FBAC900AD29A5 /* Style.swift in Sources */,
 				5745E6AB2B11377E0037D799 /* buildings.json in Sources */,
 				5769EA292B108D710038C2A3 /* UtilityFunctions.swift in Sources */,

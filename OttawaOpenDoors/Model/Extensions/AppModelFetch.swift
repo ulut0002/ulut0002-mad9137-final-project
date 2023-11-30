@@ -47,7 +47,7 @@ extension AppModel{
         // first load local data
 
         DispatchQueue.main.async {
-            self.fetchStatus = .fetching
+            self.fetchStatus = .reFetching
         }
 
         let storageAllFavorites = readFromStorage(forKey: CONFIGURATION.STORAGE_KEY_SAVED_BUILDINGS)
@@ -77,13 +77,13 @@ extension AppModel{
              
                 
                 DispatchQueue.main.async {
-                    self.masterBuildingList[.english] = englishBuildingsTemp
-                    self.filteredBuildings = englishBuildingsTemp
+//                    self.masterBuildingList[.english] = englishBuildingsTemp
+//                    self.filteredBuildings = englishBuildingsTemp
                    
                 }
                 
                 DispatchQueue.main.async {
-                    self.masterBuildingList[.french] = frenchBuildingsTemp
+//                    self.masterBuildingList[.french] = frenchBuildingsTemp
                 }
                 
                 DispatchQueue.main.async {

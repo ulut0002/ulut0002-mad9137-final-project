@@ -23,8 +23,10 @@ enum FetchStatus {
 
 
 enum SortBy {
-    case alphabetical
-    case distance
+    case alphabetical_asc
+    case alphabetical_desc
+    case distance_asc
+    case distance_desc
 }
 
 

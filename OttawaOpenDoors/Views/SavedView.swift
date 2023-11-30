@@ -13,7 +13,6 @@ struct SavedView: View {
         ZStack{
             Color.green
             VStack(){
-                TopNavigation(appModel: appModel)
                 Text("Saved View")
                 Spacer()
    

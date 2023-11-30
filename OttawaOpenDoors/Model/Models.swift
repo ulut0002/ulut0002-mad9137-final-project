@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import SwiftUI
 
 
 
@@ -22,147 +23,117 @@ struct Category : Codable, Identifiable, Equatable {
 
 struct SearchFilter {
     var searchDescription: [PreferredLanguage : String] = [.english : "", .french: ""]
+    var sortBy: SortBy = .alphabetical_asc
     var categories : [Category] = []
     var keyword: String = ""
     var features: [BuildingFeature] = []
+    
+    static func  getDefaultSearchFilter() -> SearchFilter {
+        var filter = SearchFilter()
+        filter.searchDescription = [.english: "", .french: ""]
+        filter.sortBy = .alphabetical_asc
+        filter.categories = []
+        filter.keyword = ""
+        filter.features = []
+        return filter
+    }
 }
 
 
 
+class BuildingListModel: ObservableObject {
+    var masterBuildingList: [Building] = []
+}
+
 
 
 // Represents app model for all the data manipulation
-class AppDataModel : ObservableObject{
-    var selectedLanguage: PreferredLanguage = .english
+class AppModel : ObservableObject{
+    private var selectedLanguage: PreferredLanguage = .english
     var buildingsMaster: [PreferredLanguage: [Building]] = [.english: [], .french: []]
     var categoriesMaster:[PreferredLanguage: [Category]] = [.english: [], .french: []]
     var favoritesMaster: [String] = [] // only contains IDs
 
 
-    @Published private(set) var filteredBuildings: [Building] = []
-    @Published private(set) var filteredFavorites: [Building] = []
+    @Published  var filteredBuildings: [Building] = []
+    @Published  var filteredFavorites: [Building] = []
+    @Published  var userFilters: SearchFilter = SearchFilter.getDefaultSearchFilter()
+    @Published var draftUserFilters: SearchFilter = SearchFilter.getDefaultSearchFilter()
     
-    @Published private(set) var appliedCategories: [Category] = []
-    @Published private(set) var appliedFeatures: [BuildingFeature] = []
+    @Published var fetchStatus:FetchStatus = .idle
+    @Published var activeScreen:ActiveScreen = .main
+    
 }
 
 
 
-// MARK: Filters and sorts
-extension AppDataModel {
-    
+
+// MARK: Filtering Buildings
+extension AppModel {
     
     func filterBuildings(sourceData: [Building], searchFilter: SearchFilter) -> [Building]{
         var results: [Building] = sourceData
         
-        var categories = searchFilter.categories
-       
-        if (!categories.isEmpty && categories.count != categoriesMaster[selectedLanguage]?.count){
+        // Filter by given categories
+        if (!searchFilter.categories.isEmpty && searchFilter.categories.count != categoriesMaster[selectedLanguage]?.count){
             results = results.filter{building in
-                
-                var categoryFound = false
-                
-                for category in categories {
-                    if (category.id == building.categoryId){
-                        categoryFound = true
-                        break;
-                    }
-                }
-                return categoryFound
+                return building.hasAnyCategory(categories: searchFilter.categories)
             }
-            
         }
         
         
-        var features = searchFilter.features
-        if (!features.isEmpty){
+        // Filter by given features
+        if (!searchFilter.features.isEmpty){
             results = results.filter{ building in
-                var featureFound = false
-                
-                for feature in features {
-                    if (buildingHasFeature(feature: feature, building: building)){
-                        featureFound = true
-                        break;
-                    }
-                }
-                return featureFound
+                return building.hasAnyFeature(features: searchFilter.features)
             }
         }
-        
-        
+    
         // search by keyword in remaining elements
-        var cleanKeyword1 = searchFilter.keyword.lowercased().trimmingCharacters(in: .whitespacesAndNewlines)
-        var cleanKeyword2 = cleanKeyword1.replacingOccurrences(of: " ", with: "")
-        
+        let cleanKeyword1 = searchFilter.keyword.lowercased().trimmingCharacters(in: .whitespacesAndNewlines)
         if (!cleanKeyword1.isEmpty){
             results = results.filter { building in
-                var buildingFound = false
-                
-                if let name = building.name {
-                    var cleanName1 = name.lowercased().trimmingCharacters(in: .whitespacesAndNewlines)
-                    var cleanName2 = cleanName1.replacingOccurrences(of: " ", with: "")
-                    
-                    if (!cleanName1.isEmpty && (!buildingFound) && !cleanKeyword1.isEmpty){
-                        if (cleanName1.contains(cleanKeyword1)){
-                            buildingFound = true
-                        }
-                    }
-                    
-                    if (!cleanName1.isEmpty && (!buildingFound) && !cleanKeyword2.isEmpty){
-                        if (cleanName1.contains(cleanKeyword1)){
-                            buildingFound = true
-                        }
-                    }
-                    
-                    
-                    if (!cleanName2.isEmpty && (!buildingFound)){
-                        
-                    }
-                    
-                    
-//                    if (cleanName1.contains())
-                    
-                    
-                }
-//                if (building.name)
-                return buildingFound
+                return building.hasKeyword(searchKeyword: searchFilter.keyword)
             }
         }
-      
         
         return results
     }
     
-    private func buildingHasFeature(feature: BuildingFeature, building: Building) -> Bool{
-        switch feature {
-            case .accessible:
-                return Bool(building.isAccessible ?? false)
-            case .bikeParking:
-                return Bool(building.isBikeParking ?? false)
-            case .familyFriendly:
-                return Bool(building.isFamilyFriendly ?? false)
-            case .freeParking :
-                return Bool(building.isFreeParking ?? false)
-            case .guidedTour:
-                return Bool(building.isGuidedTour ?? false)
-            case .isNew:
-                return Bool (building.isNew ?? false)
-            case .oCTranspoNearby:
-                return Bool(building.isOCTranspoNearby ?? false)
-            case .openSaturday:
-                return Bool(building.isOpenSaturday ?? false)
-            case .openSunday:
-                return Bool(building.isOpenSunday ?? false)
-            case .paidParking:
-                return Bool(building.isPaidParking ?? false)
-            case .publicWashroom:
-                return Bool(building.isPublicWashrooms ?? false)
-            case .shuttleBus:
-                return Bool(building.isShuttle ?? false)
-            default:
-                return false
-            }
-        return false
+   
+}
+
+
+// MARK: Sort Buildings
+extension AppModel{
+    func sortBuildings(sourceData: [Building], sortBy: SortBy) -> [Building]{
+        return  sourceData.sorted(by: { (building1, building2) -> Bool in
+            return compareBuildings(building1,  building2, sortBy)
+        })
+    }
+    
+    func setSortBy(sortBy: SortBy){
+        self.userFilters.sortBy = sortBy
     }
     
 }
+
+
+
+// MARK: Switch Language, set Language
+extension AppModel {
+    func switchLanguage(){
+        selectedLanguage = (selectedLanguage == .english) ? .french : .english
+    }
+    
+    func setLanguage(language: PreferredLanguage){
+        selectedLanguage = language
+    }
+}
+
+
+
+
+
+
+

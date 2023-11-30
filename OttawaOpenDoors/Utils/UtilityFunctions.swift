@@ -28,6 +28,36 @@ func parseDate(dateTxt: String) -> Date?{
 
 
 
-func findText(source: String, lookFor: String) -> Bool{
+func searchText(source: String?, lookFor: String?) -> Bool{
+    var nameFound = false
     
+    if let source = source, let lookFor = lookFor {
+        let sourceClean1 = source.lowercased().trimmingCharacters(in: .whitespacesAndNewlines)
+        let sourceClean2 = sourceClean1.replacingOccurrences(of: " ", with: "")
+        
+        let lookForClean1 = lookFor.lowercased().trimmingCharacters(in: .whitespacesAndNewlines)
+        let lookForClean2 = lookForClean1.replacingOccurrences(of: " ", with: "")
+        
+        var sourceArray: [String] = []
+        sourceArray.append(sourceClean1)
+        sourceArray.append(sourceClean2)
+        
+        var lookForArray: [String] = []
+        lookForArray.append(lookForClean1)
+        lookForArray.append(lookForClean2)
+        
+        for txt1 in sourceArray {
+            for txt2 in lookForArray {
+                if (!txt1.isEmpty && !txt2.isEmpty){
+                    if (txt1.contains(txt2)){
+                        nameFound = true
+                        return true
+                    }
+                }
+            }
+        }
+    }
+    
+
+    return nameFound
 }

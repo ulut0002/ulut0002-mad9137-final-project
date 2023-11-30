@@ -15,7 +15,6 @@ struct MoreView: View {
             Color.red
             
             VStack(){
-                TopNavigation(appModel: appModel)
                 VStack{
                     //Do not remove this. It makes the additional space disappear
                 }

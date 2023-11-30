@@ -16,7 +16,13 @@
     "Assignment Due Dec 15" : {
 
     },
+    "Distance" : {
+
+    },
     "English" : {
+
+    },
+    "Fetching..." : {
 
     },
     "French" : {
@@ -30,6 +36,20 @@
     },
     "MAD Website" : {
 
+    },
+    "Main" : {
+
+    },
+    "Main_TopBar_Title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ottawa Open Doors"
+          }
+        }
+      }
     },
     "Map View" : {
 
@@ -55,6 +75,9 @@
           }
         }
       }
+    },
+    "Name" : {
+
     },
     "Navigation_Home" : {
       "extractionState" : "manual",
@@ -109,6 +132,64 @@
     "Search" : {
 
     },
+    "Search Keyword" : {
+
+    },
+    "Search_Filters_Categories_Title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Categories"
+          }
+        }
+      }
+    },
+    "Search_Filters_Features_Title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Building Features"
+          }
+        }
+      }
+    },
+    "Search_Filters_Search_Title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Keyword Search"
+          }
+        }
+      }
+    },
+    "Search_Filters_Sort_Title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sort By"
+          }
+        }
+      }
+    },
+    "Search_Filters_Title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Filter Options"
+          }
+        }
+      }
+    },
     "Settings_Language_English" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -135,6 +216,9 @@
 
     },
     "This is a friendly reminder." : {
+
+    },
+    "What is your favorite color?" : {
 
     }
   },

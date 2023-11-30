@@ -38,7 +38,6 @@ struct ShareInfo: View {
 
                 }
             }
-//            .navigationTitle("Buildings")
             .toolbar {
                 ToolbarItem(placement: .topBarLeading){
                     Label(
