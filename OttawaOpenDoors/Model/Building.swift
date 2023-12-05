@@ -8,10 +8,23 @@
 import Foundation
 
 
+struct BookmarkInfo: Codable, Identifiable, Equatable, Hashable  {
+    var id: Int
+    var bookmarkDate: Date
+    
+    // Equatable conformance for comparison
+    static func == (lhs: BookmarkInfo, rhs: BookmarkInfo) -> Bool {
+        return lhs.id == rhs.id
+    }
+    
+    func hash(into hasher: inout Hasher) {
+            hasher.combine(id)
+        }
+}
 
 
 // MARK: Building Struct
-struct Building: Codable, Identifiable, Equatable {
+struct Building: Codable, Identifiable, Equatable, Hashable {
     var id: Int {
         return buildingId
     }
@@ -44,7 +57,13 @@ struct Building: Codable, Identifiable, Equatable {
     let isOpenSaturday: Bool?
     let isOpenSunday: Bool?
     
+
+    var bookmarkInfo: BookmarkInfo?
     
+    
+    
+  
+
     // https://stackoverflow.com/questions/26707352/how-to-split-filename-from-file-extension-in-swift
     var imageResourceName: String {
         if let image:String = self.image {
@@ -58,6 +77,12 @@ struct Building: Codable, Identifiable, Equatable {
         return lhs.name?.trimmingCharacters(in: .whitespacesAndNewlines).lowercased() ==
         rhs.name?.trimmingCharacters(in: .whitespacesAndNewlines).lowercased()
     }
+    
+    
+    func hash(into hasher: inout Hasher) {
+            hasher.combine(buildingId)
+//            hasher.combine(y)
+        }
 }
 
 
@@ -115,16 +140,23 @@ extension Building {
             }
     }
     
-    func hasAnyCategory(categories: [Category]) -> Bool{
-        // If the user has not selected any category, include the building in the list
-        if (categories.isEmpty){
+    func hasCategory(category: BuildingCategory) -> Bool{
+      return false
+    }
+    
+    func hasAnyCategory(categoryFilterGroup: CategoryFilterGroup) -> Bool{
+        if (categoryFilterGroup.hasAppliedAllFilters){
             return true
         }
         
+        let categories = categoryFilterGroup.getAllOptionsAsArray()
+            
+        
         for category in categories {
-            if (self.categoryId  == category.id){
+            if (category.matchBuilding(building: self)){
                 return true
             }
+
         }
         
         return false

@@ -32,23 +32,25 @@ struct ContentView: View {
                         Text(LocalizedStringKey("Navigation_Home"))
                     }.tag(0)
                 
+                
                 MapView(appModel: appModel).tabItem(){
                     Image(systemName: "map")
                     Text(LocalizedStringKey("Navigation_Map"))
                 }.tag(1)
                 
-                SavedView(appModel: appModel).tabItem(){
+                SavedView(appModel: appModel)
+                    .tabItem(){
                     Image(systemName: "suit.heart.fill")
                     Text(LocalizedStringKey("Navigation_Saved"))
-                }.badge(10).tag(2)
+                    }.badge(appModel.filteredFavorites.count).tag(2)
                 MoreView(appModel: appModel).tabItem(){
                     Image(systemName: "ellipsis")
                     Text(LocalizedStringKey("Navigation_More"))
                 }.tag(3)
-                ShareInfo().tabItem(){
-                    Image(systemName: "square.and.arrow.up")
-                    Text("Share")
-                }.tag(4)
+//                ShareInfo().tabItem(){
+//                    Image(systemName: "square.and.arrow.up")
+//                    Text("Share")
+//                }.tag(4)
             }.onAppear(){
                 appModel.retrieve()
                 

@@ -8,19 +8,55 @@
 import SwiftUI
 
 struct SavedView: View {
-    var appModel: AppModel
+    @ObservedObject var appModel: AppModel
+    
     var body: some View {
-        ZStack{
-            Color.green
-            VStack(){
-                Text("Saved View")
-                Spacer()
-   
+        NavigationView{
+            
+            VStack(alignment: .leading){
+                
+                if (appModel.fetchStatus == .fetchingFirstTime){
+                    ProgressView("Fetching...")
+                }
+                
+                if (appModel.fetchStatus == .idle){
+                    HStack{
+                        Spacer()
+                        Text("\($appModel.filteredFavorites.count) favorites found").font(.subheadline)
+                        Spacer()
+                    }.padding(.vertical, 8)
+                    
+                    ScrollView{
+                        LazyVStack(spacing: 8){
+                            ForEach(Array(appModel.filteredFavorites.enumerated()), id: \.element.id){ index, building in
+                                BuildingCard(building: $appModel.filteredFavorites[index], index: index, toggleBookmark: appModel.toggleBookmark).padding(.horizontal, 8)
+                                
+                            }
+                        }
+                    }
+                    Spacer()
+                }
+                
             }
+            .background(COLORS.BACKGROUND_COLOR)
+            
+            .toolbarBackground(.visible, for: .navigationBar, .tabBar)
+            .toolbar {
+                
+                ToolbarItem(placement: .topBarLeading){
+                    Toolbar()
+                }
+                
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Label(
+                        title: { Text("Search") },
+                        icon: { Image(systemName: "magnifyingglass")
+                        }
+                    )
+                }
+            }
+            
+            
         }
     }
-}
-
-#Preview {
-    SavedView(appModel: AppModel())
 }

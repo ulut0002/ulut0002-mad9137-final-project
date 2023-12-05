@@ -29,19 +29,7 @@ extension AppModel{
     }
     
     
-    private func retrieveCategories(buildingList: [Building]) -> [Category]{
-        var tempArray:[Category] = []
-        for building in buildingList {
-            if let id = building.categoryId, let definition = building.category {
-                let newCategory = Category(id: id, definition: definition)
-                if (!tempArray.contains(newCategory)){
-                    tempArray.append(newCategory)
-                }
-            }
-        }
-        return tempArray
-    }
-    
+
     
     @MainActor func retrieve(){
         // first load local data
@@ -50,7 +38,7 @@ extension AppModel{
             self.fetchStatus = .reFetching
         }
 
-        let storageAllFavorites = readFromStorage(forKey: CONFIGURATION.STORAGE_KEY_SAVED_BUILDINGS)
+
      
     
         // fetch data
@@ -60,7 +48,10 @@ extension AppModel{
             
 
             do{
-                let fetchedBuildingListArray = try await fetchData()
+                let savedBookmarks:[BookmarkInfo] = readBookmarksFromStorage()
+
+                
+                let fetchedBuildingListArray = try await self.fetchData()
            
                 if let fetchedBuildingList = fetchedBuildingListArray?[0].buildings{
                    englishBuildingsTemp = fetchedBuildingList
@@ -70,21 +61,37 @@ extension AppModel{
                     frenchBuildingsTemp = fetchedBuildingList
                 }
                 
-                // find categories in English and French separately
-                let categoriesEnTemp = retrieveCategories(buildingList: englishBuildingsTemp)
-                let categoriesFrTemp = retrieveCategories(buildingList: frenchBuildingsTemp)
-
-             
+                // mark favorites as bulk
+                for savedBookmark in savedBookmarks {
+                    if let idx = englishBuildingsTemp.firstIndex(where: {$0.id == savedBookmark.id}){
+                        englishBuildingsTemp[idx].bookmarkInfo = savedBookmark
+                    }
+                    if let idx = frenchBuildingsTemp.firstIndex(where: {$0.id == savedBookmark.id}){
+                        frenchBuildingsTemp[idx].bookmarkInfo = savedBookmark
+                    }
+                }
                 
                 DispatchQueue.main.async {
-//                    self.masterBuildingList[.english] = englishBuildingsTemp
-//                    self.filteredBuildings = englishBuildingsTemp
+                    self.buildingsMaster[.english] =  englishBuildingsTemp
                    
                 }
                 
                 DispatchQueue.main.async {
-//                    self.masterBuildingList[.french] = frenchBuildingsTemp
+                    self.buildingsMaster[.french] =  frenchBuildingsTemp
                 }
+                
+                DispatchQueue.main.async {
+                    self.favoritesMaster = savedBookmarks
+                }
+                
+                DispatchQueue.main.async {
+                    self.applyFilters()
+                }
+                
+                DispatchQueue.main.async {
+                    self.filterBookmarks()
+                }
+                
                 
                 DispatchQueue.main.async {
                     self.fetchStatus = .idle
@@ -100,17 +107,5 @@ extension AppModel{
                 print("Error: \(error.localizedDescription)")
             }
         }
-        // update current daa
     }
-    
-    private func readFromStorage(forKey: String) -> [Building] {
-       if let savedData = UserDefaults.standard.data(forKey: forKey),
-          let decodedArray = try? JSONDecoder().decode([Building].self, from: savedData){
-           return decodedArray
-       } else {
-           // Handle the case where the array of objects couldn't be retrieved or decoded
-//           print("Unable to retrieve or decode the array of objects from UserDefaults.")
-           return []
-       }
-   }
 }

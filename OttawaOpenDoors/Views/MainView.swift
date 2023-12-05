@@ -13,57 +13,63 @@ struct MainView: View {
     
     
     var body: some View {
-
+        
         NavigationView{
+            
             VStack(alignment: .leading){
+                
+                if (appModel.fetchStatus == .fetchingFirstTime){
+                    ProgressView("Fetching...")
+                }
+                
+                if (appModel.fetchStatus == .idle){
+                    HStack{
+                        Spacer()
+                        Text("\($appModel.filteredBuildings.count) results found").font(.subheadline)
+                        Spacer()
+                    }.padding(.vertical, 8)
                     
-                    if (appModel.fetchStatus == .fetchingFirstTime){
-                        ProgressView("Fetching...")
-                    }
-                    
-                    if (appModel.fetchStatus == .idle){
-                            Spacer()
-                            Text("Main").foregroundColor(.blue)
-                            Spacer()
-                    }
-                } .toolbar {
-                    ToolbarItem(placement: .topBarLeading){
-                        Label(
-                            title: {
-                              
-                                    HStack{
-                                        AvatarView(image:  Image("ic_logo"), size: 48)
-                                        Text("Ottawa Open Doors").bold().font(.title3)
-                                            .padding(.leading, 4)
-                                        Spacer()
-                                    }.padding(.vertical, 12)
-                             
-                               
-                            },
-                            icon: { Image(systemName: "42.circle") }
-                        ).labelStyle(TitleOnlyLabelStyle())
-                    }
-                    
-                    ToolbarItem(placement: .navigationBarTrailing) {
-                        Label(
-                            title: { Text("Search") },
-                            icon: { Image(systemName: "magnifyingglass")
+                    ScrollView{
+                        LazyVStack(spacing: 8){
+                            ForEach(Array(appModel.filteredBuildings.enumerated()), id: \.element.id){ index, building in
+                                BuildingCard(building: $appModel.filteredBuildings[index], index: index, toggleBookmark: appModel.toggleBookmark).padding(.horizontal, 8)
+                                
                             }
-                        ).onTapGesture {
-                            // TODO: open the search sheet
-                            isSheetPresented.toggle()
                         }
                     }
+                    Spacer()
                 }
-                .sheet(isPresented: $isSheetPresented, content: {
-                    SearchFiltersView(appModel: appModel, isSheetPresented: $isSheetPresented)
-                })
-               
+                
             }
-       
+            .background(COLORS.BACKGROUND_COLOR)
             
+            .toolbarBackground(.visible, for: .navigationBar, .tabBar)
+            .toolbar {
+                
+                ToolbarItem(placement: .topBarLeading){
+                    Toolbar()
+                }
+                
+                ToolbarItem(placement: .navigationBarTrailing) {
+                    Label(
+                        title: { Text("Search") },
+                        icon: { Image(systemName: "magnifyingglass")
+                        }
+                    ).onTapGesture {
+                        // TODO: open the search sheet
+                        isSheetPresented.toggle()
+                    }
+                }
+            }
+            .sheet(isPresented: $isSheetPresented, content: {
+                SearchFiltersView(appModel: appModel, isSheetPresented: $isSheetPresented)
+            })
             
-       
+        }
+        
+        
+        
+        
         
     }
     
@@ -74,62 +80,5 @@ struct MainView: View {
             MainView(appModel: AppModel())
         }
     }
-
-
     
-    
-    //    .toolbar{
-    //        ToolbarItem{
-    //            Text("Hi")
-    //        }
-    //    }
-    
-    
-    
-    //                        ScrollView{
-    //                            LazyVStack{
-    //                                ForEach(appModel.filteredBuildings[appModel.selectedLanguage] ?? [], id: \.id){ building in
-    //                                    VStack{
-    //                                        ZStack(alignment: .top){
-    //
-    //                                            Image(building.imageResourceName)
-    //                                                .resizable()
-    //                                                .aspectRatio(contentMode: .fill)
-    //                                                .frame(width: UIScreen.main.bounds.width, height: 140)
-    //                                                .clipped()
-    //                                                .overlay(
-    //                                                    HStack() {
-    //                                                        Spacer()
-    //                                                        HStack {
-    //                                                            Image(systemName: "heart")
-    //                                                                .foregroundColor(.white)
-    //                                                                .padding(4)
-    //
-    //                                                            Image(systemName: "square.and.arrow.up")
-    //                                                                .foregroundColor(.white)
-    //                                                                .padding(4)
-    //                                                        }
-    //
-    //                                                        .background(Color.black.opacity(0.6))
-    //                                                        //                                                        .cornerRadius(10)
-    //                                                        .padding(10)
-    //                                                    }
-    //                                                )
-    //
-    //
-    //
-    //
-    //
-    //                                        }
-    //                                        Text(building.name!).background(Color.white)
-    //                                    }.background(Color.white)
-    //                                }.onTapGesture {
-    //                                }
-    //
-    //                            }.background(Color.white)
-    //                        }.shadow(radius:2)
-    //                            .listStyle(PlainListStyle())
-    //                            .frame(height: .infinity)
-    //                            .listRowSeparator(.hidden)
-    //                            .padding(0)
 }

@@ -12,6 +12,8 @@ import SwiftUI
 struct AvatarView: View {
     let image: Image
     let size: CGFloat
+    
+    let color = Color(red: 18/255, green: 40/255, blue: 57/255)
 
     var body: some View {
         image
@@ -21,10 +23,11 @@ struct AvatarView: View {
             .cornerRadius(size / 2)
             .overlay(
                 Circle()
-                    .stroke(Color.white, lineWidth: 4)
+                    .stroke(color, lineWidth: 3)
                     .frame(width: size, height: size)
             )
-            .shadow(radius: 10)
+            .shadow(color: color, radius: 12)
+        
     }
 }
 

@@ -4,6 +4,12 @@
     "" : {
 
     },
+    "%lld results found" : {
+
+    },
+    "3.4 km from you" : {
+
+    },
     "a" : {
 
     },
@@ -13,16 +19,353 @@
     "About the Team" : {
 
     },
+    "Apply Filters" : {
+
+    },
     "Assignment Due Dec 15" : {
 
     },
-    "Distance" : {
+    "By Distance" : {
 
+    },
+    "By Name" : {
+
+    },
+    "Cancel" : {
+
+    },
+    "Category_Academic" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Academic Instutitions"
+          }
+        }
+      }
+    },
+    "Category_Business_Foundation" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Business / Foundations"
+          }
+        }
+      }
+    },
+    "Category_Community_Center" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Community / Care"
+          }
+        }
+      }
+    },
+    "Category_Embassy" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Embassies"
+          }
+        }
+      }
+    },
+    "Category_Functional_Building" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Functional Buildings"
+          }
+        }
+      }
+    },
+    "Category_Gallery_Theatre" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Galleries and Theatres"
+          }
+        }
+      }
+    },
+    "Category_Government" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Government"
+          }
+        }
+      }
+    },
+    "Category_Museum_Archive_Historic" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Museums, Archives & Historic Sites"
+          }
+        }
+      }
+    },
+    "Category_Other" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Other"
+          }
+        }
+      }
+    },
+    "Category_Religious" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Religious"
+          }
+        }
+      }
+    },
+    "Category_Sports_Leisure" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Sports & Leisure"
+          }
+        }
+      }
     },
     "English" : {
 
     },
+    "Feature_Accessible" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Accessible"
+          }
+        },
+        "fr-CA" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Accessible"
+          }
+        }
+      }
+    },
+    "Feature_Bike_Parking" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Bike Parking"
+          }
+        },
+        "fr-CA" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Bike Parking"
+          }
+        }
+      }
+    },
+    "Feature_Family_Friendly" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Family Friendly"
+          }
+        },
+        "fr-CA" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Family Friendly"
+          }
+        }
+      }
+    },
+    "Feature_Free_Parking" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Free Parking"
+          }
+        },
+        "fr-CA" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Free Parking"
+          }
+        }
+      }
+    },
+    "Feature_Guided_Tour" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Guided Tour"
+          }
+        },
+        "fr-CA" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Guided Tour"
+          }
+        }
+      }
+    },
+    "Feature_Is_New" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "New Buildings"
+          }
+        },
+        "fr-CA" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "New Buildings"
+          }
+        }
+      }
+    },
+    "Feature_OC_Transpo_NearBy" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "OC Transport Nearby"
+          }
+        },
+        "fr-CA" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "OC Transport Nearby"
+          }
+        }
+      }
+    },
+    "Feature_Open_Saturday" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Open on Saturdays"
+          }
+        },
+        "fr-CA" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Open on Saturdays"
+          }
+        }
+      }
+    },
+    "Feature_Open_Sunday" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Open on Sundays"
+          }
+        },
+        "fr-CA" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Open on Sundays"
+          }
+        }
+      }
+    },
+    "Feature_Paid_Parking" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Paid Parking"
+          }
+        },
+        "fr-CA" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Paid Parking"
+          }
+        }
+      }
+    },
+    "Feature_Public_Washroom" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Public Washrooms"
+          }
+        },
+        "fr-CA" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Public Washrooms"
+          }
+        }
+      }
+    },
+    "Feature_Shuttle_Bus" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Shuttle Bus"
+          }
+        },
+        "fr-CA" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Shuttle Bus"
+          }
+        }
+      }
+    },
     "Fetching..." : {
+
+    },
+    "Filters" : {
 
     },
     "French" : {
@@ -37,9 +380,6 @@
     "MAD Website" : {
 
     },
-    "Main" : {
-
-    },
     "Main_TopBar_Title" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -50,9 +390,6 @@
           }
         }
       }
-    },
-    "Map View" : {
-
     },
     "More_About_Event_Label" : {
       "extractionState" : "manual",
@@ -75,9 +412,6 @@
           }
         }
       }
-    },
-    "Name" : {
-
     },
     "Navigation_Home" : {
       "extractionState" : "manual",
@@ -124,6 +458,9 @@
       }
     },
     "Ottawa Open Doors" : {
+
+    },
+    "Reset" : {
 
     },
     "Saved View" : {
@@ -216,9 +553,6 @@
 
     },
     "This is a friendly reminder." : {
-
-    },
-    "What is your favorite color?" : {
 
     }
   },
