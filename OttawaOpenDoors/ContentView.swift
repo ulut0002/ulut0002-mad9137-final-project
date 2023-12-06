@@ -18,7 +18,7 @@ enum ActiveScreen {
 struct ContentView: View {
     
     @ObservedObject var appModel = AppModel()
-    @State private var selection = 0
+    @State private var selection = 1
 
 
     

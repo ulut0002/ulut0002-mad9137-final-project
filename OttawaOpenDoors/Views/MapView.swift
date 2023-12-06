@@ -9,85 +9,112 @@ import SwiftUI
 import MapKit
 
 struct MapView: View {
-    @ObservedObject var appModel:AppModel
-    @State var text = "Text1"
-    @State private var position : MapCameraPosition = .automatic
-    @State private var searchResults: [MKMapItem] = []
-    @State private var visibleRegion : MKCoordinateRegion?
     
-
+    
+    @ObservedObject var appModel:AppModel
+    @State var text = ""
+    @State private var position : MapCameraPosition = .automatic
+    @State private var visibleRegion : MKCoordinateRegion?
+    @State private var selectedTag: Int?
+    @State private var mapStyle:MapStyle? = nil
+    
+    @State private var index = -1
     @State private var region = MKCoordinateRegion(center:
-            CLLocationCoordinate2D(latitude: OttawaCoordinates.lat.rawValue, longitude: OttawaCoordinates.long.rawValue),
-            span: MKCoordinateSpan(latitudeDelta: 0.06, longitudeDelta: 0.06))
-//    
+                                                    CLLocationCoordinate2D(latitude: OttawaCoordinates.lat.rawValue, longitude: OttawaCoordinates.long.rawValue),
+                                                   span: MKCoordinateSpan(latitudeDelta: 0.06, longitudeDelta: 0.06))
+    
+    //
+    @State private var route: MKRoute?
+    
+    func getDirections(from: MKMapItem, to: MKMapItem) {
+        route = nil
+        let request = MKDirections.Request()
+        request.source = from
+        request.destination = to
+        
+        Task {
+            let directions = MKDirections(request: request)
+            let response = try? await directions.calculate()
+            route = response?.routes.first
+        }
+    
+    }
+    
     
     var body: some View {
-        VStack{
-         
+        
+        ZStack (alignment: .bottom) {
             VStack(){
-                Map(position: $position){
-                    
-                    ForEach(appModel.filteredBuildings, id:\.self){ building in
-                      
-//
-//                        if let latitude = building.latitude, let longitude = building.longitute {
-//                            Marker(building.name, coordinate: CLLocationCoordinate2D(latitude: latitude, longitude: longitude))
-//                            
-//                        }
-                        
+                Map(position: $position, selection: $selectedTag){
+//                    ForEach(appModel.filteredBuildings.prefix(3)){building in
+                
+                    ForEach(Array(appModel.filteredBuildings.prefix(3).enumerated()), id: \.element){index, building in
+
+                        if let coordinate = building.getCoordinates(), let name = building.name{
+                           
+                            
+                            Annotation(name, coordinate: coordinate){
+                                ZStack{
+                                    RoundedRectangle(cornerRadius: 105, style: .circular).fill(COLORS.BRAND_COLOR)
+                                    RoundedRectangle(cornerRadius: 105, style: .circular).stroke(.secondary, lineWidth: 2)
+                                    Image(systemName: building.systemImage).resizable().aspectRatio(contentMode: .fit).frame(width: 24, height: 24, alignment: .center)
+                                        .foregroundStyle(Color.white)
+                                    
+                                }.onTapGesture{
+                                    text = building.name ?? "Unkown"
+//                                    position = .region(MKCoordinateRegion(center: coordinate, span: MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1)))
+                                    position = .camera(MapCamera(centerCoordinate: coordinate, distance: 980, heading: 242, pitch: 60))
+//                                    position = .userLocation(fallback: .automatic)
+                                }.frame(width: 32, height: 32)
+                            }.annotationTitles(.hidden)
+                            if let route {
+                                MapPolyline(route).stroke(.blue, lineWidth: 5)
+                            }
+                            
+                        }
                     }
-                    //                    Marker("Parking",systemImage,coordinate: CLLocationCoordinate2D), or use Marker(item: MKMapItem)
-                    
-                    /**
-                     
-                        marker color: Marker.tint(.orange)
-                     
-                     */
-                     
-                    
-//                    Annotation("Name", coordinate: <#T##CLLocationCoordinate2D#>){
-//                        ZStack{
-//                            // put what you want here. This is the the view when you click on it.
-//                        }
-//                    }
+                    UserAnnotation()
+                }
+                .mapStyle(.standard(elevation: .realistic))
+                .mapControls{
+                    MapUserLocationButton()
+                    MapCompass()
+                    MapScaleView()
+                    MapPitchToggle()
+                
 
                 }
-            }
-            .mapStyle(.standard(elevation: .realistic))
-            .onTapGesture {
-                text = "Text 2"
-            }
-            .onChange(of: searchResults){
-                position = .automatic
-            }
-            .onMapCameraChange { context in
-                visibleRegion = context.region
-            }
-            .safeAreaInset(edge: .bottom){
-                HStack{
-                    Text(text)
+                .mapControlVisibility(.visible)
+                .onChange(of: appModel.filteredBuildings){
+                    position = .automatic
                 }
+                .onMapCameraChange { context in
+                    visibleRegion = context.region
+                }
+
+                
             }
-            .mapControls{
-                MapUserLocationButton()
-                MapCompass()
-                MapScaleView()
+            .onAppear(){
+                appModel.userLocation.checkIfLocationServicesIsEnabled()
+                
             }
             
-   
-        }.onAppear(){
-            appModel.userLocation.checkIfLocationServicesIsEnabled()
+            
+            VStack{
+                Text(text).font(.title).foregroundStyle(.blue)
+            }
         }
+        
     }
 }
 
-#Preview {
-    MapView(appModel: AppModel())
+
+
+struct ButtonView : View {
+    
+    var body: some View {
+        HStack {
+            
+        }
+    }
 }
-
-
-
-/**
- 
- 
- */

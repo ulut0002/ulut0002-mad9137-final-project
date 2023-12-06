@@ -6,6 +6,7 @@
 //
 
 import Foundation
+import MapKit
 
 
 struct BookmarkInfo: Codable, Identifiable, Equatable, Hashable  {
@@ -62,6 +63,7 @@ struct Building: Codable, Identifiable, Equatable, Hashable {
     
     
     
+    
   
 
     // https://stackoverflow.com/questions/26707352/how-to-split-filename-from-file-extension-in-swift
@@ -73,15 +75,21 @@ struct Building: Codable, Identifiable, Equatable, Hashable {
     }
     
     var systemImage: String {
-//        return BuildingCategory(self.category).imageName
-//        cat = BuildingCategory()
-        return ""
+        let cat = BuildingCategory.resolveCategory(categoryId: self.categoryId ?? -1)
+        return cat.imageName
     }
 
     // Equatable conformance for comparison
     static func == (lhs: Building, rhs: Building) -> Bool {
         return lhs.name?.trimmingCharacters(in: .whitespacesAndNewlines).lowercased() ==
         rhs.name?.trimmingCharacters(in: .whitespacesAndNewlines).lowercased()
+    }
+    
+    func getCoordinates() -> CLLocationCoordinate2D? {
+        if let latitude = self.latitude, let longitude = self.longitude {
+            return CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
+        }
+        return nil
     }
     
     
