@@ -28,6 +28,7 @@ func parseDate(dateTxt: String) -> Date?{
 
 
 
+
 func searchText(source: String?, lookFor: String?) -> Bool{
     var nameFound = false
     

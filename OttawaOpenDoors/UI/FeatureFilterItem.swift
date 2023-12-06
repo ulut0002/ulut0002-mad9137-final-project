@@ -16,7 +16,7 @@ struct FeatureFilterItem: View {
             Image(systemName: draftFeature.option.imageName)
                 .resizable()
                 .aspectRatio(contentMode: .fit)
-                .frame(width: 32, height: 32)
+                .frame(width: CONFIGURATION.FILTER_VIEW_ICON_WIDTH, height: CONFIGURATION.FILTER_VIEW_ICON_HEIGHT)
             
             Text(draftFeature.option.translation).font(.body)
             Spacer()

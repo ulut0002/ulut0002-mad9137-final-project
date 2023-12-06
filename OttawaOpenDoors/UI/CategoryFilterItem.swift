@@ -16,7 +16,7 @@ struct CategoryFilterItem: View {
             Image(systemName: draftCategory.option.imageName)
                 .resizable()
                 .aspectRatio(contentMode: .fit)
-                .frame(width: 32, height: 32)
+                .frame(width: CONFIGURATION.FILTER_VIEW_ICON_WIDTH, height: CONFIGURATION.FILTER_VIEW_ICON_HEIGHT)
             
             Text(draftCategory.option.translation).font(.body)
             Spacer()

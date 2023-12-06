@@ -18,7 +18,7 @@ enum PreferredLanguage {
 enum OttawaCoordinates:Double {
     case lat = 45.43020324663249
     case long =  -75.70920060238804
-   
+    
 }
 
 enum FetchStatus {
@@ -85,7 +85,12 @@ enum BuildingFeature {
         case .shuttleBus :return LocalizedStringKey("Feature_Shuttle_Bus")
         }
     }
-  
+    
+    
+    static func getAmenitiesAsArray() -> [BuildingFeature]{
+        return [.accessible, .bikeParking, .familyFriendly, .freeParking, .guidedTour, .oCTranspoNearby, .paidParking, .publicWashroom, .shuttleBus]
+    }
+    
 }
 
 
@@ -117,6 +122,36 @@ enum BuildingCategory {
         case .community_center: return "person.2.wave.2.fill"
         }
     }
+    
+    static func resolveCategory(categoryId: Int) -> BuildingCategory{
+        switch categoryId {
+        case 5:
+            return .academic
+        case 8:
+            return .business_foundatation
+        case 7:
+            return .community_center
+        case 1:
+            return .embassy
+        case 3:
+            return .functional_building
+        case 4:
+            return .gallery_theatre
+        case 2:
+            return .government
+        case 9:
+            return .museum_archive_historic
+        case 10:
+            return .other
+        case 0:
+            return .religious_building
+        case 6:
+            return .sports_leisure
+        default:
+            return .government
+        }
+    }
+    
     
     var translation: LocalizedStringKey {
         switch self {

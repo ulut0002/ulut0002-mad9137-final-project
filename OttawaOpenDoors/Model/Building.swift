@@ -71,6 +71,12 @@ struct Building: Codable, Identifiable, Equatable, Hashable {
         }
         return ""
     }
+    
+    var systemImage: String {
+//        return BuildingCategory(self.category).imageName
+//        cat = BuildingCategory()
+        return ""
+    }
 
     // Equatable conformance for comparison
     static func == (lhs: Building, rhs: Building) -> Bool {

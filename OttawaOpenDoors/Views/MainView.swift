@@ -32,7 +32,10 @@ struct MainView: View {
                     ScrollView{
                         LazyVStack(spacing: 8){
                             ForEach(Array(appModel.filteredBuildings.enumerated()), id: \.element.id){ index, building in
-                                BuildingCard(building: $appModel.filteredBuildings[index], index: index, toggleBookmark: appModel.toggleBookmark).padding(.horizontal, 8)
+                                BuildingCard(building: $appModel.filteredBuildings[index],
+                                             appModel: appModel,
+                                             index: index
+                                             ).padding(.horizontal, 8)
                                 
                             }
                         }

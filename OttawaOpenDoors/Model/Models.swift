@@ -96,7 +96,10 @@ struct CategoryFilterGroup{
 
 
 // Identifies a selectable feature (turn on/off)
-struct Feature {
+struct Feature:Identifiable{
+    var id: Int{
+        return option.self.hashValue
+    }
     let option: BuildingFeature
     var selected: Bool = false
     
@@ -238,6 +241,11 @@ class AppModel : ObservableObject{
     @Published var fetchStatus:FetchStatus = .idle
     @Published var activeScreen:ActiveScreen = .main
     
+    @Published private(set) var buildingDetailShowAllDescription: Bool = false
+    @Published private(set) var buildingDetailShowAllAmenities: Bool = false
+    @Published private(set) var buildingAmenities = BuildingFeature.getAmenitiesAsArray()
+    
+//    setBuildingDetailShowLongDescription
     
 }
 
@@ -329,6 +337,18 @@ extension AppModel {
     func setLanguage(language: PreferredLanguage){
         selectedLanguage = language
     }
+}
+
+extension AppModel{
+    func toggleBuildingDetailShowLongDescription() {
+        self.buildingDetailShowAllDescription.toggle()
+    }
+    
+    
+    func toggleBuildingDetailShowAllAmenities(){
+        self.buildingDetailShowAllAmenities.toggle()
+    }
+    
 }
 
 

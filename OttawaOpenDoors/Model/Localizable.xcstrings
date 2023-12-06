@@ -4,6 +4,9 @@
     "" : {
 
     },
+    "%lld favorites found" : {
+
+    },
     "%lld results found" : {
 
     },
@@ -25,14 +28,101 @@
     "Assignment Due Dec 15" : {
 
     },
+    "Building_View_Awaiting_Amenites" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Awaiting amenities."
+          }
+        }
+      }
+    },
+    "Building_View_Awaiting_Description" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Awaiting description."
+          }
+        }
+      }
+    },
+    "Building_View_Button_Show_Less" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Show Less"
+          }
+        }
+      }
+    },
+    "Building_View_Button_Show_More" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Show More"
+          }
+        }
+      }
+    },
+    "Building_View_Title_Amenities" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Amenities"
+          }
+        }
+      }
+    },
+    "Building_View_Title_Location" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Location"
+          }
+        }
+      }
+    },
     "By Distance" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "By Distance"
+          }
+        }
+      }
     },
     "By Name" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "By Name"
+          }
+        }
+      }
     },
     "Cancel" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Cancel"
+          }
+        }
+      }
     },
     "Category_Academic" : {
       "extractionState" : "manual",
@@ -463,9 +553,6 @@
     "Reset" : {
 
     },
-    "Saved View" : {
-
-    },
     "Search" : {
 
     },
@@ -549,7 +636,7 @@
         }
       }
     },
-    "Share" : {
+    "Test" : {
 
     },
     "This is a friendly reminder." : {

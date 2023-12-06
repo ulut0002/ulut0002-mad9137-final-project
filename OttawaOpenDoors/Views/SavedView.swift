@@ -29,7 +29,9 @@ struct SavedView: View {
                     ScrollView{
                         LazyVStack(spacing: 8){
                             ForEach(Array(appModel.filteredFavorites.enumerated()), id: \.element.id){ index, building in
-                                BuildingCard(building: $appModel.filteredFavorites[index], index: index, toggleBookmark: appModel.toggleBookmark).padding(.horizontal, 8)
+                                BuildingCard(building: $appModel.filteredFavorites[index], 
+                                             appModel : appModel,
+                                             index: index).padding(.horizontal, 8)
                                 
                             }
                         }
