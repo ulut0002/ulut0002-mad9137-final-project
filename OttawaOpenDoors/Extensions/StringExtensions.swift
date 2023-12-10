@@ -21,7 +21,7 @@ extension String {
     }
     
     func cropText() -> String{
-        print("Limit: \(CONFIGURATION.BUILDING_DESCRIPTION_SHORT_DESCRIPTION_LENGTH), Count: \(self.count)")
+     
         if (self.count > CONFIGURATION.BUILDING_DESCRIPTION_SHORT_DESCRIPTION_LENGTH){
             return self.prefix(CONFIGURATION.BUILDING_DESCRIPTION_SHORT_DESCRIPTION_LENGTH) + "..."
         }else{

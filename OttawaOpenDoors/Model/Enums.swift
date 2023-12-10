@@ -9,7 +9,7 @@ import Foundation
 import SwiftUI
 
 
-enum PreferredLanguage {
+enum PreferredLanguage:  Codable {
     case english
     case french
 }
@@ -22,8 +22,7 @@ enum OttawaCoordinates:Double {
 }
 
 enum FetchStatus {
-    case fetchingFirstTime
-    case reFetching
+    case fetching
     case error
     case idle
 }

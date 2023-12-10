@@ -58,14 +58,14 @@ struct Building: Codable, Identifiable, Equatable, Hashable {
     let isOpenSaturday: Bool?
     let isOpenSunday: Bool?
     
-
+    
     var bookmarkInfo: BookmarkInfo?
+    var distanceFromUserLocation: Double?
     
     
     
     
-  
-
+    
     // https://stackoverflow.com/questions/26707352/how-to-split-filename-from-file-extension-in-swift
     var imageResourceName: String {
         if let image:String = self.image {
@@ -78,6 +78,10 @@ struct Building: Codable, Identifiable, Equatable, Hashable {
         let cat = BuildingCategory.resolveCategory(categoryId: self.categoryId ?? -1)
         return cat.imageName
     }
+    
+    
+    
+  
 
     // Equatable conformance for comparison
     static func == (lhs: Building, rhs: Building) -> Bool {
@@ -85,7 +89,7 @@ struct Building: Codable, Identifiable, Equatable, Hashable {
         rhs.name?.trimmingCharacters(in: .whitespacesAndNewlines).lowercased()
     }
     
-    func getCoordinates() -> CLLocationCoordinate2D? {
+    var coordinate: CLLocationCoordinate2D? {
         if let latitude = self.latitude, let longitude = self.longitude {
             return CLLocationCoordinate2D(latitude: latitude, longitude: longitude)
         }

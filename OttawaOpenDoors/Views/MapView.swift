@@ -11,7 +11,7 @@ import MapKit
 struct MapView: View {
     
     
-    @ObservedObject var appModel:AppModel
+    @StateObject var appModel:AppModel
     @State var text = ""
     @State private var position : MapCameraPosition = .automatic
     @State private var visibleRegion : MKCoordinateRegion?
@@ -50,7 +50,7 @@ struct MapView: View {
                 
                     ForEach(Array(appModel.filteredBuildings.prefix(3).enumerated()), id: \.element){index, building in
 
-                        if let coordinate = building.getCoordinates(), let name = building.name{
+                        if let coordinate = building.coordinate, let name = building.name{
                            
                             
                             Annotation(name, coordinate: coordinate){
@@ -63,8 +63,25 @@ struct MapView: View {
                                 }.onTapGesture{
                                     text = building.name ?? "Unkown"
 //                                    position = .region(MKCoordinateRegion(center: coordinate, span: MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1)))
-                                    position = .camera(MapCamera(centerCoordinate: coordinate, distance: 980, heading: 242, pitch: 60))
+//                                    position = .camera(MapCamera(centerCoordinate: coordinate, distance: 980, heading: 242, pitch: 60))
 //                                    position = .userLocation(fallback: .automatic)
+//                                    position = .automatic
+//                                    position = .
+                                    
+//                                    position = .camera(MapCamera(centerCoordinate: coordinate, distance: 2000, heading: 0, pitch: 0))
+                                    
+                                    
+//                                    let region = MKCoordinateRegion(center: coordinate, span: MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1))
+//                                    withAnimation{
+////                                        position = .region(region)
+//                                    }
+                                    
+                                    position = .item(MKMapItem(placemark: MKPlacemark(coordinate: coordinate)))
+                                    
+//                                    position = .camera(MapCamera(centerCoordinate: coordinate, distance: visibleRegion?.distance ?? 2000,
+//                                                                 pitch: visibleRegion?.pitch ?? 0, heading: visibleRegion?.heading ?? 0))
+
+                                    
                                 }.frame(width: 32, height: 32)
                             }.annotationTitles(.hidden)
                             if let route {
@@ -95,7 +112,6 @@ struct MapView: View {
                 
             }
             .onAppear(){
-                appModel.userLocation.checkIfLocationServicesIsEnabled()
                 
             }
             

@@ -12,8 +12,7 @@ import SwiftUI
 struct AvatarView: View {
     let image: Image
     let size: CGFloat
-    
-    let color = Color(red: 18/255, green: 40/255, blue: 57/255)
+    let color:Color
 
     var body: some View {
         image
@@ -26,7 +25,7 @@ struct AvatarView: View {
                     .stroke(color, lineWidth: 3)
                     .frame(width: size, height: size)
             )
-            .shadow(color: color, radius: 12)
+
         
     }
 }

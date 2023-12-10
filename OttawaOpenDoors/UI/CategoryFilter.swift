@@ -42,7 +42,6 @@ struct CategoryFilter: View {
 
  
         }.onAppear(){
-//            print(appModel.draftUserFilters.categories.count)
         }
 
 

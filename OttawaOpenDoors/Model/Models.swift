@@ -11,7 +11,6 @@ import SwiftUI
 
 
 
-
 // Represents a building category
 struct Category {
     var option: BuildingCategory
@@ -226,13 +225,13 @@ class BuildingListModel: ObservableObject {
 
 // Represents app model for all the data manipulation
 class AppModel : ObservableObject{
+    @Published private(set) var userConfig: ConfigModel = ConfigModel.getDefaultConfigModel()
     private var selectedLanguage: PreferredLanguage = .english
+    
     var buildingsMaster: [PreferredLanguage: [Building]] = [.english: [], .french: []]
     var categoriesMaster:[Category] = []
     var favoritesMaster: [BookmarkInfo] = [] // only contains IDs
-    var userLocation = UserLocation()
-    
-    
+
     @Published  var filteredBuildings: [Building] = []
     @Published  var filteredFavorites: [Building] = []
     @Published  var userFilters: Filters = Filters.getDefaultSearchFilter()
@@ -244,6 +243,9 @@ class AppModel : ObservableObject{
     @Published private(set) var buildingDetailShowAllDescription: Bool = false
     @Published private(set) var buildingDetailShowAllAmenities: Bool = false
     @Published private(set) var buildingAmenities = BuildingFeature.getAmenitiesAsArray()
+   
+    @Published private(set) var locale = Locale(identifier: CONFIGURATION.LANG_EN)
+    
     
 //    setBuildingDetailShowLongDescription
     
@@ -331,12 +333,30 @@ extension AppModel{
 // MARK: Switch Language, set Language
 extension AppModel {
     func switchLanguage(){
-        selectedLanguage = (selectedLanguage == .english) ? .french : .english
+        setLanguage(language: (self.selectedLanguage == .english) ? .french : .english)
     }
     
     func setLanguage(language: PreferredLanguage){
-        selectedLanguage = language
+        
+        let selectedLanguage:PreferredLanguage = language
+        
+        if (selectedLanguage == .english){
+            locale =  Locale(identifier: CONFIGURATION.LANG_EN)
+        }else if (selectedLanguage == .french){
+            locale =  Locale(identifier: CONFIGURATION.LANG_FR)
+        }else {
+            locale =  Locale(identifier: CONFIGURATION.LANG_EN)
+        }
+        self.selectedLanguage = language
+        self.userConfig.preferredLanguage = language
+        saveUserConfigurationToStorage()
+        
+        Task {
+            try await  retrieve()
+        }
     }
+    
+    
 }
 
 extension AppModel{
@@ -349,6 +369,37 @@ extension AppModel{
         self.buildingDetailShowAllAmenities.toggle()
     }
     
+}
+
+
+// MARK: User Settings
+extension AppModel{
+    
+    
+     func saveUserConfigurationToStorage(){
+        if let encodeData = try? JSONEncoder().encode(userConfig){
+            UserDefaults.standard.set(encodeData, forKey: CONFIGURATION.STORAGE_KEY_CONFIGURATION)
+        }
+    }
+    
+    func readUserConfigurationFromStorage(){
+        if let userData = UserDefaults.standard.data(forKey: CONFIGURATION.STORAGE_KEY_CONFIGURATION), let decodedData = try? JSONDecoder().decode(ConfigModel.self, from: userData){
+            print("From Storage: \(decodedData)")
+            self.userConfig = decodedData
+            self.selectedLanguage = decodedData.preferredLanguage
+            return
+        }
+        
+        //create a blank one, save it, amd return it
+        var initModel = ConfigModel.getDefaultConfigModel()
+        self.userConfig = initModel
+       
+
+        saveUserConfigurationToStorage()
+
+    }
+    
+
 }
 
 
@@ -397,6 +448,10 @@ extension AppModel {
         return []
     }
     
+   
+    
+
+    
     
     private func setBookmarkFlag(_ id: Int, _ markAsFavorite: Bool){
         let date: Date = .now
@@ -407,7 +462,6 @@ extension AppModel {
                 if markAsFavorite {
                     let bookmarkInfo = BookmarkInfo(id: id, bookmarkDate: date)
                     englishBuildings[idx].bookmarkInfo = bookmarkInfo
-//                    print("bookmarked en")
                 }else{
                     englishBuildings[idx].bookmarkInfo = nil
                 }
@@ -420,7 +474,6 @@ extension AppModel {
                 if markAsFavorite {
                     let bookmarkInfo = BookmarkInfo(id: id, bookmarkDate: date)
                     frenchBuildings[idx].bookmarkInfo = bookmarkInfo
-//                    print("bookmarked fr")
                     
                 }else{
                     frenchBuildings[idx].bookmarkInfo = nil
@@ -458,7 +511,6 @@ extension AppModel {
                         bookmarks.append(building)
                     }
                 }
-                print("here")
                 self.filteredFavorites = bookmarks
                
                

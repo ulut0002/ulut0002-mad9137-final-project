@@ -8,21 +8,26 @@
 import SwiftUI
 
 struct LanguageSelectionView: View {
-    @State var selectedLanguage: Language = .english
+    @ObservedObject var appModel: AppModel
+    @State var selectedLanguage: PreferredLanguage = .english
+    
     var body: some View {
         HStack{
             Text("Language").bold()
             Spacer()
             Picker("", selection: $selectedLanguage){
-                Text("English").tag(Language.english)
-                Text("French").tag(Language.french)
+                Text("English").tag(PreferredLanguage.english)
+                Text("French").tag(PreferredLanguage.french)
+            }.onSubmit {
+               
             }
+            
+        }.onAppear(){
+            selectedLanguage = appModel.userConfig.preferredLanguage
+        }.onChange(of: appModel.userConfig.preferredLanguage){
+            selectedLanguage = appModel.userConfig.preferredLanguage
+        }.onChange(of: selectedLanguage){ oldValue, newValue in
+            appModel.setLanguage(language: newValue)
         }
-        
-        
     }
-}
-
-#Preview {
-    LanguageSelectionView()
 }

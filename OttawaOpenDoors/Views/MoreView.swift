@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct MoreView: View {
-    var appModel:AppModel
+    @ObservedObject var appModel:AppModel
     
     var body: some View {
         ZStack{
@@ -20,7 +20,7 @@ struct MoreView: View {
                 }
                 
                 VStack{
-                    MoreMenu()
+                    MoreMenu(appModel: appModel)
                 }
             }
             .navigationBarTitleDisplayMode(.inline)
@@ -34,10 +34,11 @@ struct MoreView: View {
 }
 
 struct MoreMenu:View{
+    @ObservedObject var appModel: AppModel
     var body: some View{
         NavigationView{
             List{
-                LanguageSelectionView()
+                LanguageSelectionView(appModel: appModel)
                 NavigationLink{
                     Text("About the Event").navigationBarBackButtonHidden(true)
                 }label:{

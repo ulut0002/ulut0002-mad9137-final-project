@@ -12,7 +12,7 @@
 		57103B602B1865FE006F5BAD /* SearchField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57103B5F2B1865FE006F5BAD /* SearchField.swift */; };
 		571556AA2B1C51BE000185C1 /* BuildingCard.swift in Sources */ = {isa = PBXBuildFile; fileRef = 571556A92B1C51BE000185C1 /* BuildingCard.swift */; };
 		571556AC2B1C5ABE000185C1 /* BuildingDetailRow.swift in Sources */ = {isa = PBXBuildFile; fileRef = 571556AB2B1C5ABE000185C1 /* BuildingDetailRow.swift */; };
-		571556AE2B1CF9D3000185C1 /* UserLocation.swift in Sources */ = {isa = PBXBuildFile; fileRef = 571556AD2B1CF9D3000185C1 /* UserLocation.swift */; };
+		571556AE2B1CF9D3000185C1 /* LocationManager.swift in Sources */ = {isa = PBXBuildFile; fileRef = 571556AD2B1CF9D3000185C1 /* LocationManager.swift */; };
 		572161062B17A1CE00087239 /* AvatarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 572161052B17A1CE00087239 /* AvatarView.swift */; };
 		572161082B17A41800087239 /* SearchFiltersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 572161072B17A41800087239 /* SearchFiltersView.swift */; };
 		573416F62B111F1C008AE545 /* ShareInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573416F52B111F1C008AE545 /* ShareInfo.swift */; };
@@ -76,7 +76,7 @@
 		57103B5F2B1865FE006F5BAD /* SearchField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchField.swift; sourceTree = "<group>"; };
 		571556A92B1C51BE000185C1 /* BuildingCard.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuildingCard.swift; sourceTree = "<group>"; };
 		571556AB2B1C5ABE000185C1 /* BuildingDetailRow.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuildingDetailRow.swift; sourceTree = "<group>"; };
-		571556AD2B1CF9D3000185C1 /* UserLocation.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UserLocation.swift; sourceTree = "<group>"; };
+		571556AD2B1CF9D3000185C1 /* LocationManager.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LocationManager.swift; sourceTree = "<group>"; };
 		572161052B17A1CE00087239 /* AvatarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarView.swift; sourceTree = "<group>"; };
 		572161072B17A41800087239 /* SearchFiltersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchFiltersView.swift; sourceTree = "<group>"; };
 		573416F52B111F1C008AE545 /* ShareInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareInfo.swift; sourceTree = "<group>"; };
@@ -289,7 +289,7 @@
 				57525BA62B168D10006ECD2D /* Models.swift */,
 				57525BA82B168D81006ECD2D /* Enums.swift */,
 				5779CA962B16D0820014488A /* Sort.swift */,
-				571556AD2B1CF9D3000185C1 /* UserLocation.swift */,
+				571556AD2B1CF9D3000185C1 /* LocationManager.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -463,7 +463,7 @@
 				5769EA312B10910B0038C2A3 /* Config.swift in Sources */,
 				5706120B2B1C244800CA99B4 /* CategoryFilterItem.swift in Sources */,
 				5779CA972B16D0820014488A /* Sort.swift in Sources */,
-				571556AE2B1CF9D3000185C1 /* UserLocation.swift in Sources */,
+				571556AE2B1CF9D3000185C1 /* LocationManager.swift in Sources */,
 				577170572B0EFBF400EA4D46 /* TopNavigation.swift in Sources */,
 				57E9A2142B1EBE6B00CD5084 /* Toolbar.swift in Sources */,
 				5769EA372B1096040038C2A3 /* PreferencesModel.swift in Sources */,
@@ -661,7 +661,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_LSApplicationCategoryType = "";
-				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "This app needs your location to This app requires access to your location in order to display the distance between you and the building depicted on the map.\n\n\n the distance between you and the building shown on the app. ";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "To show the distance between you and the building on the map, please grant location access";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;
@@ -693,7 +693,7 @@
 				ENABLE_PREVIEWS = YES;
 				GENERATE_INFOPLIST_FILE = YES;
 				INFOPLIST_KEY_LSApplicationCategoryType = "";
-				INFOPLIST_KEY_NSLocationAlwaysAndWhenInUseUsageDescription = "This app needs your location to This app requires access to your location in order to display the distance between you and the building depicted on the map.\n\n\n the distance between you and the building shown on the app. ";
+				INFOPLIST_KEY_NSLocationWhenInUseUsageDescription = "To show the distance between you and the building on the map, please grant location access";
 				INFOPLIST_KEY_UIApplicationSceneManifest_Generation = YES;
 				INFOPLIST_KEY_UIApplicationSupportsIndirectInputEvents = YES;
 				INFOPLIST_KEY_UILaunchScreen_Generation = YES;

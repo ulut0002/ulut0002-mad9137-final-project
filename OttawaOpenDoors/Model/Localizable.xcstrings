@@ -7,12 +7,6 @@
     "%lld favorites found" : {
 
     },
-    "%lld results found" : {
-
-    },
-    "3.4 km from you" : {
-
-    },
     "a" : {
 
     },
@@ -27,6 +21,17 @@
     },
     "Assignment Due Dec 15" : {
 
+    },
+    "Building_Distance_From_You" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1@ km from you"
+          }
+        }
+      }
     },
     "Building_View_Awaiting_Amenites" : {
       "extractionState" : "manual",
@@ -68,6 +73,50 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Show More"
+          }
+        }
+      }
+    },
+    "Building_View_Default_Name" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Attraction"
+          }
+        }
+      }
+    },
+    "Building_View_Opening_Hours" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Opening Hours"
+          }
+        }
+      }
+    },
+    "Building_View_Opening_Hours_Text" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "%1$@ - %2$@ to %3$@"
+          }
+        }
+      }
+    },
+    "Building_View_Recenter_Map" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Re-center"
           }
         }
       }
@@ -244,6 +293,31 @@
           }
         }
       }
+    },
+    "Content_Not_Available_Description" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Please try again later."
+          }
+        }
+      }
+    },
+    "Content_Not_Available_Text" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Something wrong happened during fetch. Sorry!"
+          }
+        }
+      }
+    },
+    "Distance" : {
+
     },
     "English" : {
 
@@ -461,6 +535,12 @@
     "French" : {
 
     },
+    "Key" : {
+      "extractionState" : "manual"
+    },
+    "Key 1" : {
+      "extractionState" : "manual"
+    },
     "Label" : {
 
     },
@@ -548,6 +628,16 @@
       }
     },
     "Ottawa Open Doors" : {
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ottawa Open Doors"
+          }
+        }
+      }
+    },
+    "re-center" : {
 
     },
     "Reset" : {
@@ -614,6 +704,29 @@
         }
       }
     },
+    "Search_Results_Count" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "variations" : {
+            "plural" : {
+              "one" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "Only %1$d result found!"
+                }
+              },
+              "other" : {
+                "stringUnit" : {
+                  "state" : "translated",
+                  "value" : "%1$d results found!"
+                }
+              }
+            }
+          }
+        }
+      }
+    },
     "Settings_Language_English" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -636,11 +749,19 @@
         }
       }
     },
-    "Test" : {
-
-    },
     "This is a friendly reminder." : {
 
+    },
+    "Toolbar_Title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ottawa Open Doors"
+          }
+        }
+      }
     }
   },
   "version" : "1.0"

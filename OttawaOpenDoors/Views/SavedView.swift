@@ -8,14 +8,14 @@
 import SwiftUI
 
 struct SavedView: View {
-    @ObservedObject var appModel: AppModel
+    @StateObject var appModel: AppModel
     
     var body: some View {
         NavigationView{
             
             VStack(alignment: .leading){
                 
-                if (appModel.fetchStatus == .fetchingFirstTime){
+                if (appModel.fetchStatus == .fetching){
                     ProgressView("Fetching...")
                 }
                 
@@ -27,7 +27,7 @@ struct SavedView: View {
                     }.padding(.vertical, 8)
                     
                     ScrollView{
-                        LazyVStack(spacing: 8){
+                        LazyVStack(spacing: 12){
                             ForEach(Array(appModel.filteredFavorites.enumerated()), id: \.element.id){ index, building in
                                 BuildingCard(building: $appModel.filteredFavorites[index], 
                                              appModel : appModel,
@@ -38,10 +38,12 @@ struct SavedView: View {
                     }
                     Spacer()
                 }
+                Spacer()
                 
             }
-            .background(COLORS.BACKGROUND_COLOR)
             
+            .toolbarBackground(.visible, for: .navigationBar, .tabBar)
+            .toolbarBackground(COLORS.TOOLBAR_COLOR)
             .toolbarBackground(.visible, for: .navigationBar, .tabBar)
             .toolbar {
                 
@@ -49,16 +51,16 @@ struct SavedView: View {
                     Toolbar()
                 }
                 
-                ToolbarItem(placement: .navigationBarTrailing) {
-                    Label(
-                        title: { Text("Search") },
-                        icon: { Image(systemName: "magnifyingglass")
-                        }
-                    )
-                }
+//                ToolbarItem(placement: .navigationBarTrailing) {
+//                    Label(
+//                        title: { Text("Search") },
+//                        icon: { Image(systemName: "magnifyingglass")
+//                        }
+//                    )
+//                }
             }
             
             
-        }
+        }.tint(COLORS.LIGHT_TEXT_COLOR)
     }
 }

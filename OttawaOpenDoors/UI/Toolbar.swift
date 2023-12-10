@@ -11,15 +11,19 @@ struct Toolbar: View {
     var body: some View {
         Label(
             title: {
-                HStack{
-                    AvatarView(image:  Image("ic_logo"), size: 32)
-                    Text("Ottawa Open Doors").bold().font(.title3)
+                HStack(alignment: .center){
+                    AvatarView(image:  Image("ic_logo"), size: 32, color:.white)
+                
+                    Text(localizedString(forKey:"Toolbar_Title"))
+                        .bold()
+                        .font(.title3)
                         .padding(.leading, 4)
+                        .foregroundStyle(COLORS.LIGHT_TEXT_COLOR)
+                               
                     Spacer()
                 }.padding(.vertical, 12)
             },
             icon: { Image(systemName: "42.circle") }
-
         ).labelStyle(TitleOnlyLabelStyle())
         
     }
