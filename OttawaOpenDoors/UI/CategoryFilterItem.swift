@@ -9,6 +9,7 @@ import SwiftUI
 
 struct CategoryFilterItem: View {
     @Binding var draftCategory: Category
+    @EnvironmentObject var appLanguageManager: AppLanguageManager
 
 
     var body: some View {
@@ -18,13 +19,13 @@ struct CategoryFilterItem: View {
                 .aspectRatio(contentMode: .fit)
                 .frame(width: CONFIGURATION.FILTER_VIEW_ICON_WIDTH, height: CONFIGURATION.FILTER_VIEW_ICON_HEIGHT)
             
-            Text(draftCategory.option.translation).font(.body)
+            Text(draftCategory.option.translate(appLanguageManager.locale.identifier)).font(.body)
             Spacer()
             Toggle("", isOn: $draftCategory.selected)
                 .toggleStyle(.switch)
         }.onAppear(){
             // do nothing
-        }
+        }.tint(COLORS.BRAND_COLOR)
     }
 }
 

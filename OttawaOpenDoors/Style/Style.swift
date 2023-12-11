@@ -39,6 +39,13 @@ struct COLORS {
     
     static let NAVIGATION_TINT_COLOR_DARK = BRAND_COLOR
     static let NAVIGATION_TINT_COLOR_LIGHT = Color(red: 215/255.0, green: 227/255.0, blue: 245/255.0)
+    
+    
+    static let MAP_MARKER_BG_COLOR_LIGHT_MODE: Color = BRAND_COLOR
+    static let MAP_MARKER_ICON_COLOR_LIGHT_MODE: Color = .white
+    
+    static let MAP_MARKER_BG_COLOR_DARK_MODE: Color = .white
+    static let MAP_MARKER_ICON_COLOR_DARK_MODE: Color = BRAND_COLOR
 
     
    

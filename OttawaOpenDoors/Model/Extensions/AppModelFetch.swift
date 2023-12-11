@@ -23,7 +23,6 @@ extension AppModel{
                 return nil
             }
         }else{
-            print("failed ")
         }
         return nil
     }

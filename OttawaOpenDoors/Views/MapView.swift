@@ -23,8 +23,21 @@ struct MapView: View {
                                                     CLLocationCoordinate2D(latitude: OttawaCoordinates.lat.rawValue, longitude: OttawaCoordinates.long.rawValue),
                                                    span: MKCoordinateSpan(latitudeDelta: 0.06, longitudeDelta: 0.06))
     
+    @State private var selectedBuilding: Building?
+    @State private var selectedBuildingIndex: Int?
+    
+    func clearSelectedBuilding(){
+        self.selectedBuilding = nil
+        self.selectedBuildingIndex = nil
+    }
+    
     //
     @State private var route: MKRoute?
+    @Environment(\.colorScheme) var colorScheme
+    
+    @State var markerBgColor: Color = COLORS.MAP_MARKER_BG_COLOR_LIGHT_MODE
+    @State var markerIconColor: Color = COLORS.MAP_MARKER_ICON_COLOR_DARK_MODE
+
     
     func getDirections(from: MKMapItem, to: MKMapItem) {
         route = nil
@@ -41,6 +54,34 @@ struct MapView: View {
     }
     
     
+    func isBuildingSelected(building: Building?) -> Bool {
+        if let building = building {
+            if let selectedBld = self.selectedBuilding, selectedBld.id == building.id {
+                return true
+            }
+        }
+        return false
+    }
+    
+    
+    func setColors(){
+        switch colorScheme {
+        case .dark:
+            markerBgColor   = COLORS.MAP_MARKER_BG_COLOR_DARK_MODE
+            markerIconColor = COLORS.MAP_MARKER_ICON_COLOR_DARK_MODE
+            break
+        case .light:
+            markerBgColor   = COLORS.MAP_MARKER_BG_COLOR_LIGHT_MODE
+            markerIconColor = COLORS.MAP_MARKER_ICON_COLOR_LIGHT_MODE
+            break;
+        
+        @unknown default:
+            markerBgColor   = COLORS.MAP_MARKER_BG_COLOR_LIGHT_MODE
+            markerIconColor = COLORS.MAP_MARKER_ICON_COLOR_LIGHT_MODE
+            break;
+        }
+    }
+    
     var body: some View {
         
         ZStack (alignment: .bottom) {
@@ -52,46 +93,40 @@ struct MapView: View {
 
                         if let coordinate = building.coordinate, let name = building.name{
                            
-                            
                             Annotation(name, coordinate: coordinate){
                                 ZStack{
-                                    RoundedRectangle(cornerRadius: 105, style: .circular).fill(COLORS.BRAND_COLOR)
+                                    RoundedRectangle(cornerRadius: 105, style: .circular).fill(markerBgColor)
                                     RoundedRectangle(cornerRadius: 105, style: .circular).stroke(.secondary, lineWidth: 2)
-                                    Image(systemName: building.systemImage).resizable().aspectRatio(contentMode: .fit).frame(width: 24, height: 24, alignment: .center)
-                                        .foregroundStyle(Color.white)
+                                    
+                                    if let selectedBld = self.selectedBuilding, selectedBld.id == building.id {
+                                        Image(systemName: building.systemImage).resizable().aspectRatio(contentMode: .fit).frame(width: 36, height: 36, alignment: .center)
+                                            .foregroundStyle(markerIconColor)
+                                    }else{
+                                        Image(systemName: building.systemImage).resizable().aspectRatio(contentMode: .fit).frame(width: 24, height: 24, alignment: .center)
+                                            .foregroundStyle(markerIconColor)
+                                    }
+                                   
                                     
                                 }.onTapGesture{
+                                    self.selectedBuilding = building
+                                    self.selectedBuildingIndex = index
                                     text = building.name ?? "Unkown"
-//                                    position = .region(MKCoordinateRegion(center: coordinate, span: MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1)))
-//                                    position = .camera(MapCamera(centerCoordinate: coordinate, distance: 980, heading: 242, pitch: 60))
-//                                    position = .userLocation(fallback: .automatic)
-//                                    position = .automatic
-//                                    position = .
-                                    
-//                                    position = .camera(MapCamera(centerCoordinate: coordinate, distance: 2000, heading: 0, pitch: 0))
-                                    
-                                    
-//                                    let region = MKCoordinateRegion(center: coordinate, span: MKCoordinateSpan(latitudeDelta: 0.1, longitudeDelta: 0.1))
-//                                    withAnimation{
-////                                        position = .region(region)
-//                                    }
-                                    
-                                    position = .item(MKMapItem(placemark: MKPlacemark(coordinate: coordinate)))
-                                    
-//                                    position = .camera(MapCamera(centerCoordinate: coordinate, distance: visibleRegion?.distance ?? 2000,
-//                                                                 pitch: visibleRegion?.pitch ?? 0, heading: visibleRegion?.heading ?? 0))
+//
 
                                     
-                                }.frame(width: 32, height: 32)
+                                }.frame(width: selectedBuilding?.id == building.id ? 48 : 32, height: selectedBuilding?.id == building.id ? 48 : 32)
+
                             }.annotationTitles(.hidden)
-                            if let route {
-                                MapPolyline(route).stroke(.blue, lineWidth: 5)
-                            }
+                                
+//
                             
                         }
                     }
                     UserAnnotation()
                 }
+                .onTapGesture(perform: {
+//                    self.selectedBuilding = nil
+                })
                 .mapStyle(.standard(elevation: .realistic))
                 .mapControls{
                     MapUserLocationButton()
@@ -103,7 +138,7 @@ struct MapView: View {
                 }
                 .mapControlVisibility(.visible)
                 .onChange(of: appModel.filteredBuildings){
-                    position = .automatic
+//                    position = .automatic
                 }
                 .onMapCameraChange { context in
                     visibleRegion = context.region
@@ -112,13 +147,21 @@ struct MapView: View {
                 
             }
             .onAppear(){
+
+                setColors()
+            }.onChange(of: self.colorScheme, {
+                setColors()
+            })
+            
+            if let _ = selectedBuilding, let index = selectedBuildingIndex {
+                BuildingMapPreview(appModel: appModel, building: $appModel.filteredBuildings[index],
+                                   clearSelectedBuilding: clearSelectedBuilding)
+                    .padding(.bottom, 48)
                 
-            }
             
-            
-            VStack{
-                Text(text).font(.title).foregroundStyle(.blue)
+
             }
+          
         }
         
     }

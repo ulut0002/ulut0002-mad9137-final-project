@@ -16,6 +16,9 @@ struct BuildingViewMap: View {
     @State var distanceInKm : Double? = nil
     @State var distanceInKmText = ""
     
+    @EnvironmentObject var appLanguageManager: AppLanguageManager
+
+    
     @EnvironmentObject var locationManager:LocationManager
     
     var body: some View {
@@ -31,7 +34,7 @@ struct BuildingViewMap: View {
                     }
                    
                 }label: {
-                    Text(localizedString(forKey:"Building_View_Recenter_Map"))
+                    Text("Building_View_Recenter_Map".localizeString(string: appLanguageManager.locale.identifier))
                         .foregroundStyle(COLORS.TEXT_BUTTON_BLUE)
                         .font(.subheadline)
                 }
@@ -48,7 +51,7 @@ struct BuildingViewMap: View {
              
                 
                 if let region = region {
-                    Marker(building.name ?? localizedString(forKey:  "Building_View_Default_Name") , coordinate: region)
+                    Marker(building.name ?? "Building_View_Default_Name".localizeString(string: appLanguageManager.locale.identifier) , coordinate: region)
                                 }
                 
             }.mapControls{
@@ -106,7 +109,7 @@ struct BuildingViewMap: View {
     
     func updateDistanceText(){
         if let distanceInKm {
-            distanceInKmText = localizedString(forKey: "Building_Distance_From_You", parameters: String(distanceInKm))
+            distanceInKmText = "Building_Distance_From_You".localizeString(string: appLanguageManager.locale.identifier, parameters: String(distanceInKm))
         }else{
             distanceInKmText = ""
         }

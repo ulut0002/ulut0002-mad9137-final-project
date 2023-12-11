@@ -12,10 +12,13 @@ import SwiftUI
 struct SearchField: View {
     
     @Binding var searchText: String
+     var searchTextHint: String
+    @EnvironmentObject var appLanguageManager: AppLanguageManager
+
 
     var body: some View {
         HStack {
-            TextField("Search Keyword", text: $searchText)
+            TextField(searchTextHint.localizeString(string: appLanguageManager.locale.identifier), text: $searchText)
                 .padding()
                 .textFieldStyle(RoundedBorderTextFieldStyle())
                 .onChange(of: searchText){ oldValue, newValue in

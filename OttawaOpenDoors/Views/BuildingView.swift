@@ -14,10 +14,46 @@ struct BuildingView: View {
     @State var featureList: [Feature] = []
     @State var masterFeatureList: [Feature] = []
     
+    @EnvironmentObject var appLanguageManager: AppLanguageManager
+    
     @State var buildingDescription = ""
     
     @State var sundayHours = ""
     @State var saturdayHours = ""
+    
+    @State private var labelOpeningHours = ""
+    @State private var labelDescriptionShowMore = ""
+    @State private var labelDescriptionShowLess = ""
+    @State private var labelAwaitingDescription = ""
+    
+    
+    @State private var labelAmenities = ""
+    @State private var labelAmenitiesShowMore = ""
+    @State private var labelAmenitiesShowLess = ""
+    
+    @State private var labelLocation = ""
+    @State private var labelRecenter = ""
+    @State private var labelDistance = ""
+    
+    private func setLabels(){
+        let locale:String = appLanguageManager.locale.identifier
+        //Building_View_Opening_Hours
+        labelOpeningHours = "Building_View_Opening_Hours".localizeString(string: locale)
+        
+        
+        
+        labelDescriptionShowMore = "Building_View_Button_Show_Less".localizeString(string: locale)
+        labelDescriptionShowLess = "Building_View_Button_Show_More".localizeString(string: locale)
+        
+        labelAmenitiesShowLess = "Building_View_Button_Show_Less".localizeString(string: locale)
+        labelAmenitiesShowMore = "Building_View_Button_Show_More".localizeString(string: locale)
+        
+        labelAwaitingDescription = "Building_View_Awaiting_Description".localizeString(string: locale)
+        
+        labelAmenities = "Building_View_Title_Amenities".localizeString(string: locale)
+        
+        labelLocation = "Building_View_Title_Location".localizeString(string: locale)
+    }
     
     
     
@@ -55,10 +91,10 @@ struct BuildingView: View {
                                 HStack {
                                     Spacer()
                                     HStack{
-                                        Image(systemName: "square.and.arrow.up")
-                                            .opacity(1)
-                                            .foregroundStyle(COLORS.FAV_OVERLAY_STROKE_COLOR)
-                                            .padding(.trailing, 8)
+                                        
+                                        
+                                        OODShareLink(building: building)
+                                        
                                         Image(systemName: building.bookmarkInfo == nil ? "bookmark":"bookmark.fill")
                                             .opacity(1)
                                             .foregroundStyle(COLORS.FAV_OVERLAY_STROKE_COLOR)
@@ -102,7 +138,7 @@ struct BuildingView: View {
                             .frame(width: CONFIGURATION.BUILDING_VIEW_ICON_WIDTH, height: CONFIGURATION.BUILDING_VIEW_ICON_HEIGHT)
                             .foregroundStyle(COLORS.DARK_TEXT_COLOR)
                         
-                        Text(cat.translation)
+                        Text(cat.translate(appLanguageManager.locale.identifier))
                             .foregroundStyle(COLORS.DARK_TEXT_COLOR)
                             .font(.body)
                         Spacer()
@@ -115,7 +151,7 @@ struct BuildingView: View {
                     
                     VStack{
                         HStack{
-                            Text(LocalizedStringKey("Building_View_Opening_Hours"))
+                            Text(labelOpeningHours)
                                 .foregroundStyle(COLORS.DARK_TEXT_COLOR)
                                 .font(.headline)
                             
@@ -160,7 +196,7 @@ struct BuildingView: View {
                                 .padding(0)
                                 .lineSpacing(10)
                         }else{
-                            Text(LocalizedStringKey("Building_View_Awaiting_Description"))
+                            Text(labelAwaitingDescription)
                                 .foregroundStyle(COLORS.DARK_TEXT_COLOR)
                                 .font(.body)
                                 .padding(0)
@@ -178,7 +214,7 @@ struct BuildingView: View {
                         Button(action: {
                             appModel.toggleBuildingDetailShowLongDescription()
                         }, label: {
-                            Text(appModel.buildingDetailShowAllDescription ? LocalizedStringKey("Building_View_Button_Show_Less"):LocalizedStringKey("Building_View_Button_Show_More"))
+                            Text(appModel.buildingDetailShowAllDescription ? labelDescriptionShowMore:labelDescriptionShowLess)
                                 .foregroundStyle(COLORS.TEXT_BUTTON_BLUE)
                                 .font(.caption)
                         })
@@ -190,7 +226,7 @@ struct BuildingView: View {
                     
                     
                     HStack{
-                        Text(LocalizedStringKey("Building_View_Title_Amenities"))
+                        Text(labelAmenities)
                             .foregroundStyle(COLORS.DARK_TEXT_COLOR)
                             .font(.headline)
                         
@@ -207,7 +243,7 @@ struct BuildingView: View {
                                         .aspectRatio(contentMode: .fit)
                                         .frame(width: CONFIGURATION.BUILDING_VIEW_ICON_WIDTH, height: CONFIGURATION.BUILDING_VIEW_ICON_HEIGHT)
                                         .foregroundStyle(COLORS.DARK_TEXT_COLOR)
-                                    Text(val.option.translation)
+                                    Text(val.option.translate(appLanguageManager.locale.identifier))
                                         .foregroundStyle(COLORS.DARK_TEXT_COLOR)
                                         .font(.body)
                                     Spacer(minLength: 1)
@@ -241,7 +277,7 @@ struct BuildingView: View {
                                 Button(action: {
                                     appModel.toggleBuildingDetailShowAllAmenities()
                                 }, label: {
-                                    Text(appModel.buildingDetailShowAllAmenities ? LocalizedStringKey("Building_View_Button_Show_Less"):LocalizedStringKey("Building_View_Button_Show_More"))
+                                    Text(appModel.buildingDetailShowAllAmenities ? labelAmenitiesShowLess:labelAmenitiesShowMore)
                                         .foregroundStyle(COLORS.TEXT_BUTTON_BLUE)
                                     
                                         .font(.caption)
@@ -254,7 +290,7 @@ struct BuildingView: View {
                     Divider()
                     
                     HStack{
-                        Text(LocalizedStringKey("Building_View_Title_Location"))
+                        Text(labelLocation)
                             .foregroundStyle(COLORS.DARK_TEXT_COLOR)
                             .font(.headline)
                         Spacer(minLength: 1)
@@ -284,9 +320,10 @@ struct BuildingView: View {
             
             
         }
+        
         .onAppear(){
             
-            
+            setLabels()
             
             for feature in appModel.buildingAmenities {
                 if (building.hasFeature(feature: feature)){
@@ -298,11 +335,11 @@ struct BuildingView: View {
             
             
             if let saturdayStart = building.saturdayStart, let saturdayClose = building.saturdayClose {
-                saturdayHours = formatDate(saturdayStart, saturdayClose, locale: appModel.locale) ?? ""
+                saturdayHours = formatDate(saturdayStart, saturdayClose,  language: appLanguageManager.locale.identifier) ?? ""
             }
             
             if let sundayStart = building.sundayStart, let sundayClose = building.sundayClose{
-                sundayHours = formatDate(sundayStart, sundayClose, locale: appModel.locale) ?? ""
+                sundayHours = formatDate(sundayStart, sundayClose, language: appLanguageManager.locale.identifier) ?? ""
                 
                 
             }
@@ -312,9 +349,9 @@ struct BuildingView: View {
             buildFeatureList()
         }.onChange(of: appModel.buildingDetailShowAllDescription){
             formatBuildingText()
-        }
-        .background(COLORS.BACKGROUND_COLOR)
-        //        .background(.yellow)
+        }.onChange(of: appModel.userConfig.preferredLanguage,{
+            setLabels()
+        })
         .toolbarBackground(.visible, for: .navigationBar, .tabBar)
         .toolbarBackground(COLORS.TOOLBAR_COLOR)
         .toolbar {

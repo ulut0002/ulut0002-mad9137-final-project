@@ -9,6 +9,8 @@ import SwiftUI
 
 struct FeatureFilterItem: View {
     @Binding var draftFeature: Feature
+    @EnvironmentObject var appLanguageManager: AppLanguageManager
+
     
     
     var body: some View {
@@ -18,13 +20,14 @@ struct FeatureFilterItem: View {
                 .aspectRatio(contentMode: .fit)
                 .frame(width: CONFIGURATION.FILTER_VIEW_ICON_WIDTH, height: CONFIGURATION.FILTER_VIEW_ICON_HEIGHT)
             
-            Text(draftFeature.option.translation).font(.body)
+            Text(draftFeature.option.translate(appLanguageManager.locale.identifier)).font(.body)
+            
             Spacer()
             Toggle("", isOn: $draftFeature.selected)
                 .toggleStyle(.switch)
         }.onAppear(){
             // do nothing
-        }
+        }.tint(COLORS.BRAND_COLOR)
     }
 }
 

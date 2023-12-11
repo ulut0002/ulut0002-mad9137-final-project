@@ -8,8 +8,22 @@
 import SwiftUI
 
 struct SearchFiltersView: View {
+    
     @ObservedObject var appModel: AppModel
+    var filterSource: SearchScreenSource
     @Binding var isSheetPresented: Bool
+    
+    @EnvironmentObject var appLanguageManager: AppLanguageManager
+    
+    
+    
+    private func getSelectedDraftFilter() -> Filters{
+        if filterSource == .bookmarks {
+            return appModel.draftFavoriteFilters
+        }
+        return appModel.draftUserFilters
+    }
+
     
     @State var isExpanded = true
     
@@ -18,14 +32,25 @@ struct SearchFiltersView: View {
         VStack(spacing: 0){
             
             HStack{
-                Button("Cancel"){
+                Button("Filters_View_Label_Cancel".localizeString(string: appLanguageManager.locale.identifier)){
                     isSheetPresented.toggle()
                 }
                 Spacer()
-                Text("Filters").font(.headline)
+                if (filterSource == .bookmarks){
+                    Text("Filters_View_Label_Bookmark_Filters".localizeString(string: appLanguageManager.locale.identifier)).font(.headline)
+
+                }else{
+                    Text("Filters_View_Label_Filters".localizeString(string: appLanguageManager.locale.identifier)).font(.headline)
+
+                }
                 Spacer()
-                Button("Reset"){
-                    appModel.resetFilters()
+                Button("Filters_View_Label_Reset".localizeString(string: appLanguageManager.locale.identifier)){
+                    if filterSource == .bookmarks{
+                        appModel.resetBookmarkFilters()
+                    }else{
+                        appModel.resetFilters()
+
+                    }
                 }
                 
             }.padding()
@@ -34,87 +59,110 @@ struct SearchFiltersView: View {
             
             
             VStack(alignment: .leading){
-                SearchField(searchText: $appModel.draftUserFilters.keyword)
+                SearchField(searchText: filterSource == .bookmarks  ? $appModel.draftFavoriteFilters.keyword : $appModel.draftUserFilters.keyword,
+                            searchTextHint: filterSource == .bookmarks ?   "Filters_View_Label_Search_Keyword_Bookmark":
+                "Filters_View_Label_Search_Keyword")
             }.background(.gray.opacity(0.3))
             
+            
+            
             ScrollView {
-                
                 VStack{
-                    HStack(){
-                        Text(LocalizedStringKey("Search_Filters_Sort_Title")).font(.headline)
-                        Spacer()
-                    }
                     
-                    HStack(spacing: 12){
-                        Button{
-                            appModel.draftUserFilters.sortBy = .alphabetical_asc
-                        }label: {
-                            HStack{
-                                Image(systemName: "checkmark").font(.system(size: 16)).opacity(appModel.draftUserFilters.sortBy == .distance_asc ? 0 : 1)
-                                Text("By Name")
-                                    .font(.headline)
-                                    .foregroundStyle(appModel.draftUserFilters.sortBy == .alphabetical_asc ? COLORS.BUTTON_ENABLED_TEXT_COLOR : COLORS.BUTTON_DISABLED_TEXT_COLOR)
-                            } .padding(12) // Add padding to increase the button size
-                                .background(appModel.draftUserFilters.sortBy == .alphabetical_asc ? COLORS.BUTTON_ENABLED_BG_COLOR : COLORS.BUTTON_DISABLE_BG_COLOR)
-                                .cornerRadius(STYLE_VARIABLES.SORT_BUTTON_CORNER_RADIUS) // Add rounded corners
-                                .overlay(
-                                    RoundedRectangle(cornerRadius: STYLE_VARIABLES.SORT_BUTTON_CORNER_RADIUS)
-                                        .stroke(appModel.draftUserFilters.sortBy == .alphabetical_asc ? COLORS.BUTTON_ENABLED_BORDER_COLOR : COLORS.BUTTON_DISABLE_BORDER_COLOR, lineWidth: 2) // Add blue border
-                                )
+                    VStack{
+                        HStack(){
+                            Text("Filters_View_Label_SortBy".localizeString(string: appLanguageManager.locale.identifier)).font(.headline)
+                            Spacer()
                         }
                         
-                        Button{
-                            //action
-                            appModel.draftUserFilters.sortBy = .distance_asc
-                        }label: {
-                            HStack{
-                                Image(systemName: "checkmark").font(.system(size: 16)).opacity(appModel.draftUserFilters.sortBy == .alphabetical_asc ? 0 : 1)
-                                
-                                Text("By Distance")
-                                    .font(.headline)
-                                    .foregroundStyle(appModel.draftUserFilters.sortBy == .distance_asc ? COLORS.BUTTON_ENABLED_TEXT_COLOR : COLORS.BUTTON_DISABLED_TEXT_COLOR)
-                                
-                            } .padding(12) // Add padding to increase the button size
-                                .background(appModel.draftUserFilters.sortBy == .distance_asc ? COLORS.BUTTON_ENABLED_BG_COLOR : COLORS.BUTTON_DISABLE_BG_COLOR)
+                        HStack(spacing: 12){
+                            Button{
+                                if filterSource == .bookmarks {
+                                    appModel.draftFavoriteFilters.sortBy = .alphabetical_asc
+
+                                }else{
+                                    appModel.draftUserFilters.sortBy = .alphabetical_asc
+
+                                }
+                            }label: {
+                                HStack{
+                                    Image(systemName: "checkmark").font(.system(size: 16)).opacity(getSelectedDraftFilter().sortBy == .distance_asc ? 0 : 1)
+                                    Text("Filters_View_Label_Sort_By_Name".localizeString(string: appLanguageManager.locale.identifier))
+                                        .font(.headline)
+                                        .foregroundStyle(getSelectedDraftFilter().sortBy == .alphabetical_asc ? COLORS.BUTTON_ENABLED_TEXT_COLOR : COLORS.BUTTON_DISABLED_TEXT_COLOR)
+                                }
+                                .padding(12) // Add padding to increase the button size
+                                .background(getSelectedDraftFilter().sortBy == .alphabetical_asc ? COLORS.BUTTON_ENABLED_BG_COLOR : COLORS.BUTTON_DISABLE_BG_COLOR)
                                 .cornerRadius(STYLE_VARIABLES.SORT_BUTTON_CORNER_RADIUS) // Add rounded corners
                                 .overlay(
                                     RoundedRectangle(cornerRadius: STYLE_VARIABLES.SORT_BUTTON_CORNER_RADIUS)
-                                        .stroke(appModel.draftUserFilters.sortBy == .distance_asc ? COLORS.BUTTON_ENABLED_BORDER_COLOR : COLORS.BUTTON_DISABLE_BORDER_COLOR, lineWidth: 2) // Add blue border
+                                        .stroke(getSelectedDraftFilter().sortBy == .alphabetical_asc ? COLORS.BUTTON_ENABLED_BORDER_COLOR : COLORS.BUTTON_DISABLE_BORDER_COLOR, lineWidth: 2) // Add blue border
                                 )
-                        }
+                            }
+                            
+                            Button{
+                                //action
+                                if filterSource == .bookmarks {
+                                    appModel.draftFavoriteFilters.sortBy = .distance_asc
+                                }else{
+                                    appModel.draftUserFilters.sortBy = .distance_asc
+
+                                }
+                            }label: {
+                                HStack{
+                                    Image(systemName: "checkmark").font(.system(size: 16)).opacity(getSelectedDraftFilter().sortBy == .alphabetical_asc ? 0 : 1)
+                                    
+                                    Text("Filters_View_Label_Sort_By_Distance".localizeString(string: appLanguageManager.locale.identifier))
+                                        .font(.headline)
+                                        .foregroundStyle(getSelectedDraftFilter().sortBy == .distance_asc ? COLORS.BUTTON_ENABLED_TEXT_COLOR : COLORS.BUTTON_DISABLED_TEXT_COLOR)
+                                    
+                                } .padding(12) // Add padding to increase the button size
+                                    .background(getSelectedDraftFilter().sortBy == .distance_asc ? COLORS.BUTTON_ENABLED_BG_COLOR : COLORS.BUTTON_DISABLE_BG_COLOR)
+                                    .cornerRadius(STYLE_VARIABLES.SORT_BUTTON_CORNER_RADIUS) // Add rounded corners
+                                    .overlay(
+                                        RoundedRectangle(cornerRadius: STYLE_VARIABLES.SORT_BUTTON_CORNER_RADIUS)
+                                            .stroke(getSelectedDraftFilter().sortBy == .distance_asc ? COLORS.BUTTON_ENABLED_BORDER_COLOR : COLORS.BUTTON_DISABLE_BORDER_COLOR, lineWidth: 2) // Add blue border
+                                    )
+                            }
+                        }.tint(COLORS.BRAND_COLOR)
+                        
                     }
                     
-                }
-                
-                
-                
-                VStack{
                     
                     
-                    Divider().padding(.vertical, 8)
-                    
-                    
-                    FeatureFilter(appModel: appModel)
-                    Divider().padding(.vertical, 8)
-                    
-                    CategoryFilter(appModel: appModel)
-                    
-                    Divider().padding(.vertical, 8)
-                    
-                    Spacer()
-                    
-                    
-                    
-                    
-                }
+                    VStack{
+                        
+                        
+                        Divider().padding(.vertical, 8)
+                        
+                        
+                        FeatureFilter(appModel: appModel, filterSource: filterSource)
+                        Divider().padding(.vertical, 8)
+                        
+                        CategoryFilter(appModel: appModel, filterSource: filterSource)
+                        
+                        Divider().padding(.vertical, 8)
+                        
+                        Spacer()
+                        
+                        
+                        
+                        
+                    }
+                }.padding()
             }
             HStack{
                 Spacer()
                 Button {
-                    appModel.applyFilters()
+                    if filterSource == .bookmarks {
+                        appModel.applyFavoriteFilters()
+                    }else{
+                        appModel.applyFilters()
+
+                    }
                     isSheetPresented = false
                 } label: {
-                    Text("Apply Filters")
+                    Text("Filters_View_Label_ApplyFiltersButton".localizeString(string: appLanguageManager.locale.identifier))
                 } .frame(maxWidth: .infinity)
                     .padding()
                     .foregroundColor(.white)
@@ -131,7 +179,11 @@ struct SearchFiltersView: View {
             
             
         }.onAppear{
-            appModel.draftUserFilters = appModel.userFilters
+            if filterSource == .main {
+                appModel.draftUserFilters = appModel.userFilters
+            }else if filterSource == .bookmarks{
+                appModel.draftFavoriteFilters = appModel.favoriteFilters
+            }
             
         }
         //        .background(COLORS.BACKGROUND_COLOR)
@@ -141,8 +193,14 @@ struct SearchFiltersView: View {
 
 struct SearchFiltersView_Previews: PreviewProvider {
     static var previews: some View {
+        let appLanguageManager = AppLanguageManager()
+        let location = LocationManager()
+
         let appModel = AppModel()
-        SearchFiltersView(appModel: appModel, isSheetPresented: .constant(true))
+        SearchFiltersView(appModel: appModel, filterSource: .bookmarks, isSheetPresented: .constant(true))
+            .environmentObject(appLanguageManager)
+            .environmentObject(location)
+
         
     }
 }

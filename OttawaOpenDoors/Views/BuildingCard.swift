@@ -40,10 +40,8 @@ struct BuildingCard: View {
                             HStack {
                                 Spacer()
                                 HStack{
-                                    Image(systemName: "square.and.arrow.up")
-                                        .opacity(1)
-                                        .foregroundStyle(COLORS.FAV_OVERLAY_STROKE_COLOR)
-                                        .padding(.trailing, 8)
+                                    OODShareLink(building: building)
+
                                     Image(systemName: building.bookmarkInfo == nil ? "bookmark":"bookmark.fill")
                                         .opacity(1)
                                         .foregroundStyle(COLORS.FAV_OVERLAY_STROKE_COLOR)

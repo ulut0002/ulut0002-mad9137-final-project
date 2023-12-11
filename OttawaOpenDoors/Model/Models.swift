@@ -231,11 +231,15 @@ class AppModel : ObservableObject{
     var buildingsMaster: [PreferredLanguage: [Building]] = [.english: [], .french: []]
     var categoriesMaster:[Category] = []
     var favoritesMaster: [BookmarkInfo] = [] // only contains IDs
-
+    
     @Published  var filteredBuildings: [Building] = []
     @Published  var filteredFavorites: [Building] = []
     @Published  var userFilters: Filters = Filters.getDefaultSearchFilter()
     @Published var draftUserFilters: Filters = Filters.getDefaultSearchFilter()
+    
+    @Published  var favoriteFilters: Filters = Filters.getDefaultSearchFilter()
+    @Published var draftFavoriteFilters: Filters = Filters.getDefaultSearchFilter()
+    
     
     @Published var fetchStatus:FetchStatus = .idle
     @Published var activeScreen:ActiveScreen = .main
@@ -243,11 +247,11 @@ class AppModel : ObservableObject{
     @Published private(set) var buildingDetailShowAllDescription: Bool = false
     @Published private(set) var buildingDetailShowAllAmenities: Bool = false
     @Published private(set) var buildingAmenities = BuildingFeature.getAmenitiesAsArray()
-   
+    
     @Published private(set) var locale = Locale(identifier: CONFIGURATION.LANG_EN)
     
     
-//    setBuildingDetailShowLongDescription
+    //    setBuildingDetailShowLongDescription
     
 }
 
@@ -287,7 +291,7 @@ extension AppModel {
         
         
         
-        
+        filteredBuildings = sortBuildings(sourceData: filteredBuildings, sortBy: self.userFilters.sortBy)
         
         
         return filteredBuildings
@@ -307,17 +311,31 @@ extension AppModel {
         
     }
     
+    func applyFavoriteFilters(){
+    favoriteFilters = draftFavoriteFilters
+      filterBookmarks()
+    }
+    
     func resetFilters() {
         draftUserFilters = Filters.getDefaultSearchFilter()
     }
     
+    func resetBookmarkFilters() {
+        draftFavoriteFilters = Filters.getDefaultSearchFilter()
+    }
+    
 }
+
+
 
 
 // MARK: Sort Buildings
 extension AppModel{
     func sortBuildings(sourceData: [Building], sortBy: SortBy) -> [Building]{
         return  sourceData.sorted(by: { (building1, building2) -> Bool in
+      
+           
+         
             return compareBuildings(building1,  building2, sortBy)
         })
     }
@@ -332,6 +350,18 @@ extension AppModel{
 
 // MARK: Switch Language, set Language
 extension AppModel {
+    static var currentLanguage: String {
+        get {
+            return UserDefaults.standard.string(forKey: "AppLanguage") ?? "en"
+        }
+        set {
+            UserDefaults.standard.set(newValue, forKey: "AppLanguage")
+        }
+    }
+    
+    
+    
+    
     func switchLanguage(){
         setLanguage(language: (self.selectedLanguage == .english) ? .french : .english)
     }
@@ -347,9 +377,17 @@ extension AppModel {
         }else {
             locale =  Locale(identifier: CONFIGURATION.LANG_EN)
         }
+        
+        
         self.selectedLanguage = language
         self.userConfig.preferredLanguage = language
+        self.userConfig.lang = locale.identifier
         saveUserConfigurationToStorage()
+        
+        
+        
+        
+        
         
         Task {
             try await  retrieve()
@@ -376,7 +414,7 @@ extension AppModel{
 extension AppModel{
     
     
-     func saveUserConfigurationToStorage(){
+    func saveUserConfigurationToStorage(){
         if let encodeData = try? JSONEncoder().encode(userConfig){
             UserDefaults.standard.set(encodeData, forKey: CONFIGURATION.STORAGE_KEY_CONFIGURATION)
         }
@@ -384,22 +422,21 @@ extension AppModel{
     
     func readUserConfigurationFromStorage(){
         if let userData = UserDefaults.standard.data(forKey: CONFIGURATION.STORAGE_KEY_CONFIGURATION), let decodedData = try? JSONDecoder().decode(ConfigModel.self, from: userData){
-            print("From Storage: \(decodedData)")
             self.userConfig = decodedData
             self.selectedLanguage = decodedData.preferredLanguage
             return
         }
         
         //create a blank one, save it, amd return it
-        var initModel = ConfigModel.getDefaultConfigModel()
+        let initModel = ConfigModel.getDefaultConfigModel()
         self.userConfig = initModel
-       
-
+        
+        
         saveUserConfigurationToStorage()
-
+        
     }
     
-
+    
 }
 
 
@@ -441,16 +478,16 @@ extension AppModel {
         }
     }
     
-     func readBookmarksFromStorage() -> [BookmarkInfo]{
+    func readBookmarksFromStorage() -> [BookmarkInfo]{
         if let bookmarkData = UserDefaults.standard.data(forKey: CONFIGURATION.STORAGE_KEY_SAVED_BUILDINGS), let decodedData = try? JSONDecoder().decode([BookmarkInfo].self, from: bookmarkData){
             return decodedData
         }
         return []
     }
     
-   
     
-
+    
+    
     
     
     private func setBookmarkFlag(_ id: Int, _ markAsFavorite: Bool){
@@ -492,7 +529,7 @@ extension AppModel {
                 filteredBuildings[idx].bookmarkInfo = nil
             }
         }
-    
+        
         
         //re-generate the bookmarks list
         filterBookmarks()
@@ -500,28 +537,48 @@ extension AppModel {
         
     }
     
-     func filterBookmarks(){
-            do{
-                var bookmarks : [Building] = []
-                let sortedBookmarks = favoritesMaster.sorted(by: {$0.bookmarkDate >= $1.bookmarkDate})
-                
-                
-                for bookmarkInfo in sortedBookmarks {
-                    if let building = buildingsMaster[selectedLanguage]?.first(where: {$0.id == bookmarkInfo.id}){
+    func filterBookmarks(){
+        
+      
+        let categories = favoriteFilters.categories
+        let features = favoriteFilters.features
+        let keyword = favoriteFilters.keyword
+
+        
+       
+        
+        
+        do{
+            var bookmarks : [Building] = []
+            let sortedBookmarks = favoritesMaster.sorted(by: {$0.bookmarkDate >= $1.bookmarkDate})
+            
+            
+            for bookmarkInfo in sortedBookmarks {
+                if let building = buildingsMaster[selectedLanguage]?.first(where: {$0.id == bookmarkInfo.id}){
+                    
+                    //check if the building matches with the filters
+                    let categoryMatch = categories.matchBuilding(building: building)
+                    let featureMatch = features.matchBuilding(building: building)
+                    var hasKeyword = true
+                    let cleanKeyword1 = keyword.lowercased().trimmingCharacters(in: .whitespacesAndNewlines)
+                    
+                    if (!cleanKeyword1.isEmpty){
+                        hasKeyword = building.hasKeyword(searchKeyword: keyword)
+                        
+                    }
+                    if (featureMatch && categoryMatch && hasKeyword){
                         bookmarks.append(building)
                     }
                 }
-                self.filteredFavorites = bookmarks
-               
-               
-            }catch {
-                print("Error: \(error.localizedDescription)")
-                DispatchQueue.main.async {
-                    //                    self.allCountriesStatus = .error
-                    //                    self.favCountriesStatus = .error
-                }
             }
+            
+            bookmarks = sortBuildings(sourceData: bookmarks, sortBy: self.favoriteFilters.sortBy)
+
+            self.filteredFavorites = bookmarks
+            
+            
         }
+    }
 }
 
 

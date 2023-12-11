@@ -13,30 +13,30 @@ struct MainView: View {
     @State var isSheetPresented = false
     @Environment(\.colorScheme) var colorScheme
     @EnvironmentObject var locationManager:LocationManager
+    @EnvironmentObject var appLanguageManager:AppLanguageManager
     
-    //var x = LocalizedStringResource
+    @State private var labelResultFound:String = ""
+    @State private var labelContentNotAvailableText:String = ""
+    @State private var labelContentNotAvailableDescription:String = ""
+    
     
     
     var body: some View {
         
         NavigationView{
-            
-            
-            VStack(alignment: .leading){
-                
+           VStack(alignment: .leading){
                 if (appModel.fetchStatus == .fetching){
                     VStack(alignment: .center){
                         ProgressView()
-                        
                     }
                 }
                 
                 if (appModel.fetchStatus == .error){
                     VStack(alignment: .center){
                         ContentUnavailableView{
-                            Label(localizedString(forKey: "Content_Not_Available_Text"), systemImage: "network.slash")
+                            Label(labelContentNotAvailableText, systemImage: "network.slash")
                         }description:{
-                            Text(localizedString(forKey: "Content_Not_Available_Description"))
+                            Text(labelContentNotAvailableDescription)
                         }
                     }
                 }
@@ -47,9 +47,9 @@ struct MainView: View {
                         HStack{
                             Spacer()
                             
-                            Text(String(format: NSLocalizedString("Search_Results_Count", comment: ""), $appModel.filteredBuildings.count)).foregroundStyle(COLORS.DARK_TEXT_COLOR)
+                            Text(labelResultFound).foregroundStyle(COLORS.DARK_TEXT_COLOR)
                                 .font(.subheadline)
-                            //
+                            
                             
                             Spacer()
                         }.padding(.vertical, 8)
@@ -70,18 +70,17 @@ struct MainView: View {
                 
             }
             .background(COLORS.BACKGROUND_COLOR)
-            
             .toolbarBackground(.visible, for: .navigationBar, .tabBar)
             .toolbarBackground(COLORS.TOOLBAR_COLOR)
             
             .toolbar {
                 ToolbarItem(placement: .topBarLeading){
-                    Toolbar()
+                    Toolbar(title: "Toolbar_Title")
                 }
                 
                 ToolbarItem(placement: .navigationBarTrailing) {
                     Label(
-                        title: { Text("Search") },
+                        title: { Text("") },
                         icon: { Image(systemName: "magnifyingglass")
                         }
                     )
@@ -93,22 +92,36 @@ struct MainView: View {
                 }
             }
             .sheet(isPresented: $isSheetPresented, content: {
-                SearchFiltersView(appModel: appModel, isSheetPresented: $isSheetPresented)
+                SearchFiltersView(appModel: appModel, filterSource: .main, isSheetPresented: $isSheetPresented)
+                
             }).onChange(of: appModel.filteredBuildings, {
                 
             })
             
-        }.tint(COLORS.LIGHT_TEXT_COLOR)
+        }
+        .tint(COLORS.LIGHT_TEXT_COLOR)
+        .onAppear(){
+            setLabels()
+        }.onChange(of: appModel.userConfig.preferredLanguage, {
+            setLabels()
+        }).onChange(of: appModel.filteredBuildings, {
+            setLabels()
+        })
+        
+    }
+    
+    
+    private func setLabels(){
+        let locale = appLanguageManager.locale.identifier
+        labelResultFound = "Search_Results_Count".localizeString(string: locale, parameters: $appModel.filteredBuildings.count)
+    
+        labelContentNotAvailableText = "Content_Not_Available_Text".localizeString(string: locale)
+        
+        labelContentNotAvailableDescription = "Content_Not_Available_Description".localizeString(string: locale)
         
     }
     
     
     
-    struct MainView_Previews: PreviewProvider {
-        static var previews: some View {
-            MainView(appModel: AppModel())
-                .environmentObject(LocationManager())
-        }
-    }
     
 }

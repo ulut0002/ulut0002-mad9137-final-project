@@ -18,8 +18,14 @@ func compareBuildings(_ building1: Building,
     case .alphabetical_desc:
         return building1.cleanSearchableName > building2.cleanSearchableName
     case .distance_asc:
+        if let distance1 = building1.distanceFromUserLocation, let distance2 = building2.distanceFromUserLocation {
+            return distance1 < distance2
+        }
         return false
     case .distance_desc:
+        if let distance1 = building1.distanceFromUserLocation, let distance2 = building2.distanceFromUserLocation {
+            return distance1 > distance2
+        }
         return false
     }
 }

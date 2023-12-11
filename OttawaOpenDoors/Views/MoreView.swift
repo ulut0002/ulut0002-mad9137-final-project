@@ -9,15 +9,15 @@ import SwiftUI
 
 struct MoreView: View {
     @ObservedObject var appModel:AppModel
+    @EnvironmentObject var appLanguageManager:AppLanguageManager
+
     
     var body: some View {
         ZStack{
             Color.red
             
             VStack(){
-                VStack{
-                    //Do not remove this. It makes the additional space disappear
-                }
+              
                 
                 VStack{
                     MoreMenu(appModel: appModel)
@@ -35,29 +35,38 @@ struct MoreView: View {
 
 struct MoreMenu:View{
     @ObservedObject var appModel: AppModel
+    @EnvironmentObject var appLanguageManager:AppLanguageManager
+
     var body: some View{
         NavigationView{
-            List{
-                LanguageSelectionView(appModel: appModel)
-                NavigationLink{
-                    Text("About the Event").navigationBarBackButtonHidden(true)
-                }label:{
-                    Text(LocalizedStringKey("More_About_Event_Label"))
-                }
-                    
+            VStack{
+                List {
+                    LanguageSelectionView(appModel: appModel).padding(.top, 16)
                 
-                NavigationLink{
-                    Text("About the Team")                        .navigationBarBackButtonHidden(true)
+                    NavigationLink("More_About_Event_Label".localizeString(string: appLanguageManager.locale.identifier), destination: AboutEventView())
+                    
+                    NavigationLink("More_About_Team_Label".localizeString(string: appLanguageManager.locale.identifier), destination: AboutTeamView())
 
-                }label:{
-                    Text(LocalizedStringKey("More_About_Team_Label"))
-                }
-            }
-        }
-        .frame(maxHeight: .infinity)        
+                    
+                    
+                }.tint(COLORS.BRAND_COLOR)
+                  
+            }.listRowSeparator(.hidden)
+           
+            .listStyle(PlainListStyle())
+                .toolbarBackground(COLORS.TOOLBAR_COLOR)
+                .toolbarBackground(.visible, for: .navigationBar, .tabBar)
+                .toolbar {
+                    
+                    ToolbarItem(placement: .topBarLeading){
+                        Toolbar(title: "Toolbar_Title_More")
+                    }
+                }.frame(height: .infinity)
+            
+        }.tint(.white)
+       
     }
 }
 
-#Preview {
-    MoreView(appModel: AppModel())
-}
+
+

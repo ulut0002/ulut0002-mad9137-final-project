@@ -71,7 +71,9 @@ func searchText(source: String?, lookFor: String?) -> Bool{
 
 // from chatGPT + modifications
 
-func formatDate(_ dateString1: String, _ dateString2: String, locale: Locale ) -> String?{
+func formatDate(_ dateString1: String, _ dateString2: String,  language: String) -> String?{
+    
+    let locale = Locale(identifier: language)
     //
     let dateFormatter = DateFormatter()
     dateFormatter.dateFormat = "yyyy-MM-dd HH:mm"
@@ -87,9 +89,9 @@ func formatDate(_ dateString1: String, _ dateString2: String, locale: Locale ) -
         let closingHour = outputFormatter.string(from: date2)
         
         
-        let value =  localizedString(forKey: "Building_View_Opening_Hours_Text", parameters: dateValue, openingHour, closingHour)
+//        let value =  localizedString(forKey: "Building_View_Opening_Hours_Text", parameters: dateValue, openingHour, closingHour)
 
-
+        let value = "Building_View_Opening_Hours_Text".localizeString(string: language, parameters: dateValue, openingHour, closingHour)
         return value
 
     }

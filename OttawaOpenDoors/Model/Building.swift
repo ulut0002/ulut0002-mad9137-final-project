@@ -7,6 +7,7 @@
 
 import Foundation
 import MapKit
+import SwiftUI
 
 
 struct BookmarkInfo: Codable, Identifiable, Equatable, Hashable  {
@@ -26,6 +27,7 @@ struct BookmarkInfo: Codable, Identifiable, Equatable, Hashable  {
 
 // MARK: Building Struct
 struct Building: Codable, Identifiable, Equatable, Hashable {
+    
     var id: Int {
         return buildingId
     }

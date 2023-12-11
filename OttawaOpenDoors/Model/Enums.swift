@@ -9,9 +9,20 @@ import Foundation
 import SwiftUI
 
 
-enum PreferredLanguage:  Codable {
+enum PreferredLanguage:  String, Codable {
     case english
     case french
+    
+    var localizedString: String {
+        switch self {
+        case .english:
+            return OttawaOpenDoors.localizedString(forKey: "Language_English")
+        case .french:
+            return OttawaOpenDoors.localizedString(forKey: "Language_French")
+
+        }
+        
+    }
 }
 
 
@@ -19,6 +30,12 @@ enum OttawaCoordinates:Double {
     case lat = 45.43020324663249
     case long =  -75.70920060238804
     
+}
+
+enum SearchScreenSource {
+    case main
+    case bookmarks
+    case other
 }
 
 enum FetchStatus {
@@ -83,6 +100,36 @@ enum BuildingFeature {
         case .publicWashroom : return LocalizedStringKey("Feature_Public_Washroom")
         case .shuttleBus :return LocalizedStringKey("Feature_Shuttle_Bus")
         }
+    }
+    
+    func translate(_ localeIdentifier: String) -> String{
+        switch self {
+        case .accessible: 
+            return "Feature_Accessible".localizeString(string: localeIdentifier)
+        case  .bikeParking:
+            return "Feature_Bike_Parking".localizeString(string: localeIdentifier)
+        case .familyFriendly : 
+            return "Feature_Family_Friendly".localizeString(string: localeIdentifier)
+        case .freeParking :
+            return "Feature_Free_Parking".localizeString(string: localeIdentifier)
+        case .guidedTour :
+            return "Feature_Guided_Tour".localizeString(string: localeIdentifier)
+        case .isNew :
+            return "Feature_Is_New".localizeString(string: localeIdentifier)
+        case .oCTranspoNearby :
+            return "Feature_OC_Transpo_NearBy".localizeString(string: localeIdentifier)
+        case .openSaturday :
+            return "Feature_Open_Saturday".localizeString(string: localeIdentifier)
+        case .openSunday :
+            return "Feature_Open_Sunday".localizeString(string: localeIdentifier)
+        case .paidParking :
+            return "Feature_Paid_Parking".localizeString(string: localeIdentifier)
+        case .publicWashroom :
+            return "Feature_Public_Washroom".localizeString(string: localeIdentifier)
+        case .shuttleBus :
+            return "Feature_Shuttle_Bus".localizeString(string: localeIdentifier)
+        }
+        
     }
     
     
@@ -165,6 +212,44 @@ enum BuildingCategory {
         case .other : return LocalizedStringKey("Category_Other")
         case .religious_building : return LocalizedStringKey("Category_Religious")
         case .sports_leisure : return LocalizedStringKey("Category_Sports_Leisure")
+        }
+    }
+    
+    func translate(_ localeIdentifier: String) -> String{
+        switch self {
+        case .academic:
+            return "Category_Academic".localizeString(string: localeIdentifier)
+        case  .business_foundatation:
+            return "Category_Business_Foundation".localizeString(string: localeIdentifier)
+        case .community_center :
+            return "Category_Community_Center".localizeString(string: localeIdentifier)
+
+        case .embassy :
+            return "Category_Embassy".localizeString(string: localeIdentifier)
+
+        case .functional_building :
+            return "Category_Functional_Building".localizeString(string: localeIdentifier)
+
+        case .gallery_theatre :
+            
+            return "Category_Gallery_Theatre".localizeString(string: localeIdentifier)
+
+        case .government :
+            return "Category_Government".localizeString(string: localeIdentifier)
+
+            
+        case .museum_archive_historic :
+            return "Category_Museum_Archive_Historic".localizeString(string: localeIdentifier)
+
+        case .other :
+            return "Category_Other".localizeString(string: localeIdentifier)
+
+        case .religious_building :
+            return "Category_Religious".localizeString(string: localeIdentifier)
+
+        case .sports_leisure :
+            return "Category_Sports_Leisure".localizeString(string: localeIdentifier)
+
         }
     }
     
