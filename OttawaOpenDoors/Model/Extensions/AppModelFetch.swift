@@ -28,38 +28,44 @@ extension AppModel{
     }
     
     
+    func changeDataLanguge() {
+        DispatchQueue.main.async {
+            self.applyFilters()
+
+        }
+        
+        DispatchQueue.main.async {
+            
+            self.filterBookmarks()
+        }
+        
+    }
     
     
-   @MainActor  func retrieve() async throws{
-        // first load local data
+    @MainActor
+    func retrieve() async throws{
         
-//        DispatchQueue.main.async {
-            self.fetchStatus = .fetching
-//        }
+        self.fetchStatus = .fetching
         
         
-        
-        
-        // fetch data
-        //        Task{
         var englishBuildingsTemp:[Building] = []
         var frenchBuildingsTemp:[Building] = []
-       
-        //read from storage
+        
+        
         readUserConfigurationFromStorage() //updates model
         let savedBookmarks:[BookmarkInfo] = readBookmarksFromStorage()
-
+        
         
         
         do{
-           
             
             
             
             let fetchedBuildingListArray = try await self.fetchData()
             
+            
             if let fetchedBuildingList = fetchedBuildingListArray?[0].buildings{
-                englishBuildingsTemp = fetchedBuildingList
+                englishBuildingsTemp =  fetchedBuildingList
             }
             
             if let fetchedBuildingList = fetchedBuildingListArray?[1].buildings{
@@ -76,51 +82,28 @@ extension AppModel{
                 }
             }
             
-            self.buildingsMaster[.english] =  englishBuildingsTemp
-            self.buildingsMaster[.french] =  frenchBuildingsTemp
-            self.buildingsMaster[.french] =  frenchBuildingsTemp
-            self.favoritesMaster = savedBookmarks
-            self.applyFilters()
-            self.filterBookmarks()
-            self.fetchStatus = .idle
-
+//            DispatchQueue.main.async{
+                
+                self.buildingsMaster[.english] =   englishBuildingsTemp
+                self.buildingMasterEn =  englishBuildingsTemp
+                
+                
+                
+                self.buildingsMaster[.french] =  frenchBuildingsTemp
+                self.buildingMasterFr = frenchBuildingsTemp
+                
+                self.favoritesMaster = savedBookmarks
+                self.applyFilters()
+                self.filterBookmarks()
+                self.fetchStatus = .idle
 
             
-//            DispatchQueue.main.async {
-//                self.buildingsMaster[.english] =  englishBuildingsTemp
-//                
-//            }
-//            
-//            DispatchQueue.main.async {
-//                self.buildingsMaster[.french] =  frenchBuildingsTemp
-//            }
-//            
-//            DispatchQueue.main.async {
-//                self.favoritesMaster = savedBookmarks
-//            }
-//            
-//            DispatchQueue.main.async {
-//                self.applyFilters()
-//            }
-//            
-//            DispatchQueue.main.async {
-//                self.filterBookmarks()
-//            }
-//            
-//            
-//            DispatchQueue.main.async {
-//                self.fetchStatus = .idle
-//            }
-//            
-//            
+            
             
         }catch{
             self.fetchStatus = .error
-//            DispatchQueue.main.async {
-//                self.fetchStatus = .error
-//            }
+            
             print("Error: \(error.localizedDescription)")
         }
-        //        }
     }
 }

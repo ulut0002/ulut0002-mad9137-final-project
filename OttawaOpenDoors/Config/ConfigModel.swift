@@ -7,7 +7,7 @@
 
 import Foundation
 
-struct ConfigModel: Codable{
+struct ConfigModel: Codable, Equatable{
     var lang: String
     var preferredLanguage: PreferredLanguage
     

@@ -79,13 +79,16 @@ struct BuildingMapPreview: View {
                             }
                         }
                     
-                    HStack(){
+                    VStack(){
                         Text(building.name ?? "")
                             .multilineTextAlignment(.leading)
                             .lineLimit(nil)
                             .font(.caption)
                             .bold()
                             .foregroundStyle(COLORS.DARK_TEXT_COLOR)
+                    }
+                    VStack{
+                        
                     }
                 }
             }.background(Color.clear) // Adjust opacity as needed

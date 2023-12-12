@@ -44,6 +44,9 @@ struct MainView: View {
                 if (appModel.fetchStatus == .idle){
                     
                     ScrollView{
+
+                       
+                        
                         HStack{
                             Spacer()
                             
@@ -56,6 +59,8 @@ struct MainView: View {
                         
                         
                         LazyVStack(spacing: 12){
+                            
+                            
                             ForEach(Array(appModel.filteredBuildings.enumerated()), id: \.element.id){ index, building in
                                 BuildingCard(building: $appModel.filteredBuildings[index],
                                              appModel: appModel,

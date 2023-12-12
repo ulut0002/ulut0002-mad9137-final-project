@@ -4,9 +4,6 @@
     "" : {
 
     },
-    "a" : {
-
-    },
     "About_Event_Description_P1" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -58,9 +55,6 @@
         }
       }
     },
-    "Assignment Due Dec 15" : {
-
-    },
     "Building_Distance_From_You" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -74,17 +68,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "%1@ km de chez vous"
-          }
-        }
-      }
-    },
-    "Building_View_Awaiting_Amenites" : {
-      "extractionState" : "manual",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Awaiting amenities."
           }
         }
       }
@@ -144,6 +127,12 @@
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Attraction"
+          }
+        },
+        "fr-CA" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Attraction"
@@ -476,6 +465,12 @@
             "state" : "translated",
             "value" : "Please try again later."
           }
+        },
+        "fr-CA" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Veuillez réessayer plus tard."
+          }
         }
       }
     },
@@ -486,6 +481,12 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Something wrong happened during fetch. Sorry!"
+          }
+        },
+        "fr-CA" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "\"Quelque chose s'est mal passé pendant la récupération. Désolé!"
           }
         }
       }
@@ -516,13 +517,13 @@
             "plural" : {
               "one" : {
                 "stringUnit" : {
-                  "state" : "needs_review",
+                  "state" : "translated",
                   "value" : "%1$d attraction sauvegardée"
                 }
               },
               "other" : {
                 "stringUnit" : {
-                  "state" : "needs_review",
+                  "state" : "translated",
                   "value" : "%1$d attractions sauvegardées"
                 }
               }
@@ -559,7 +560,7 @@
         },
         "fr-CA" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "Accessible"
           }
         }
@@ -899,7 +900,7 @@
         },
         "fr-CA" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "Recherche par mot-clé.."
           }
         }
@@ -984,20 +985,11 @@
         },
         "fr-CA" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "Développeur iOS"
           }
         }
       }
-    },
-    "Key" : {
-      "extractionState" : "manual"
-    },
-    "Key 1" : {
-      "extractionState" : "manual"
-    },
-    "Label" : {
-
     },
     "Language" : {
       "extractionState" : "stale",
@@ -1005,13 +997,13 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Language (Langue)"
+            "value" : "Language"
           }
         },
         "fr-CA" : {
           "stringUnit" : {
-            "state" : "translated",
-            "value" : "Langue (Language)"
+            "state" : "needs_review",
+            "value" : "Langue"
           }
         }
       }
@@ -1027,7 +1019,7 @@
         },
         "fr-CA" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "Anglais (English)"
           }
         }
@@ -1044,14 +1036,11 @@
         },
         "fr-CA" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "Français (French)"
           }
         }
       }
-    },
-    "MAD Website" : {
-
     },
     "Main_TopBar_Title" : {
       "extractionState" : "manual",
@@ -1059,7 +1048,13 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Ottawa Open Doors"
+            "value" : "Doors Open Ottawa"
+          }
+        },
+        "fr-CA" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ottawa Portes Ouvertes"
           }
         }
       }
@@ -1126,7 +1121,7 @@
         },
         "fr-CA" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "L'équipe Prochaine Étape, une équipe dynamique de développement logiciel, s'efforce constamment d'innover et d'atteindre l'excellence dans la création de solutions de pointe."
           }
         }
@@ -1252,6 +1247,7 @@
       }
     },
     "Ottawa Open Doors" : {
+      "extractionState" : "stale",
       "localizations" : {
         "en" : {
           "stringUnit" : {
@@ -1260,9 +1256,6 @@
           }
         }
       }
-    },
-    "Search" : {
-
     },
     "Search_Results_Count" : {
       "extractionState" : "manual",
@@ -1306,7 +1299,20 @@
       }
     },
     "Serdar Ulutas" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Serdar Ulutas"
+          }
+        },
+        "fr-CA" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Serdar Ulutas"
+          }
+        }
+      }
     },
     "Settings_Language_English" : {
       "extractionState" : "manual",
@@ -1332,6 +1338,40 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Français"
+          }
+        }
+      }
+    },
+    "Splash_Screen_Header" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Doors Open Ottawa"
+          }
+        },
+        "fr-CA" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ottawa Portes Ouvertes"
+          }
+        }
+      }
+    },
+    "Splash_Screen_Subtitle" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Celebrating our community’s heritage"
+          }
+        },
+        "fr-CA" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Célébrons le patrimoine bâti de notre communauté"
           }
         }
       }
@@ -1432,7 +1472,7 @@
         },
         "fr-CA" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "Envoyer"
           }
         }
@@ -1524,7 +1564,15 @@
       }
     },
     "This is a friendly reminder." : {
-
+      "extractionState" : "stale",
+      "localizations" : {
+        "fr-CA" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Ceci est un rappel amical."
+          }
+        }
+      }
     },
     "Toolbar_Title" : {
       "extractionState" : "manual",
@@ -1549,12 +1597,12 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Vi"
+            "value" : "Saved Items"
           }
         },
         "fr-CA" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "Articles sauvegardés"
           }
         }
@@ -1571,14 +1619,21 @@
         },
         "fr-CA" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "Plus.."
           }
         }
       }
     },
     "ulut0002@algonquinlive.com" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ulut0002@algonquinlive.com"
+          }
+        }
+      }
     },
     "Visit_Site" : {
       "extractionState" : "manual",
@@ -1608,7 +1663,7 @@
         },
         "fr-CA" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "Site web"
           }
         }

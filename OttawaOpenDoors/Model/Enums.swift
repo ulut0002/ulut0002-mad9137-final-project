@@ -12,17 +12,9 @@ import SwiftUI
 enum PreferredLanguage:  String, Codable {
     case english
     case french
+    case unknown
     
-    var localizedString: String {
-        switch self {
-        case .english:
-            return OttawaOpenDoors.localizedString(forKey: "Language_English")
-        case .french:
-            return OttawaOpenDoors.localizedString(forKey: "Language_French")
-
-        }
-        
-    }
+    
 }
 
 

@@ -43,6 +43,17 @@ struct MoreMenu:View{
     var body: some View{
         NavigationView{
             VStack{
+//                HStack{
+//                    Button("en", action: {
+//                        appModel.setLanguage(language: .english)
+//
+//                    })
+//                    Button("fr", action: {
+//                        appModel.setLanguage(language: .french)
+//
+//                    })
+//                }.tint(.black)
+
                 List {
                     LanguageSelectionView(appModel: appModel).padding(.top, 16)
                     
@@ -51,7 +62,7 @@ struct MoreMenu:View{
                     NavigationLink("More_About_Team_Label".localizeString(string: appLanguageManager.locale.identifier), destination: AboutTeamView())
                     
                     NavigationLink("Suggest_New_Place_List_Label".localizeString(string: appLanguageManager.locale.identifier), destination: SuggestNewPlace())
-
+                    
                     
                 }.tint(COLORS.BRAND_COLOR)
                 
@@ -68,12 +79,12 @@ struct MoreMenu:View{
                     ToolbarItem(placement: .topBarLeading){
                         Toolbar(title: "Toolbar_Title_More")
                     }
-                }.frame(height: .infinity)
+                }
+//                .frame(height: .infinity)
             
         }
         .tint(.white)
         .onAppear(){
-            print("> ", networkMonitor.isConnected)
         }
         
     }

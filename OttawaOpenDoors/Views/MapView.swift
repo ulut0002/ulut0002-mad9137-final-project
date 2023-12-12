@@ -89,7 +89,7 @@ struct MapView: View {
                 Map(position: $position, selection: $selectedTag){
 //                    ForEach(appModel.filteredBuildings.prefix(3)){building in
                 
-                    ForEach(Array(appModel.filteredBuildings.prefix(3).enumerated()), id: \.element){index, building in
+                    ForEach(Array(appModel.filteredBuildings.enumerated()), id: \.element){index, building in
 
                         if let coordinate = building.coordinate, let name = building.name{
                            

@@ -89,7 +89,6 @@ func formatDate(_ dateString1: String, _ dateString2: String,  language: String)
         let closingHour = outputFormatter.string(from: date2)
         
         
-//        let value =  localizedString(forKey: "Building_View_Opening_Hours_Text", parameters: dateValue, openingHour, closingHour)
 
         let value = "Building_View_Opening_Hours_Text".localizeString(string: language, parameters: dateValue, openingHour, closingHour)
         return value

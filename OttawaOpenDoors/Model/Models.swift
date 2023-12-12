@@ -225,10 +225,22 @@ class BuildingListModel: ObservableObject {
 
 // Represents app model for all the data manipulation
 class AppModel : ObservableObject{
+    
+  
+    
+    private var appLanguageManager: AppLanguageManager? = nil
+    
+    init(){
+        readUserConfigurationFromStorage()
+    }
+    
     @Published private(set) var userConfig: ConfigModel = ConfigModel.getDefaultConfigModel()
     private var selectedLanguage: PreferredLanguage = .english
     
     var buildingsMaster: [PreferredLanguage: [Building]] = [.english: [], .french: []]
+    @Published var buildingMasterEn: [Building] = []
+    @Published var buildingMasterFr: [Building] = []
+
     var categoriesMaster:[Category] = []
     var favoritesMaster: [BookmarkInfo] = [] // only contains IDs
     
@@ -252,6 +264,10 @@ class AppModel : ObservableObject{
     
     
     //    setBuildingDetailShowLongDescription
+    
+    func setAppLanguageManager(mgr: AppLanguageManager){
+        self.appLanguageManager = mgr
+    }
     
 }
 
@@ -305,9 +321,13 @@ extension AppModel {
     func applyFilters(){
         userFilters = draftUserFilters
         
+        
+        
         let newBuildings = filterBuildings(sourceData: buildingsMaster[selectedLanguage] ?? [], searchFilter: userFilters)
         
-        filteredBuildings = newBuildings
+        self.filteredBuildings = newBuildings
+        
+        
         
     }
     
@@ -362,35 +382,45 @@ extension AppModel {
     
     
     
-    func switchLanguage(){
-        setLanguage(language: (self.selectedLanguage == .english) ? .french : .english)
-    }
-    
+  
     func setLanguage(language: PreferredLanguage){
-        
-        let selectedLanguage:PreferredLanguage = language
-        
-        if (selectedLanguage == .english){
-            locale =  Locale(identifier: CONFIGURATION.LANG_EN)
-        }else if (selectedLanguage == .french){
-            locale =  Locale(identifier: CONFIGURATION.LANG_FR)
-        }else {
-            locale =  Locale(identifier: CONFIGURATION.LANG_EN)
+        let selectedLang:PreferredLanguage = language
+        if (selectedLang == .unknown){
+            return
         }
         
+        if (selectedLang == .english){
+            locale =  Locale(identifier: CONFIGURATION.LANG_EN)
+        }else if (selectedLang == .french){
+            locale =  Locale(identifier: CONFIGURATION.LANG_FR)
+        }else{
+            return
+        }
         
-        self.selectedLanguage = language
-        self.userConfig.preferredLanguage = language
-        self.userConfig.lang = locale.identifier
+        let newUserConfig:ConfigModel = ConfigModel(lang: locale.identifier,
+                                                    preferredLanguage:  selectedLang)
+        selectedLanguage = selectedLang
+        userConfig = newUserConfig
+        self.locale = locale
+
         saveUserConfigurationToStorage()
+        readUserConfigurationFromStorage()
+
         
         
         
+
         
-        
+
         
         Task {
-            try await  retrieve()
+//            try await  retrieve()
+           
+            do{
+                try await  self.retrieve()
+            }catch{
+                
+            }
         }
     }
     
@@ -417,6 +447,7 @@ extension AppModel{
     func saveUserConfigurationToStorage(){
         if let encodeData = try? JSONEncoder().encode(userConfig){
             UserDefaults.standard.set(encodeData, forKey: CONFIGURATION.STORAGE_KEY_CONFIGURATION)
+
         }
     }
     
@@ -424,15 +455,22 @@ extension AppModel{
         if let userData = UserDefaults.standard.data(forKey: CONFIGURATION.STORAGE_KEY_CONFIGURATION), let decodedData = try? JSONDecoder().decode(ConfigModel.self, from: userData){
             self.userConfig = decodedData
             self.selectedLanguage = decodedData.preferredLanguage
+            if self.selectedLanguage == .english {
+                self.locale = Locale(identifier: CONFIGURATION.LANG_EN)
+            }
+            if selectedLanguage == .french {
+                self.locale = Locale(identifier: CONFIGURATION.LANG_FR)
+            }
+
             return
         }
         
         //create a blank one, save it, amd return it
         let initModel = ConfigModel.getDefaultConfigModel()
         self.userConfig = initModel
-        
-        
+
         saveUserConfigurationToStorage()
+        readUserConfigurationFromStorage()
         
     }
     

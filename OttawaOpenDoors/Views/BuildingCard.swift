@@ -126,7 +126,8 @@ struct BuildingCard: View {
     
     func updateDistanceText(){
         if let distanceInKm {
-            distanceInKmText = localizedString(forKey: "Building_Distance_From_You", parameters: String(distanceInKm))
+            distanceInKmText = "Building_Distance_From_You".localizeString(string: appModel.locale.identifier, parameters: String(distanceInKm))
+     
         }else{
             distanceInKmText = ""
         }
