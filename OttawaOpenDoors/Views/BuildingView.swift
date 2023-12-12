@@ -35,6 +35,8 @@ struct BuildingView: View {
     @State private var labelRecenter = ""
     @State private var labelDistance = ""
     
+    @State private var showSafari = false
+    
     private func setLabels(){
         let locale:String = appLanguageManager.locale.identifier
         //Building_View_Opening_Hours
@@ -78,8 +80,6 @@ struct BuildingView: View {
             ScrollView{
                 
                 VStack(spacing: 8){
-                    
-                    
                     
                     // Building image
                     Image(building.imageResourceName)
@@ -297,8 +297,31 @@ struct BuildingView: View {
                     }.padding(.horizontal)
                     
                     
-                    
+                    //
                     BuildingViewMap(building: building).frame(width: 400, height: 300, alignment: .center)
+                    //
+                    if let website = building.website {
+                        HStack(spacing: 16){
+                            Text("Web_Site".localizeString(string: appLanguageManager.locale.identifier)).bold()
+                            Text(website)
+                            Text("Visit_Site".localizeString(string: appLanguageManager.locale.identifier))
+                                .foregroundStyle(.blue)
+                                .onTapGesture(perform: {
+                                    showSafari = true
+                                    
+                                })
+                                .fullScreenCover(isPresented: $showSafari, content: {
+                                    if let url = URL(string: website){
+                                        SFSafariViewWrapper(url: url)
+                                        
+                                    }
+                                    
+                                })
+                           
+                            Spacer()
+                        }.padding(.horizontal).tint(.black)
+                        
+                    }
                     
                     
                     

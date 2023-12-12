@@ -16,6 +16,17 @@
 		572161062B17A1CE00087239 /* AvatarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 572161052B17A1CE00087239 /* AvatarView.swift */; };
 		572161082B17A41800087239 /* SearchFiltersView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 572161072B17A41800087239 /* SearchFiltersView.swift */; };
 		572A8EA02B272B040087A7A7 /* OODShareLink.swift in Sources */ = {isa = PBXBuildFile; fileRef = 572A8E9F2B272B040087A7A7 /* OODShareLink.swift */; };
+		572A8EA22B27A74E0087A7A7 /* WebView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 572A8EA12B27A74E0087A7A7 /* WebView.swift */; };
+		572A8EA42B27ACE30087A7A7 /* SFSafariWebWrapper.swift in Sources */ = {isa = PBXBuildFile; fileRef = 572A8EA32B27ACE30087A7A7 /* SFSafariWebWrapper.swift */; };
+		572A8EA72B27B42C0087A7A7 /* NetworkMonitor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 572A8EA62B27B42C0087A7A7 /* NetworkMonitor.swift */; };
+		572A8EA92B27B5470087A7A7 /* SuggestNewPlace.swift in Sources */ = {isa = PBXBuildFile; fileRef = 572A8EA82B27B5470087A7A7 /* SuggestNewPlace.swift */; };
+		572A8EAE2B27E95F0087A7A7 /* FirebaseAuth in Frameworks */ = {isa = PBXBuildFile; productRef = 572A8EAD2B27E95F0087A7A7 /* FirebaseAuth */; };
+		572A8EB02B27E95F0087A7A7 /* FirebaseDatabase in Frameworks */ = {isa = PBXBuildFile; productRef = 572A8EAF2B27E95F0087A7A7 /* FirebaseDatabase */; };
+		572A8EB22B27E95F0087A7A7 /* FirebaseDatabaseSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 572A8EB12B27E95F0087A7A7 /* FirebaseDatabaseSwift */; };
+		572A8EB42B27E95F0087A7A7 /* FirebaseFirestoreSwift in Frameworks */ = {isa = PBXBuildFile; productRef = 572A8EB32B27E95F0087A7A7 /* FirebaseFirestoreSwift */; };
+		572A8EB62B27E95F0087A7A7 /* FirebaseStorage in Frameworks */ = {isa = PBXBuildFile; productRef = 572A8EB52B27E95F0087A7A7 /* FirebaseStorage */; };
+		572A8EB82B27EB1B0087A7A7 /* GoogleService-Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = 572A8EB72B27EB1A0087A7A7 /* GoogleService-Info.plist */; };
+		572A8EBA2B27EB6B0087A7A7 /* Suggestion.swift in Sources */ = {isa = PBXBuildFile; fileRef = 572A8EB92B27EB6B0087A7A7 /* Suggestion.swift */; };
 		573416F62B111F1C008AE545 /* ShareInfo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 573416F52B111F1C008AE545 /* ShareInfo.swift */; };
 		57370F202B2044C4001ECD52 /* BuildingViewMap.swift in Sources */ = {isa = PBXBuildFile; fileRef = 57370F1F2B2044C4001ECD52 /* BuildingViewMap.swift */; };
 		5745E6AB2B11377E0037D799 /* buildings.json in Sources */ = {isa = PBXBuildFile; fileRef = 5745E6AA2B11377E0037D799 /* buildings.json */; };
@@ -86,6 +97,12 @@
 		572161052B17A1CE00087239 /* AvatarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AvatarView.swift; sourceTree = "<group>"; };
 		572161072B17A41800087239 /* SearchFiltersView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SearchFiltersView.swift; sourceTree = "<group>"; };
 		572A8E9F2B272B040087A7A7 /* OODShareLink.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OODShareLink.swift; sourceTree = "<group>"; };
+		572A8EA12B27A74E0087A7A7 /* WebView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WebView.swift; sourceTree = "<group>"; };
+		572A8EA32B27ACE30087A7A7 /* SFSafariWebWrapper.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SFSafariWebWrapper.swift; sourceTree = "<group>"; };
+		572A8EA62B27B42C0087A7A7 /* NetworkMonitor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NetworkMonitor.swift; sourceTree = "<group>"; };
+		572A8EA82B27B5470087A7A7 /* SuggestNewPlace.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SuggestNewPlace.swift; sourceTree = "<group>"; };
+		572A8EB72B27EB1A0087A7A7 /* GoogleService-Info.plist */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = text.plist.xml; path = "GoogleService-Info.plist"; sourceTree = "<group>"; };
+		572A8EB92B27EB6B0087A7A7 /* Suggestion.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Suggestion.swift; sourceTree = "<group>"; };
 		573416F52B111F1C008AE545 /* ShareInfo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareInfo.swift; sourceTree = "<group>"; };
 		57370F1F2B2044C4001ECD52 /* BuildingViewMap.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BuildingViewMap.swift; sourceTree = "<group>"; };
 		5745E6AA2B11377E0037D799 /* buildings.json */ = {isa = PBXFileReference; lastKnownFileType = text.json; path = buildings.json; sourceTree = "<group>"; };
@@ -136,6 +153,11 @@
 			isa = PBXFrameworksBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				572A8EB22B27E95F0087A7A7 /* FirebaseDatabaseSwift in Frameworks */,
+				572A8EB02B27E95F0087A7A7 /* FirebaseDatabase in Frameworks */,
+				572A8EAE2B27E95F0087A7A7 /* FirebaseAuth in Frameworks */,
+				572A8EB62B27E95F0087A7A7 /* FirebaseStorage in Frameworks */,
+				572A8EB42B27E95F0087A7A7 /* FirebaseFirestoreSwift in Frameworks */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -170,8 +192,18 @@
 				57370F1F2B2044C4001ECD52 /* BuildingViewMap.swift */,
 				577FFD572B26EC93009A9196 /* BuildingMapPreview.swift */,
 				572A8E9F2B272B040087A7A7 /* OODShareLink.swift */,
+				572A8EA12B27A74E0087A7A7 /* WebView.swift */,
+				572A8EA32B27ACE30087A7A7 /* SFSafariWebWrapper.swift */,
 			);
 			path = UI;
+			sourceTree = "<group>";
+		};
+		572A8EA52B27B41C0087A7A7 /* Services */ = {
+			isa = PBXGroup;
+			children = (
+				572A8EA62B27B42C0087A7A7 /* NetworkMonitor.swift */,
+			);
+			path = Services;
 			sourceTree = "<group>";
 		};
 		573416F42B111EF9008AE545 /* Share */ = {
@@ -241,6 +273,8 @@
 			isa = PBXGroup;
 			children = (
 				578082CF2B2641C700C84B70 /* Localizable.xcstrings */,
+				572A8EB72B27EB1A0087A7A7 /* GoogleService-Info.plist */,
+				572A8EA52B27B41C0087A7A7 /* Services */,
 				572161042B17A1BE00087239 /* UI */,
 				5745E6B22B118A5F0037D799 /* Extensions */,
 				573416F42B111EF9008AE545 /* Share */,
@@ -305,6 +339,7 @@
 				5779CA962B16D0820014488A /* Sort.swift */,
 				571556AD2B1CF9D3000185C1 /* LocationManager.swift */,
 				578082C92B26328200C84B70 /* AppLanguageManager.swift */,
+				572A8EB92B27EB6B0087A7A7 /* Suggestion.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -330,6 +365,7 @@
 				5790FA052B26872D00593CE1 /* AboutEventView.swift */,
 				5790FA072B26875600593CE1 /* AboutTeamView.swift */,
 				5790FA092B26876400593CE1 /* AboutDeveloperView.swift */,
+				572A8EA82B27B5470087A7A7 /* SuggestNewPlace.swift */,
 			);
 			path = Views;
 			sourceTree = "<group>";
@@ -358,6 +394,13 @@
 			dependencies = (
 			);
 			name = OttawaOpenDoors;
+			packageProductDependencies = (
+				572A8EAD2B27E95F0087A7A7 /* FirebaseAuth */,
+				572A8EAF2B27E95F0087A7A7 /* FirebaseDatabase */,
+				572A8EB12B27E95F0087A7A7 /* FirebaseDatabaseSwift */,
+				572A8EB32B27E95F0087A7A7 /* FirebaseFirestoreSwift */,
+				572A8EB52B27E95F0087A7A7 /* FirebaseStorage */,
+			);
 			productName = OttawaOpenDoors;
 			productReference = 577170192B0EEE9E00EA4D46 /* OttawaOpenDoors.app */;
 			productType = "com.apple.product-type.application";
@@ -432,6 +475,9 @@
 				fr,
 			);
 			mainGroup = 577170102B0EEE9E00EA4D46;
+			packageReferences = (
+				572A8EAC2B27E95E0087A7A7 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */,
+			);
 			productRefGroup = 5771701A2B0EEE9E00EA4D46 /* Products */;
 			projectDirPath = "";
 			projectRoot = "";
@@ -450,6 +496,7 @@
 			files = (
 				5745E6AF2B11636E0037D799 /* buildings.json in Resources */,
 				577170242B0EEEA000EA4D46 /* Preview Assets.xcassets in Resources */,
+				572A8EB82B27EB1B0087A7A7 /* GoogleService-Info.plist in Resources */,
 				577170212B0EEEA000EA4D46 /* Assets.xcassets in Resources */,
 				578082D02B2641C700C84B70 /* Localizable.xcstrings in Resources */,
 			);
@@ -485,6 +532,7 @@
 				5706120B2B1C244800CA99B4 /* CategoryFilterItem.swift in Sources */,
 				5779CA972B16D0820014488A /* Sort.swift in Sources */,
 				571556AE2B1CF9D3000185C1 /* LocationManager.swift in Sources */,
+				572A8EA42B27ACE30087A7A7 /* SFSafariWebWrapper.swift in Sources */,
 				577170572B0EFBF400EA4D46 /* TopNavigation.swift in Sources */,
 				57E9A2142B1EBE6B00CD5084 /* Toolbar.swift in Sources */,
 				5769EA372B1096040038C2A3 /* PreferencesModel.swift in Sources */,
@@ -497,6 +545,7 @@
 				5771705F2B0F115400EA4D46 /* LanguageSelectionView.swift in Sources */,
 				572A8EA02B272B040087A7A7 /* OODShareLink.swift in Sources */,
 				5771704B2B0EF57000EA4D46 /* MainView.swift in Sources */,
+				572A8EA22B27A74E0087A7A7 /* WebView.swift in Sources */,
 				573416F62B111F1C008AE545 /* ShareInfo.swift in Sources */,
 				5790FA082B26875600593CE1 /* AboutTeamView.swift in Sources */,
 				571556AC2B1C5ABE000185C1 /* BuildingDetailRow.swift in Sources */,
@@ -509,6 +558,7 @@
 				5769EA262B108B830038C2A3 /* Building.swift in Sources */,
 				571556AA2B1C51BE000185C1 /* BuildingCard.swift in Sources */,
 				57D4CE872B19BE9D00BDE02E /* CategoryFilter.swift in Sources */,
+				572A8EBA2B27EB6B0087A7A7 /* Suggestion.swift in Sources */,
 				57D4CE852B19BE8A00BDE02E /* FeatureFilter.swift in Sources */,
 				577447CA2B0FBAC900AD29A5 /* Style.swift in Sources */,
 				570612092B1BC70000CA99B4 /* FeatureFilterItem.swift in Sources */,
@@ -518,7 +568,9 @@
 				5771705D2B0EFD8C00EA4D46 /* MoreView.swift in Sources */,
 				5790FA062B26872D00593CE1 /* AboutEventView.swift in Sources */,
 				57525BA92B168D81006ECD2D /* Enums.swift in Sources */,
+				572A8EA92B27B5470087A7A7 /* SuggestNewPlace.swift in Sources */,
 				5769EA352B1095D40038C2A3 /* ConfigModel.swift in Sources */,
+				572A8EA72B27B42C0087A7A7 /* NetworkMonitor.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -854,6 +906,45 @@
 			defaultConfigurationName = Release;
 		};
 /* End XCConfigurationList section */
+
+/* Begin XCRemoteSwiftPackageReference section */
+		572A8EAC2B27E95E0087A7A7 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */ = {
+			isa = XCRemoteSwiftPackageReference;
+			repositoryURL = "https://github.com/firebase/firebase-ios-sdk";
+			requirement = {
+				kind = upToNextMajorVersion;
+				minimumVersion = 10.19.0;
+			};
+		};
+/* End XCRemoteSwiftPackageReference section */
+
+/* Begin XCSwiftPackageProductDependency section */
+		572A8EAD2B27E95F0087A7A7 /* FirebaseAuth */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 572A8EAC2B27E95E0087A7A7 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseAuth;
+		};
+		572A8EAF2B27E95F0087A7A7 /* FirebaseDatabase */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 572A8EAC2B27E95E0087A7A7 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseDatabase;
+		};
+		572A8EB12B27E95F0087A7A7 /* FirebaseDatabaseSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 572A8EAC2B27E95E0087A7A7 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseDatabaseSwift;
+		};
+		572A8EB32B27E95F0087A7A7 /* FirebaseFirestoreSwift */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 572A8EAC2B27E95E0087A7A7 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseFirestoreSwift;
+		};
+		572A8EB52B27E95F0087A7A7 /* FirebaseStorage */ = {
+			isa = XCSwiftPackageProductDependency;
+			package = 572A8EAC2B27E95E0087A7A7 /* XCRemoteSwiftPackageReference "firebase-ios-sdk" */;
+			productName = FirebaseStorage;
+		};
+/* End XCSwiftPackageProductDependency section */
 	};
 	rootObject = 577170112B0EEE9E00EA4D46 /* Project object */;
 }

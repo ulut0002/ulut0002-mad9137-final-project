@@ -18,7 +18,7 @@ enum ActiveScreen {
 struct ContentView: View {
     
     @ObservedObject var appModel = AppModel()
-    @State private var selection = 1
+    @State private var selection = 3
     @Environment(\.colorScheme) var colorScheme
     @EnvironmentObject var appLanguageManager: AppLanguageManager
 
@@ -130,8 +130,10 @@ struct ContentView_Previews: PreviewProvider {
     static var previews: some View{
         let location = LocationManager()
         let language = AppLanguageManager()
+        let networkMonitor = NetworkMonitor()
         ContentView()
             .environmentObject(location)
             .environmentObject(language)
+            .environmentObject(networkMonitor)
     }
 }

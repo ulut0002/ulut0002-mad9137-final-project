@@ -1234,6 +1234,23 @@
         }
       }
     },
+    "Network_Not_Connected" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "You do not have Internet access. Please reconnect to the Internet and try again. "
+          }
+        },
+        "fr-CA" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Vous avez pas d'accès à l'Internet. Branchez-vous sur le web pis réessayez."
+          }
+        }
+      }
+    },
     "Ottawa Open Doors" : {
       "localizations" : {
         "en" : {
@@ -1319,6 +1336,193 @@
         }
       }
     },
+    "Suggest_New_Place_Building_Category" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Category"
+          }
+        },
+        "fr-CA" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Catégorie"
+          }
+        }
+      }
+    },
+    "Suggest_New_Place_Building_Description" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Description"
+          }
+        },
+        "fr-CA" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Description"
+          }
+        }
+      }
+    },
+    "Suggest_New_Place_Building_Name" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Name"
+          }
+        },
+        "fr-CA" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nom"
+          }
+        }
+      }
+    },
+    "Suggest_New_Place_Details" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Attraction Details"
+          }
+        },
+        "fr-CA" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Détails de l'attraction"
+          }
+        }
+      }
+    },
+    "Suggest_New_Place_List_Label" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Suggest New Place"
+          }
+        },
+        "fr-CA" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Proposer un nouvel endroit"
+          }
+        }
+      }
+    },
+    "Suggest_New_Place_Submit_Label" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Send"
+          }
+        },
+        "fr-CA" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Envoyer"
+          }
+        }
+      }
+    },
+    "Suggest_New_Place_Text" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Help us showcase the best of Ottawa in the Open Doors Festival! Found a unique spot? Submit it through our app."
+          }
+        },
+        "fr-CA" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Aidez-nous à mettre en valeur le meilleur d'Ottawa lors du Festival Portes Ouvertes ! Vous avez découvert un endroit unique ? Soumettez-le via notre application."
+          }
+        }
+      }
+    },
+    "Suggestion_Description_Missing" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Please enter a description"
+          }
+        },
+        "fr-CA" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Veuillez entrez une description."
+          }
+        }
+      }
+    },
+    "Suggestion_Fail" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "We are sorry. We were unable to register your suggestion. Please try again later."
+          }
+        },
+        "fr-CA" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nous sommes désolés. Nous n'avons pas pu enregistrer votre suggestion. Veuillez réessayer ultérieurement."
+          }
+        }
+      }
+    },
+    "Suggestion_Name_Missing" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Please enter a name"
+          }
+        },
+        "fr-CA" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Veuillez entrer un nom."
+          }
+        }
+      }
+    },
+    "Suggestion_Successful" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "We received your suggestion! Thank you for making Ottawa Open Doors a better festival!"
+          }
+        },
+        "fr-CA" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Nous avons bien reçu votre suggestion ! Merci de contribuer à améliorer le festival Ottawa Portes Ouvertes."
+          }
+        }
+      }
+    },
     "This is a friendly reminder." : {
 
     },
@@ -1345,12 +1549,12 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Saved Items"
+            "value" : "Vi"
           }
         },
         "fr-CA" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "Articles sauvegardés"
           }
         }
@@ -1375,6 +1579,40 @@
     },
     "ulut0002@algonquinlive.com" : {
 
+    },
+    "Visit_Site" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Visit"
+          }
+        },
+        "fr-CA" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Visiter"
+          }
+        }
+      }
+    },
+    "Web_Site" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Website"
+          }
+        },
+        "fr-CA" : {
+          "stringUnit" : {
+            "state" : "needs_review",
+            "value" : "Site web"
+          }
+        }
+      }
     }
   },
   "version" : "1.0"
