@@ -19,7 +19,7 @@ struct LanguageSelectionView: View {
             
                                   
             
-            Text("Language".localizeString(string: appLanguageManager.locale.identifier))
+            Text("Language_Label".localizeString(string: appLanguageManager.locale.identifier))
                 .foregroundStyle(COLORS.DARK_TEXT_COLOR)
             Spacer()
             if (selectedLanguage == .english || selectedLanguage == .french){

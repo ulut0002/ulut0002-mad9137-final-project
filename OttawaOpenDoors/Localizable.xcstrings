@@ -2,7 +2,20 @@
   "sourceLanguage" : "en",
   "strings" : {
     "" : {
-
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : " "
+          }
+        },
+        "fr-CA" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : " "
+          }
+        }
+      }
     },
     "About_Event_Description_P1" : {
       "extractionState" : "manual",
@@ -221,51 +234,6 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Emplacement"
-          }
-        }
-      }
-    },
-    "By Distance" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "By Distance"
-          }
-        },
-        "fr-CA" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Par distance"
-          }
-        }
-      }
-    },
-    "By Name" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "By Name"
-          }
-        }
-      }
-    },
-    "Cancel" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Cancel"
-          }
-        },
-        "fr-CA" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Annuler"
           }
         }
       }
@@ -770,23 +738,6 @@
         }
       }
     },
-    "Filters" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Filters"
-          }
-        },
-        "fr-CA" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Filtres"
-          }
-        }
-      }
-    },
     "Filters_View_Label_ApplyFiltersButton" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -1008,23 +959,6 @@
         }
       }
     },
-    "Language" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Language"
-          }
-        },
-        "fr-CA" : {
-          "stringUnit" : {
-            "state" : "needs_review",
-            "value" : "Langue"
-          }
-        }
-      }
-    },
     "Language_English" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -1055,6 +989,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "Français (French)"
+          }
+        }
+      }
+    },
+    "Language_Label" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Language"
+          }
+        },
+        "fr-CA" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Langue"
           }
         }
       }
@@ -1263,17 +1214,6 @@
         }
       }
     },
-    "Ottawa Open Doors" : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "en" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ottawa Open Doors"
-          }
-        }
-      }
-    },
     "Search_Results_Count" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -1352,6 +1292,12 @@
       "extractionState" : "manual",
       "localizations" : {
         "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Français"
+          }
+        },
+        "fr-CA" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "Français"
@@ -1580,17 +1526,6 @@
         }
       }
     },
-    "This is a friendly reminder." : {
-      "extractionState" : "stale",
-      "localizations" : {
-        "fr-CA" : {
-          "stringUnit" : {
-            "state" : "translated",
-            "value" : "Ceci est un rappel amical."
-          }
-        }
-      }
-    },
     "Toolbar_Title" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -1602,7 +1537,7 @@
         },
         "fr-CA" : {
           "stringUnit" : {
-            "state" : "needs_review",
+            "state" : "translated",
             "value" : "Ottawa Portes Ouvertes"
           }
         }
@@ -1645,6 +1580,12 @@
     "ulut0002@algonquinlive.com" : {
       "localizations" : {
         "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "ulut0002@algonquinlive.com"
+          }
+        },
+        "fr-CA" : {
           "stringUnit" : {
             "state" : "translated",
             "value" : "ulut0002@algonquinlive.com"
