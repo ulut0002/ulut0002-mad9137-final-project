@@ -100,7 +100,7 @@ struct ContentView: View {
                 
             }
         else {
-                SplashScreen(hideSplash: hideSplash)
+            SplashScreen(appModel: appModel,hideSplash: hideSplash)
                 
             }
         }.onAppear(){

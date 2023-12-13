@@ -457,6 +457,23 @@
         }
       }
     },
+    "Close" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Close"
+          }
+        },
+        "fr-CA" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Fermer"
+          }
+        }
+      }
+    },
     "Content_Not_Available_Description" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -1580,12 +1597,12 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Ottawa Open Doors"
+            "value" : "Doors Open Ottawa"
           }
         },
         "fr-CA" : {
           "stringUnit" : {
-            "state" : "translated",
+            "state" : "needs_review",
             "value" : "Ottawa Portes Ouvertes"
           }
         }
@@ -1631,6 +1648,23 @@
           "stringUnit" : {
             "state" : "translated",
             "value" : "ulut0002@algonquinlive.com"
+          }
+        }
+      }
+    },
+    "Unknown" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "undefined"
+          }
+        },
+        "fr-CA" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "non défini"
           }
         }
       }

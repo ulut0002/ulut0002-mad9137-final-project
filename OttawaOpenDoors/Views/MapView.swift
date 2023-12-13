@@ -25,6 +25,10 @@ struct MapView: View {
     
     @State private var selectedBuilding: Building?
     @State private var selectedBuildingIndex: Int?
+    @EnvironmentObject var appLanguageManager: AppLanguageManager
+
+   
+    @State private var showBuilding:Bool = false
     
     func clearSelectedBuilding(){
         self.selectedBuilding = nil
@@ -110,7 +114,7 @@ struct MapView: View {
                                 }.onTapGesture{
                                     self.selectedBuilding = building
                                     self.selectedBuildingIndex = index
-                                    text = building.name ?? "Unkown"
+                                    text = building.name ?? "UNKNOWN".localizeString(string: appModel.locale.identifier)
 //
 
                                     
@@ -157,6 +161,30 @@ struct MapView: View {
                 BuildingMapPreview(appModel: appModel, building: $appModel.filteredBuildings[index],
                                    clearSelectedBuilding: clearSelectedBuilding)
                     .padding(.bottom, 48)
+                    .onTapGesture(){
+                        showBuilding = true
+                    } .fullScreenCover(isPresented: $showBuilding, content: {
+                        if let building = selectedBuilding{
+                            if let idx = appModel.filteredBuildings.firstIndex(where: {$0.id == building.id}){
+                                HStack{
+                                    Spacer()
+                                    Button {
+                                        showBuilding = false
+                                    } label: {
+                                        HStack{
+                                            Text("Close".localizeString(string: appModel.locale.identifier))
+                                        }
+                                    }
+                                }.padding(.horizontal)
+                                BuildingView(building: $appModel.filteredBuildings[idx],
+                                             appModel: appModel,
+                                             appLanguageManager: _appLanguageManager)
+                            }
+                            
+                        }
+                       
+                        
+                    })
                 
             
 

@@ -10,6 +10,7 @@ import SwiftUI
 // source: https://youtu.be/0ytO3wCRKZU`
 
 struct SplashScreen: View {
+    @ObservedObject var appModel: AppModel
     var hideSplash: () -> Void
     
     
@@ -32,12 +33,12 @@ struct SplashScreen: View {
                     
                     //                Text("Splash_Screen_Header".localizeString(string: appLanguageManager.locale.identifier))
                     //
-                    Text("Splash_Screen_Header".localizeString(string: appLanguageManager.locale.identifier))
+                    Text("Splash_Screen_Header".localizeString(string: appModel.locale.identifier))
                                         .foregroundStyle(.white)
                         .font(.system(size: 30))
                         .bold()
                     
-                    Text("Splash_Screen_Subtitle".localizeString(string: appLanguageManager.locale.identifier))
+                    Text("Splash_Screen_Subtitle".localizeString(string: appModel.locale.identifier))
                                         .foregroundStyle(.white)
                         .font(.system(size: 14))
                     
