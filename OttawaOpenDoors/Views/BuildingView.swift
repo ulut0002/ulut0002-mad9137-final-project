@@ -301,25 +301,29 @@ struct BuildingView: View {
                     BuildingViewMap(building: building).frame(width: 400, height: 300, alignment: .center)
                     //
                     if let website = building.website {
-                        HStack(spacing: 16){
-                            Text("Web_Site".localizeString(string: appLanguageManager.locale.identifier)).bold()
-                            Text(website)
-                            Text("Visit_Site".localizeString(string: appLanguageManager.locale.identifier))
-                                .foregroundStyle(.blue)
-                                .onTapGesture(perform: {
-                                    showSafari = true
-                                    
-                                })
-                                .fullScreenCover(isPresented: $showSafari, content: {
-                                    if let url = URL(string: website){
-                                        SFSafariViewWrapper(url: url)
+                        if (!website.isEmpty){
+                            HStack(spacing: 16){
+                                
+                                Text("Visit_Site".localizeString(string: appLanguageManager.locale.identifier,parameters: website))
+                                    .foregroundStyle(.blue)
+                                    .onTapGesture(perform: {
+                                        showSafari = true
                                         
-                                    }
-                                    
-                                })
-                           
-                            Spacer()
-                        }.padding(.horizontal).tint(.black)
+                                    })
+                                    .fullScreenCover(isPresented: $showSafari, content: {
+                                        if let url = URL(string: website){
+                                            SFSafariViewWrapper(url: url)
+                                            
+                                        }
+                                        
+                                    })
+                                
+                                Spacer()
+                            }
+                            .padding(.horizontal)
+                            .tint(.black)
+                            .padding(.vertical)
+                        }
                         
                     }
                     

@@ -110,6 +110,8 @@ struct ContentView: View {
                 isSetupDone = true
 //                appModel.setAppLanguageManager(mgr: appLanguageManager)
             }
+        }.onChange(of: locationManager){
+            
         }
         
         

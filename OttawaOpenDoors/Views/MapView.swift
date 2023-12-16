@@ -163,19 +163,19 @@ struct MapView: View {
                     .padding(.bottom, 48)
                     .onTapGesture(){
                         showBuilding = true
-                    } .fullScreenCover(isPresented: $showBuilding, content: {
+                    } .sheet(isPresented: $showBuilding, content: {
                         if let building = selectedBuilding{
                             if let idx = appModel.filteredBuildings.firstIndex(where: {$0.id == building.id}){
-                                HStack{
-                                    Spacer()
-                                    Button {
-                                        showBuilding = false
-                                    } label: {
-                                        HStack{
-                                            Text("Close".localizeString(string: appModel.locale.identifier))
-                                        }
-                                    }
-                                }.padding(.horizontal)
+//                                HStack{
+//                                    Spacer()
+//                                    Button {
+//                                        showBuilding = false
+//                                    } label: {
+//                                        HStack{
+//                                            Text("Close".localizeString(string: appModel.locale.identifier))
+//                                        }
+//                                    }
+//                                }.padding(.horizontal)
                                 BuildingView(building: $appModel.filteredBuildings[idx],
                                              appModel: appModel,
                                              appLanguageManager: _appLanguageManager)

@@ -252,7 +252,7 @@ struct SuggestNewPlace: View {
             .toolbarTitleDisplayMode(.inline)
             .toolbar {
                 ToolbarItem(placement: .principal){
-                    Text("More_About_Team_Label".localizeString(string: appLanguageManager.locale.identifier))
+                    Text("Suggest_New_Place_Title".localizeString(string: appLanguageManager.locale.identifier))
                         .bold()
                         .font(.title3)
                         .padding(.leading, 4)

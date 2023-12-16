@@ -226,7 +226,7 @@ class BuildingListModel: ObservableObject {
 // Represents app model for all the data manipulation
 class AppModel : ObservableObject{
     
-  
+    
     
     private var appLanguageManager: AppLanguageManager? = nil
     
@@ -240,7 +240,7 @@ class AppModel : ObservableObject{
     var buildingsMaster: [PreferredLanguage: [Building]] = [.english: [], .french: []]
     @Published var buildingMasterEn: [Building] = []
     @Published var buildingMasterFr: [Building] = []
-
+    
     var categoriesMaster:[Category] = []
     var favoritesMaster: [BookmarkInfo] = [] // only contains IDs
     
@@ -261,6 +261,8 @@ class AppModel : ObservableObject{
     @Published private(set) var buildingAmenities = BuildingFeature.getAmenitiesAsArray()
     
     @Published private(set) var locale = Locale(identifier: CONFIGURATION.LANG_EN)
+    
+    private var locationManager: LocationManager?
     
     
     //    setBuildingDetailShowLongDescription
@@ -332,8 +334,8 @@ extension AppModel {
     }
     
     func applyFavoriteFilters(){
-    favoriteFilters = draftFavoriteFilters
-      filterBookmarks()
+        favoriteFilters = draftFavoriteFilters
+        filterBookmarks()
     }
     
     func resetFilters() {
@@ -353,9 +355,17 @@ extension AppModel {
 extension AppModel{
     func sortBuildings(sourceData: [Building], sortBy: SortBy) -> [Building]{
         return  sourceData.sorted(by: { (building1, building2) -> Bool in
-      
-           
-         
+//            if (building1.distanceFromUserLocation == nil && self.locationManager != nil){
+//                if let targetLocation = building1.coordinate {
+//                    if let distance = self.locationManager?.getDistance(targetLocation: targetLocation){
+//                        building1.distanceFromUserLocation = distance
+//                    }
+//                }
+//            }
+//            
+//            if (building2.distanceFromUserLocation == nil){
+//                
+//            }
             return compareBuildings(building1,  building2, sortBy)
         })
     }
@@ -382,7 +392,7 @@ extension AppModel {
     
     
     
-  
+    
     func setLanguage(language: PreferredLanguage){
         let selectedLang:PreferredLanguage = language
         if (selectedLang == .unknown){
@@ -402,20 +412,20 @@ extension AppModel {
         selectedLanguage = selectedLang
         userConfig = newUserConfig
         self.locale = locale
-
+        
         saveUserConfigurationToStorage()
         readUserConfigurationFromStorage()
-
         
         
         
-
         
-
+        
+        
+        
         
         Task {
-//            try await  retrieve()
-           
+            //            try await  retrieve()
+            
             do{
                 try await  self.retrieve()
             }catch{
@@ -447,7 +457,7 @@ extension AppModel{
     func saveUserConfigurationToStorage(){
         if let encodeData = try? JSONEncoder().encode(userConfig){
             UserDefaults.standard.set(encodeData, forKey: CONFIGURATION.STORAGE_KEY_CONFIGURATION)
-
+            
         }
     }
     
@@ -461,14 +471,14 @@ extension AppModel{
             if selectedLanguage == .french {
                 self.locale = Locale(identifier: CONFIGURATION.LANG_FR)
             }
-
+            
             return
         }
         
         //create a blank one, save it, amd return it
         let initModel = ConfigModel.getDefaultConfigModel()
         self.userConfig = initModel
-
+        
         saveUserConfigurationToStorage()
         readUserConfigurationFromStorage()
         
@@ -478,6 +488,27 @@ extension AppModel{
 }
 
 
+// MARK: handle location info update
+extension AppModel {
+    
+    func setLocationManager(locationManager: LocationManager? ){
+        self.locationManager = locationManager
+        
+     
+        
+    }
+    
+    func updateLocationDistance(id: Int, value: Double){
+        if let idx = buildingsMaster[.english]?.firstIndex(where: {$0.id == id}){
+            buildingsMaster[.english]?[idx].distanceFromUserLocation = value
+        }
+        
+        if let idx = buildingsMaster[.french]?.firstIndex(where: {$0.id == id}){
+            buildingsMaster[.french]?[idx].distanceFromUserLocation = value
+        }
+        
+    }
+}
 
 
 // MARK: Handle favorites
@@ -487,6 +518,7 @@ extension AppModel {
         
         let newBookmarkInfo = BookmarkInfo(id: building.id, bookmarkDate: .now)
         if !favoritesMaster.contains(newBookmarkInfo){
+            
             self.favoritesMaster.append(newBookmarkInfo)
             
             
@@ -496,8 +528,10 @@ extension AppModel {
             // update the state
             setBookmarkFlag(building.id, true)
             
+            
         }else {
-            // remove from bookmarks
+            // remove from bookmarks]
+            
             favoritesMaster.removeAll(where: {$0.id == newBookmarkInfo.id})
             
             // save it local storage
@@ -505,7 +539,9 @@ extension AppModel {
             
             setBookmarkFlag(building.id, false)
             
+            
         }
+        
     }
     
     
@@ -577,13 +613,13 @@ extension AppModel {
     
     func filterBookmarks(){
         
-      
+        
         let categories = favoriteFilters.categories
         let features = favoriteFilters.features
         let keyword = favoriteFilters.keyword
-
         
-       
+        
+        
         
         
         do{
@@ -611,7 +647,7 @@ extension AppModel {
             }
             
             bookmarks = sortBuildings(sourceData: bookmarks, sortBy: self.favoriteFilters.sortBy)
-
+            
             self.filteredFavorites = bookmarks
             
             

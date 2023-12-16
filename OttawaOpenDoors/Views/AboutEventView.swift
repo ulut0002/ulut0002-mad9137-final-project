@@ -15,7 +15,7 @@ struct AboutEventView: View {
         ScrollView{
             VStack(alignment: .center){
                 Image("placeHolderLogoFaded").resizable().aspectRatio(contentMode: .fit).frame(width: 200,height: 300)
-                VStack(spacing: 12){
+                VStack(alignment: .leading, spacing: 12 ){
                     Text("About_Event_Description_P1".localizeString(string: appLanguageManager.locale.identifier))
                     Text("About_Event_Description_P2".localizeString(string: appLanguageManager.locale.identifier))
                     

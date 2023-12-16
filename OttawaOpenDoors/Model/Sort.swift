@@ -20,6 +20,9 @@ func compareBuildings(_ building1: Building,
     case .distance_asc:
         if let distance1 = building1.distanceFromUserLocation, let distance2 = building2.distanceFromUserLocation {
             return distance1 < distance2
+        }else{
+          
+//            print("sort problem \(String(describing: building1.distanceFromUserLocation))")
         }
         return false
     case .distance_desc:

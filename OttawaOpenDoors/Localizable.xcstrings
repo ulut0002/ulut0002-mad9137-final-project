@@ -1458,6 +1458,23 @@
         }
       }
     },
+    "Suggest_New_Place_Title" : {
+      "extractionState" : "manual",
+      "localizations" : {
+        "en" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Suggest New Place"
+          }
+        },
+        "fr-CA" : {
+          "stringUnit" : {
+            "state" : "translated",
+            "value" : "Proposer un Nouveau Lieu"
+          }
+        }
+      }
+    },
     "Suggestion_Description_Missing" : {
       "extractionState" : "manual",
       "localizations" : {
@@ -1616,13 +1633,13 @@
         "en" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Visit"
+            "value" : "Visit %1$@"
           }
         },
         "fr-CA" : {
           "stringUnit" : {
             "state" : "translated",
-            "value" : "Visiter"
+            "value" : "Visiter %1$@"
           }
         }
       }

@@ -110,6 +110,7 @@ struct BuildingCard: View {
             if let targetLocation = building.coordinate {
                 if locationManager.location != nil {
                     if let distance = locationManager.getDistance(targetLocation: targetLocation){
+                        appModel.updateLocationDistance(id: building.id , value: distance)
                         building.distanceFromUserLocation = distance
                     }
                     distanceInKm = locationManager.getDistanceInKm(targetLocation: targetLocation)

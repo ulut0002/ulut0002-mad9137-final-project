@@ -11,13 +11,13 @@ import MapKit
 struct BuildingViewMap: View {
     var building: Building
     @State private var position : MapCameraPosition = .automatic
-
+    
     @State private var region: CLLocationCoordinate2D? = nil
     @State var distanceInKm : Double? = nil
     @State var distanceInKmText = ""
     
     @EnvironmentObject var appLanguageManager: AppLanguageManager
-
+    
     
     @EnvironmentObject var locationManager:LocationManager
     
@@ -26,13 +26,13 @@ struct BuildingViewMap: View {
             HStack{
                 Button{
                     
-//                    position = building.coordinate
+                    //                    position = building.coordinate
                     if let coordinate = building.coordinate {
-//                        position = MapCameraPosition.region(MKCoordinateRegion(center: coordinate, latitudinalMeters: 1000, longitudinalMeters: 1000))
+                        //                        position = MapCameraPosition.region(MKCoordinateRegion(center: coordinate, latitudinalMeters: 1000, longitudinalMeters: 1000))
                         position = MapCameraPosition.region(MKCoordinateRegion(center: coordinate, span: position.region?.span ?? MKCoordinateSpan(latitudeDelta: 0.01, longitudeDelta: 0.01)))
-
+                        
                     }
-                   
+                    
                 }label: {
                     Text("Building_View_Recenter_Map".localizeString(string: appLanguageManager.locale.identifier))
                         .foregroundStyle(COLORS.TEXT_BUTTON_BLUE)
@@ -44,40 +44,41 @@ struct BuildingViewMap: View {
                     .font(.caption2)
                     .foregroundStyle(COLORS.DARK_TEXT_COLOR_LIGHT)
                 
-            }.padding(.horizontal)
+            }
+            //            .padding(.horizontal)
             
             
             Map(position: $position){
-             
+                
                 
                 if let region = region {
                     Marker(building.name ?? "Building_View_Default_Name".localizeString(string: appLanguageManager.locale.identifier) , coordinate: region)
-                                }
+                }
                 
             }.mapControls{
                 MapUserLocationButton()
                 MapCompass()
                 MapScaleView()
                 MapPitchToggle()
-
-
+                
+                
             }
             .mapControlVisibility(.visible)
-//            .lay
+            //            .lay
             
             HStack{
                 Text(building.address ?? "")
                     .font(.body)
                     .foregroundStyle(COLORS.DARK_TEXT_COLOR_LIGHT)
                 Spacer(minLength: 1)
-            }.padding(.horizontal)
+            }
                 .padding(.bottom, 32)
-
+            
         }.onAppear(){
-           
+            
             retrieveDistance()
-
-                region = building.coordinate
+            
+            region = building.coordinate
             
             if let coordinate = building.coordinate {
                 position = MapCameraPosition.region(MKCoordinateRegion(center: coordinate, latitudinalMeters: 1000, longitudinalMeters: 1000))
@@ -85,7 +86,7 @@ struct BuildingViewMap: View {
             region = building.coordinate
             
         }.tint(COLORS.BRAND_COLOR)
-    
+        
     }
     
     func retrieveDistance(){
