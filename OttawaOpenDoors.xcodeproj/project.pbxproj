@@ -42,6 +42,12 @@
 		5769EA332B1092690038C2A3 /* AppModelLocalStorage.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5769EA322B1092690038C2A3 /* AppModelLocalStorage.swift */; };
 		5769EA352B1095D40038C2A3 /* ConfigModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5769EA342B1095D40038C2A3 /* ConfigModel.swift */; };
 		5769EA372B1096040038C2A3 /* PreferencesModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5769EA362B1096040038C2A3 /* PreferencesModel.swift */; };
+		576F8C5A2C1FAFAA00EBD6EF /* screen6.png in Resources */ = {isa = PBXBuildFile; fileRef = 576F8C542C1FAFA900EBD6EF /* screen6.png */; };
+		576F8C5B2C1FAFAA00EBD6EF /* screen1.png in Resources */ = {isa = PBXBuildFile; fileRef = 576F8C552C1FAFA900EBD6EF /* screen1.png */; };
+		576F8C5C2C1FAFAA00EBD6EF /* screen3.png in Resources */ = {isa = PBXBuildFile; fileRef = 576F8C562C1FAFA900EBD6EF /* screen3.png */; };
+		576F8C5D2C1FAFAA00EBD6EF /* screen2.png in Resources */ = {isa = PBXBuildFile; fileRef = 576F8C572C1FAFA900EBD6EF /* screen2.png */; };
+		576F8C5E2C1FAFAA00EBD6EF /* screen4.png in Resources */ = {isa = PBXBuildFile; fileRef = 576F8C582C1FAFA900EBD6EF /* screen4.png */; };
+		576F8C5F2C1FAFAA00EBD6EF /* screen5.png in Resources */ = {isa = PBXBuildFile; fileRef = 576F8C592C1FAFA900EBD6EF /* screen5.png */; };
 		5771701D2B0EEE9E00EA4D46 /* OttawaOpenDoorsApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5771701C2B0EEE9E00EA4D46 /* OttawaOpenDoorsApp.swift */; };
 		5771701F2B0EEE9E00EA4D46 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5771701E2B0EEE9E00EA4D46 /* ContentView.swift */; };
 		577170212B0EEEA000EA4D46 /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 577170202B0EEEA000EA4D46 /* Assets.xcassets */; };
@@ -119,6 +125,12 @@
 		5769EA322B1092690038C2A3 /* AppModelLocalStorage.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppModelLocalStorage.swift; sourceTree = "<group>"; };
 		5769EA342B1095D40038C2A3 /* ConfigModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ConfigModel.swift; sourceTree = "<group>"; };
 		5769EA362B1096040038C2A3 /* PreferencesModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreferencesModel.swift; sourceTree = "<group>"; };
+		576F8C542C1FAFA900EBD6EF /* screen6.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = screen6.png; sourceTree = "<group>"; };
+		576F8C552C1FAFA900EBD6EF /* screen1.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = screen1.png; sourceTree = "<group>"; };
+		576F8C562C1FAFA900EBD6EF /* screen3.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = screen3.png; sourceTree = "<group>"; };
+		576F8C572C1FAFA900EBD6EF /* screen2.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = screen2.png; sourceTree = "<group>"; };
+		576F8C582C1FAFA900EBD6EF /* screen4.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = screen4.png; sourceTree = "<group>"; };
+		576F8C592C1FAFA900EBD6EF /* screen5.png */ = {isa = PBXFileReference; lastKnownFileType = image.png; path = screen5.png; sourceTree = "<group>"; };
 		577170192B0EEE9E00EA4D46 /* OttawaOpenDoors.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = OttawaOpenDoors.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		5771701C2B0EEE9E00EA4D46 /* OttawaOpenDoorsApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = OttawaOpenDoorsApp.swift; sourceTree = "<group>"; };
 		5771701E2B0EEE9E00EA4D46 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
@@ -212,6 +224,12 @@
 		573348392B2D3A82008E03BD /* Assets */ = {
 			isa = PBXGroup;
 			children = (
+				576F8C552C1FAFA900EBD6EF /* screen1.png */,
+				576F8C572C1FAFA900EBD6EF /* screen2.png */,
+				576F8C562C1FAFA900EBD6EF /* screen3.png */,
+				576F8C582C1FAFA900EBD6EF /* screen4.png */,
+				576F8C592C1FAFA900EBD6EF /* screen5.png */,
+				576F8C542C1FAFA900EBD6EF /* screen6.png */,
 				5733483A2B2D3AAB008E03BD /* status.png */,
 			);
 			path = Assets;
@@ -490,12 +508,18 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				576F8C5F2C1FAFAA00EBD6EF /* screen5.png in Resources */,
 				5754ED4C2B296E75000CB7D8 /* buildings.json in Resources */,
 				577170242B0EEEA000EA4D46 /* Preview Assets.xcassets in Resources */,
 				572A8EB82B27EB1B0087A7A7 /* GoogleService-Info.plist in Resources */,
 				577170212B0EEEA000EA4D46 /* Assets.xcassets in Resources */,
 				578082D02B2641C700C84B70 /* Localizable.xcstrings in Resources */,
 				5733483B2B2D3AAC008E03BD /* status.png in Resources */,
+				576F8C5B2C1FAFAA00EBD6EF /* screen1.png in Resources */,
+				576F8C5E2C1FAFAA00EBD6EF /* screen4.png in Resources */,
+				576F8C5D2C1FAFAA00EBD6EF /* screen2.png in Resources */,
+				576F8C5C2C1FAFAA00EBD6EF /* screen3.png in Resources */,
+				576F8C5A2C1FAFAA00EBD6EF /* screen6.png in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
